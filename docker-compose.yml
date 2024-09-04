@@ -1,4 +1,21 @@
 services:
+  caddy:
+    image: caddy:2.8.4-alpine
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - static_volume:/static
+      - media_volume:/media
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: always
+    networks:
+      - refactor
+
   mysql:
     image: mysql:9.0.1
     environment:
@@ -25,6 +42,8 @@ services:
         condition: service_healthy
     volumes:
       - ./django:/usr/src/app
+      - static_volume:/static
+      - media_volume:/media
     restart: always
     env_file:
       - .env
@@ -33,6 +52,9 @@ services:
 
 volumes:
   mysql_data:
+  caddy_data:
+  static_volume:
+  media_volume:
 
 networks:
   refactor:

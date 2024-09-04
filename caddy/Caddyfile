@@ -1,0 +1,35 @@
+{
+    log {
+        level WARN
+    }
+}
+
+:80 {
+    handle_path /static/* {
+        root * /static
+        file_server
+    }
+
+    handle_path /media/* {
+        root * /media
+        file_server
+    }
+
+    reverse_proxy django:8000
+}
+
+https://localhost {
+    tls internal
+
+    handle_path /static/* {
+        root * /static
+        file_server
+    }
+
+    handle_path /media/* {
+        root * /media
+        file_server
+    }
+
+    reverse_proxy django:8000
+}
