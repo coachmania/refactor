@@ -9,7 +9,7 @@ ENV		DJANGO_SETTINGS_MODULE=mainProject.settings
 # Ports
 EXPOSE	8000
 
-WORKDIR	/usr/src/app
+WORKDIR	/usr/src/django
 
 # Install apt requirements
 COPY	./requirements-apt.txt /tmp
@@ -24,6 +24,6 @@ RUN		pip install --upgrade pip
 RUN		pip install --no-cache-dir -r /tmp/requirements-pip.txt
 
 # Copy project
-COPY	. /usr/src/app
+COPY	. /usr/src/django
 RUN		chmod +x ./entrypoint.sh
 CMD		./entrypoint.sh
