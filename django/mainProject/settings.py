@@ -24,7 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$uux2a^7vmtv%758by%y(mk5f*ps!)5wvuccc&+a2e*dj2^sdo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv('APP_MODE') == 'prod':
+    DEBUG = False
+    # SITE_URL = 'http://caddy'
+else:
+    DEBUG = True
+    # SITE_URL = 'http://django:8000'
 
 ALLOWED_HOSTS = []
 
