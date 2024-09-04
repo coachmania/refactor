@@ -1,0 +1,3 @@
+gcc
+default-libmysqlclient-dev
+pkg-config

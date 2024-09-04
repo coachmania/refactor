@@ -1,13 +1,37 @@
 services:
-  db:
+  mysql:
     image: mysql:9.0.1
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_USER=${DB_USER}
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 30
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - refactor
+
+  django:
+    build:
+      context: ./django
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./django:/usr/src/app
+    restart: always
+    networks:
+      - refactor
 
 volumes:
   mysql_data:
+
+networks:
+  refactor:
+    driver: bridge
