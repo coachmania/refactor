@@ -26,6 +26,8 @@ services:
     volumes:
       - ./django:/usr/src/app
     restart: always
+    env_file:
+      - .env
     networks:
       - refactor
 
