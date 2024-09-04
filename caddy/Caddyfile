@@ -15,7 +15,13 @@
         file_server
     }
 
-    reverse_proxy django:8000
+    handle_path /api/* {
+        reverse_proxy django:8000
+    }
+
+    handle {
+        reverse_proxy vue:5173
+    }
 }
 
 https://localhost {
@@ -31,5 +37,11 @@ https://localhost {
         file_server
     }
 
-    reverse_proxy django:8000
+    handle_path /api/* {
+        reverse_proxy django:8000
+    }
+
+    handle {
+        reverse_proxy vue:5173
+    }
 }
