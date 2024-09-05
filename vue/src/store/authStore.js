@@ -19,25 +19,16 @@ export const useAuthStore = defineStore('auth', {
                 throw error;
             }
         },
-		// logout() {
-		// 	this.accessToken = '';
-		// 	this.refreshToken = '';
-		// 	this.username = '';
-		// 	localStorage.removeItem('access_token');
-		// 	localStorage.removeItem('refresh_token');
-		// },
-        // async profile() {
-        //     try {
-        //         const response = await apiClient.get('accounts/profile/', {
-        //             headers: {
-        //                 'Authorization': `Bearer ${this.accessToken}`
-        //             }
-        //         });
-        //         return response.data;
-        //     } catch (error) {
-        //         throw error;
-        //     }
-        // }
+        async logout() {
+            try {
+                await apiClient.post('/accounts/logout/');
+                this.username = '';
+                console.log('Logout successful');
+            } catch (error) {
+                console.error('Logout failed:', error.response.data);
+                throw error;
+            }
+        }
 	},
     // getters: {
     //     isLogged: (state) => !!state.accessToken

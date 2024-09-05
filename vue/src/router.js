@@ -8,7 +8,6 @@ const routes = [
 	{
 		path: '/',
 		component: HomePage,
-		meta: {requiresAuth: true}
 	},
 	{
 		path: '/login',
@@ -17,22 +16,12 @@ const routes = [
 	{
 		path: '/logout',
 		component: LogoutPage,
-		meta: {requiresAuth: true}
 	}
 ];
 
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
-});
-
-router.beforeEach((to, from, next) => {
-	const authStore = useAuthStore();
-	if (to.meta.requiresAuth && !authStore.isLogged) {
-		next('/login');
-	} else {
-		next();
-	}
 });
 
 export default router;
