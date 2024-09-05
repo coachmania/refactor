@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer
 
-class LoginView(APIView):
+class Login(APIView):
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
@@ -20,7 +20,7 @@ class LoginView(APIView):
             })
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
-class LogoutView(APIView):
+class Logout(APIView):
     def post(self, request):
         logout(request)
         return Response(status=status.HTTP_204_NO_CONTENT)
