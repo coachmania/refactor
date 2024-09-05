@@ -11,34 +11,34 @@
 			</div>
 			<button type="submit">Submit</button>
 		</form>
+		<p v-if="message">{{ message }}</p>
 	</div>
 </template>
 
 <script>
-import apiClient from '@/services/api.js';
+import { defineComponent } from 'vue';
+import { useAuthStore } from '@/store/authStore';
 
-export default {
+export default defineComponent({
 	name: 'LoginForm',
 	data() {
 		return {
 			username: '',
-			password: ''
+			password: '',
+			message: '',
 		};
 	},
 	methods: {
 		async handleSubmit() {
+			const authStore = useAuthStore();
 			try {
-				const response = await apiClient.post('api/accounts/login/', {
-					username: this.username,
-					password: this.password
-				});
-				console.log('Login successful:', response.data);
-				localStorage.setItem('access_token', response.data.access);
-				localStorage.setItem('refresh_token', response.data.refresh);
+				await authStore.login(this.username, this.password);
+				this.message = 'Login successful';
 			} catch (error) {
 				console.error('Login failed:', error.response.data);
+				this.message = 'Login failed';
 			}
 		}
 	}
-};
+});
 </script>

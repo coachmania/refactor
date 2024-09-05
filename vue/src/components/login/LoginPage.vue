@@ -7,14 +7,15 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue';
 import Header from '../header/Header.vue';
 import LoginForm from './LoginForm.vue';
 
-export default {
+export default defineComponent({
 	name: 'LoginPage',
 	components: {
 		Header,
 		LoginForm
 	}
-};
+});
 </script>
