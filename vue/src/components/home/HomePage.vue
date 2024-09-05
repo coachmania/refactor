@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<Header/>
-		<h1>YS</h1>
 		<Home/>
 	</div>
 </template>
