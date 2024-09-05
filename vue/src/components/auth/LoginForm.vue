@@ -50,6 +50,19 @@ export default defineComponent({
 				console.error('Login failed:', error.response.data);
 			}
 		}
+	},
+	setup() {
+		const authStore = useAuthStore();
+		
+		const checkProfile = async () => {
+			try {
+				const profileData = await authStore.profile();
+				console.log('Profile data:', profileData);
+			} catch (error) {
+				console.error('Error fetching profile:', error);
+			}
+		};
+		checkProfile();
 	}
 });
 </script>

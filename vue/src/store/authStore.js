@@ -29,7 +29,19 @@ export const useAuthStore = defineStore('auth', {
 			this.username = '';
 			localStorage.removeItem('access_token');
 			localStorage.removeItem('refresh_token');
-		}
+		},
+        async profile() {
+            try {
+                const response = await apiClient.get('accounts/profile/', {
+                    headers: {
+                        'Authorization': `Bearer ${this.accessToken}`
+                    }
+                });
+                return response.data;
+            } catch (error) {
+                throw error;
+            }
+        }
 	},
     getters: {
         isLogged: (state) => !!state.accessToken
