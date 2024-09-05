@@ -7,7 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer
 from django.http import JsonResponse
 
-class TokenObtain(APIView):
+class Login(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -46,31 +46,6 @@ class Profile(APIView):
     def get(self, request):
         user = request.user
         return JsonResponse({
-            'user': UserSerializer(user).data
+            'user': UserSerializer(user).data,
+            'message': 'User issss'
         })
-
-class Login(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            refresh = RefreshToken.for_user(user)
-            return Response({
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-                'user': UserSerializer(user).data
-            })
-        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-
-class Logout(APIView):
-    def post(self, request):
-        logout(request)
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-class Profile(APIView):
-    def get(self, request):
-        return Response({'message': 'User is authenticated'}, status=status.HTTP_200_OK)
