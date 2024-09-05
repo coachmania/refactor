@@ -5,12 +5,26 @@ const apiClient = axios.create({
     withCredentials: true,
 });
 
-apiClient.interceptors.request.use(config => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+apiClient.interceptors.response.use(
+    response => response,
+    async error => {
+        const { response } = error;
+        if (response && response.status === 401) {
+            if (response.config && !response.config.__isRetryRequest) {
+                response.config.__isRetryRequest = true;
+                try {
+                    await apiClient.post('/accounts/token/refresh/', {
+                        refresh: localStorage.getItem('refresh_token')
+                    });
+                    return apiClient(response.config);
+                } catch (refreshError) {
+                    console.error('Token refresh failed:');
+                    return Promise.reject(refreshError);
+                }
+            }
+        }
+        return Promise.reject(error);
     }
-    return config;
-});
+);
 
 export default apiClient;
