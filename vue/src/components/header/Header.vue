@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import AuthButton from '@/components/login/AuthButton.vue';
+import AuthButton from '@/components/auth/AuthButton.vue';
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue';
 
 export default {
