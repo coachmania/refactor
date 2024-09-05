@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore } from '@/store/authStore';
 import HomePage from './components/home/HomePage.vue';
 import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
@@ -6,24 +7,32 @@ import LogoutPage from './components/auth/LogoutPage.vue';
 const routes = [
 	{
 		path: '/',
-		name: 'Home',
-		component: HomePage
+		component: HomePage,
+		meta: {requiresAuth: true}
 	},
 	{
 		path: '/login',
-		name: 'Login',
 		component: LoginPage
 	},
 	{
 		path: '/logout',
-		name: 'Logout',
-		component: LogoutPage
+		component: LogoutPage,
+		meta: {requiresAuth: true}
 	}
 ];
 
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
+});
+
+router.beforeEach((to, from, next) => {
+	const authStore = useAuthStore();
+	if (to.meta.requiresAuth && !authStore.isLogged) {
+		next('/login');
+	} else {
+		next();
+	}
 });
 
 export default router;
