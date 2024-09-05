@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
+        md: '1.5rem',
         card: '2.5rem',
         icon: '1.25rem',
       },
