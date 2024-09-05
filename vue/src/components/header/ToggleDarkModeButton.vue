@@ -9,29 +9,23 @@
 </template>
 
 <script>
-export default {
-	name: 'ToggleDarkModeButton',
-    data() {
+import { defineComponent, computed, onMounted } from 'vue';
+import { useThemeStore } from '@/store/themeStore';
+
+export default defineComponent({
+    name: 'ToggleDarkModeButton',
+    setup() {
+        const themeStore = useThemeStore();
+        const isDarkMode = computed(() => themeStore.isDarkMode);
+
+        onMounted(() => {
+            themeStore.applyTheme();
+        });
+
         return {
-            isDarkMode: false,
+            isDarkMode,
+            toggleDarkMode: themeStore.toggleDarkMode,
         };
     },
-    mounted() {
-        this.isDarkMode = localStorage.getItem('theme') === 'dark';
-        this.applyTheme();
-    },
-    methods: {
-        toggleDarkMode() {
-            this.isDarkMode = !this.isDarkMode;
-            this.applyTheme();
-        },
-        applyTheme() {
-            if (this.isDarkMode) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        },
-    },
-};
+});
 </script>
