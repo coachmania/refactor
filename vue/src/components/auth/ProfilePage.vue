@@ -9,4 +9,7 @@
 import { useAuthStore } from '@/store/authStore';
 
 const authStore = useAuthStore();
+
+// TODO
+console.log(authStore.profile());
 </script>

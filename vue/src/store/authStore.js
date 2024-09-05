@@ -28,9 +28,15 @@ export const useAuthStore = defineStore('auth', {
                 console.error('Logout failed:', error.response.data);
                 throw error;
             }
-        }
+        },
+		async profile() {
+			try {
+				const response = await apiClient.get('/accounts/profile/');
+				console.log('Profile:', response.data);
+			} catch (error) {
+				console.error('Profile failed:', error.response.data);
+				throw error;
+			}
+		}
 	},
-    // getters: {
-    //     isLogged: (state) => !!state.accessToken
-    // }
 });
