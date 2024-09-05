@@ -1,8 +1,11 @@
 <template>
 	<div>
-		<Header/>
-		<h1>Login Page</h1>
-		<LoginForm />
+		<div class="grid grid-rows-[auto,1fr] h-screen">
+			<Header/>
+			<div class="grid place-items-center h-full">
+				<LoginForm />
+			</div>
+		</div>
 	</div>
 </template>
 
