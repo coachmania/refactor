@@ -42,6 +42,13 @@ class TokenObtain(APIView):
         
         return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+class Profile(APIView):
+    def get(self, request):
+        user = request.user
+        return JsonResponse({
+            'user': UserSerializer(user).data
+        })
+
 class Login(APIView):
     permission_classes = [AllowAny]
 
