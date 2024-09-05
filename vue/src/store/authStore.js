@@ -30,5 +30,8 @@ export const useAuthStore = defineStore('auth', {
 			localStorage.removeItem('access_token');
 			localStorage.removeItem('refresh_token');
 		}
-	}
+	},
+    getters: {
+        isLogged: (state) => !!state.accessToken
+    }
 });

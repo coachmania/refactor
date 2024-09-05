@@ -24,7 +24,6 @@
 				</label>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block">Se connecter</button>
-			<p v-if="message">{{ message }}</p>
 		</form>
 	</section>
 </template>
@@ -39,7 +38,6 @@ export default defineComponent({
 		return {
 			username: '',
 			password: '',
-			message: '',
 		};
 	},
 	methods: {
@@ -47,10 +45,9 @@ export default defineComponent({
 			const authStore = useAuthStore();
 			try {
 				await authStore.login(this.username, this.password);
-				this.message = 'Login successful';
+				this.$router.push('/');
 			} catch (error) {
 				console.error('Login failed:', error.response.data);
-				this.message = 'Login failed';
 			}
 		}
 	}

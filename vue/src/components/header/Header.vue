@@ -13,17 +13,20 @@
 				<!-- </form> -->
 				<!-- <a href="{% url 'pageProfile' %}" class="btn btn-ghost text-md">Mes CV</a> -->
 
+			<AuthButton/>
 			<ToggleDarkModeButton/>
 		</div>
 	</nav>
 </template>
 
 <script>
+import AuthButton from '@/components/login/AuthButton.vue';
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue';
 
 export default {
 	name: 'Header',
 	components: {
+		AuthButton,
 		ToggleDarkModeButton,
 	},
 };
