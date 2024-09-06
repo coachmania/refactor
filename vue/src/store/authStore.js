@@ -15,11 +15,8 @@ export const useAuthStore = defineStore('auth', {
                 const { access_token } = response.data;
                 this.accessToken = access_token;
                 localStorage.setItem('accessToken', access_token);
-                
                 apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
-                console.log('Refresh successful');
             } catch (error) {
-                console.error('Refresh failed:', error.response.data);
                 throw error;
             }
         },
@@ -31,36 +28,21 @@ export const useAuthStore = defineStore('auth', {
                 });
 
                 const { access_token } = response.data;
-
                 this.username = username;
                 this.accessToken = access_token;
-
                 localStorage.setItem('accessToken', access_token);
                 apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
-                console.log('Login successful');
+                console.log('Login:', response.data);
             } catch (error) {
-                console.error('Login failed:', error.response.data);
                 throw error;
             }
         },
-        // async logout() {
-        //     try {
-        //         await apiClient.post('/accounts/logout/');
-        //         this.username = '';
-        //         // this.isAuthenticated = false;
-        //         console.log('Logout successful');
-        //     } catch (error) {
-        //         console.error('Logout failed:', error.response.data);
-        //         throw error;
-        //     }
-        // },
         async profile() {
             try {
                 apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
                 const response = await apiClient.get('/accounts/profile/');
                 console.log('Profile:', response.data);
             } catch (error) {
-				console.error('Profile failed in aut store');
 				throw error;
 			}
         },
