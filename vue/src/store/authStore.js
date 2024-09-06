@@ -9,7 +9,7 @@ export const useAuthStore = defineStore('auth', {
 	actions: {
         async tokenRefresh() {
             try {
-                apiClient.defaults.headers.common['Authorization'] = '';
+                this.accessToken = '';
                 const response = await apiClient.post('/accounts/token/refresh/')
 
                 const { access_token } = response.data;
@@ -39,7 +39,6 @@ export const useAuthStore = defineStore('auth', {
         },
         async profile() {
             try {
-                apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
                 const response = await apiClient.get('/accounts/profile/');
                 console.log('Profile:', response.data);
             } catch (error) {
@@ -48,7 +47,6 @@ export const useAuthStore = defineStore('auth', {
         },
         async logout() {
             try {
-                apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
                 const response = await apiClient.post('/accounts/logout/');
                 this.username = '';
                 this.accessToken = '';
