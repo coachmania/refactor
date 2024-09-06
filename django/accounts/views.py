@@ -9,36 +9,21 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .serializers import UserSerializer
 
+@method_decorator(csrf_exempt, name='dispatch')
 class TokenRefresh(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        return Response({'error': 'Token refresh is disabled'}, status=status.HTTP_200_OK)
         refresh_token = request.COOKIES.get('refresh_token')
         if refresh_token is None:
             return Response({'error': 'Refresh token is required'}, status=status.HTTP_400_BAD_REQUEST)
-        print(refresh_token)
 
-        # try:
-        #     refresh = RefreshToken(refresh_token)
-        #     access_token = str(refresh.access_token)
-
-        #     response = Response({
-        #         'message': 'Token refreshed successfully',
-        #     })
-
-        #     response.set_cookie(
-        #         'access_token', 
-        #         access_token, 
-        #         httponly=True, 
-        #         # TODO ici mettre secure=True pour la production
-        #         secure=False, 
-        #         samesite='Lax'
-        #     )
-
-        #     return response
-        # except Exception as e:
-        #     return Response({'error': 'Invalid refresh token'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            refresh = RefreshToken(refresh_token)
+            access_token = str(refresh.access_token)
+            return Response({'access_token': access_token}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_401_UNAUTHORIZED)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Login(APIView):
@@ -72,8 +57,9 @@ class Login(APIView):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Logout(APIView):
+    # TODO
     def post(self, request):
-        logout(request)
+        # logout(request)
 
         response = Response({
             'message': 'Logged out successfully',
