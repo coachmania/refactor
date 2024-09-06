@@ -46,5 +46,18 @@ export const useAuthStore = defineStore('auth', {
 				throw error;
 			}
         },
+        async logout() {
+            try {
+                apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
+                const response = await apiClient.post('/accounts/logout/');
+                this.username = '';
+                this.accessToken = '';
+                localStorage.removeItem('accessToken');
+                apiClient.defaults.headers.common['Authorization'] = '';
+                console.log('Logout:', response.data);
+            } catch (error) {
+                throw error;
+            }
+        },  
     },
 });
