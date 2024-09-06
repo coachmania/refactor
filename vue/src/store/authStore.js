@@ -29,14 +29,14 @@ export const useAuthStore = defineStore('auth', {
                 throw error;
             }
         },
-		async profile() {
-			try {
-				const response = await apiClient.get('/accounts/profile/');
-				console.log('Profile:', response.data);
-			} catch (error) {
+        async profile() {
+            try {
+                const response = await apiClient.get('/accounts/profile/');
+                console.log('Profile:', response.data);
+            } catch (error) {
 				console.error('Profile failed:', error.response.data);
 				throw error;
 			}
-		}
-	},
+        },
+    },
 });
