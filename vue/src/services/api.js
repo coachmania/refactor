@@ -11,24 +11,32 @@ apiClient.interceptors.response.use(
     async error => {
         const authStore = useAuthStore();
         const originalRequest = error.config;
-
         if (error.response.status === 401 && !originalRequest._retry) {
-            // console.error('OKKK 401 recu et pas de retry');
             originalRequest._retry = true;
-
             try {
-                // Delete the current token
+                // console.error(apiClient.defaults.headers.common['Authorization']);
+                console.error(authStore.accessToken);
                 apiClient.defaults.headers.common['Authorization'] = '';
                 await authStore.tokenRefresh();
-                // console.error('OK Token refresh successful');
                 
-                // return apiClient(originalRequest);
+                // console.error(apiClient.defaults.headers.common['Authorization']);
+                console.error(authStore.accessToken);
+                // const newRequest = {
+                //     ...originalRequest,
+                //     headers: {
+                //         ...originalRequest.headers,
+                //         'Authorization': `Bearer ${authStore.accessToken}`
+                //     }
+                // };
+                originalRequest.headers['Authorization'] = `Bearer ${authStore.accessToken}`;
+                // return await apiClient(newRequest);
+                return await apiClient(originalRequest);
             } catch (refreshError) {
-                // console.error('NK Token refresh failed:');
+                // rooter.push('/login');
+                console.error('Refresh error:', refreshError);
+                return Promise.reject(refreshError);
             }
         }
-
-        // console.error('Erreur de la requête :', error.response || error.message);
         return Promise.reject(error);
     }
 );

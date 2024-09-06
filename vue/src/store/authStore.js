@@ -9,6 +9,7 @@ export const useAuthStore = defineStore('auth', {
 	actions: {
         async tokenRefresh() {
             try {
+                apiClient.defaults.headers.common['Authorization'] = '';
                 const response = await apiClient.post('/accounts/token/refresh/')
 
                 const { access_token } = response.data;
@@ -55,13 +56,11 @@ export const useAuthStore = defineStore('auth', {
         // },
         async profile() {
             try {
-                console.log('Profile called');
-                
                 apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
                 const response = await apiClient.get('/accounts/profile/');
                 console.log('Profile:', response.data);
             } catch (error) {
-				console.error('Profile failed:', error.response.data);
+				console.error('Profile failed in aut store');
 				throw error;
 			}
         },
