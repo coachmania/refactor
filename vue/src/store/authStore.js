@@ -3,34 +3,44 @@ import apiClient from '@/services/api.js';
 
 export const useAuthStore = defineStore('auth', {
 	state: () => ({
-		username: ''
+		username: '',
+        accessToken: localStorage.getItem('accessToken') || '',
 	}),
 	actions: {
         async login(username, password) {
             try {
-                await apiClient.post('/accounts/login/', {
+                const response = await apiClient.post('/accounts/login/', {
                     username,
                     password
                 });
+
+                const { access_token } = response.data;
+
                 this.username = username;
+                this.accessToken = access_token;
+
+                localStorage.setItem('accessToken', access_token);
+                apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
                 console.log('Login successful');
             } catch (error) {
                 console.error('Login failed:', error.response.data);
                 throw error;
             }
         },
-        async logout() {
-            try {
-                await apiClient.post('/accounts/logout/');
-                this.username = '';
-                console.log('Logout successful');
-            } catch (error) {
-                console.error('Logout failed:', error.response.data);
-                throw error;
-            }
-        },
+        // async logout() {
+        //     try {
+        //         await apiClient.post('/accounts/logout/');
+        //         this.username = '';
+        //         // this.isAuthenticated = false;
+        //         console.log('Logout successful');
+        //     } catch (error) {
+        //         console.error('Logout failed:', error.response.data);
+        //         throw error;
+        //     }
+        // },
         async profile() {
             try {
+                apiClient.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`;
                 const response = await apiClient.get('/accounts/profile/');
                 console.log('Profile:', response.data);
             } catch (error) {
