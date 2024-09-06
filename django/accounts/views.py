@@ -27,7 +27,15 @@ class Login(APIView):
                 'message': 'Logged in successfully',
             })
 
-            response['Authorization'] = f'Bearer {access_token}'
+            response.set_cookie(
+                'access_token', 
+                access_token, 
+                httponly=True, 
+                # TODO ici mettre secure=True pour la production
+                secure=False, 
+                samesite='Lax'
+            )
+
             response.set_cookie(
                 'refresh_token', 
                 refresh_token, 
@@ -58,7 +66,8 @@ class Logout(APIView):
 class Profile(APIView):
     def get(self, request):
         user = request.user
-        return JsonResponse({
+        data = {
             'user': UserSerializer(user).data,
-            'message': 'User is authenticated'
-        })
+            'is_authenticated': user.is_authenticated
+        }
+        return Response(data, status=status.HTTP_200_OK)
