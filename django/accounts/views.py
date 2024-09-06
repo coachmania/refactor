@@ -3,10 +3,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
 from .serializers import UserSerializer
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -56,21 +55,6 @@ class Login(APIView):
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class Logout(APIView):
-    # TODO
-    def post(self, request):
-        # logout(request)
-
-        response = Response({
-            'message': 'Logged out successfully',
-        })
-
-        response.delete_cookie('access_token')
-        response.delete_cookie('refresh_token')
-
-        return response
-
-@method_decorator(csrf_exempt, name='dispatch')
 class Profile(APIView):
     def get(self, request):
         user = request.user
@@ -79,3 +63,10 @@ class Profile(APIView):
             'is_authenticated': user.is_authenticated
         }
         return Response(data, status=status.HTTP_200_OK)
+    
+@method_decorator(csrf_exempt, name='dispatch')
+class Logout(APIView):
+    def post(self, request):
+        response = Response({'success': 'Successfully logged out'}, status=status.HTTP_200_OK)
+        response.delete_cookie('refresh_token')
+        return response
