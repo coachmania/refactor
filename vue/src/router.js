@@ -4,6 +4,7 @@ import HomePage from './components/home/HomePage.vue';
 import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
 import ProfilePage from './components/auth/ProfilePage.vue';
+import TokenRefreshPage from './components/auth/TokenRefreshPage.vue';
 
 const routes = [
 	{
@@ -21,6 +22,10 @@ const routes = [
 	{
 		path: '/profile',
 		component: ProfilePage,
+	},
+	{
+		path: '/refresh',
+		component: TokenRefreshPage,
 	}
 ];
 
