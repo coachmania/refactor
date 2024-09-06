@@ -46,7 +46,7 @@ class Login(APIView):
                 'refresh_token', 
                 refresh_token, 
                 httponly=True, 
-                # TODO ici mettre secure=True pour la production
+                # TODO ici mettre secure=True pour la production et voir si on peut mettre le access_token de la meme facon
                 secure=False, 
                 samesite='Lax'
             )
