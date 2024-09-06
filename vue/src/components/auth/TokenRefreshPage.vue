@@ -7,18 +7,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { useAuthStore } from '@/store/authStore';
 
 const authStore = useAuthStore();
-const errorMessage = ref(null);
 
 onMounted(async () => {
-    try {
-        await authStore.tokenRefresh();
-    } catch (error) {
-        errorMessage.value = 'Token refresh failed';
-        console.error('Token refresh failed:', error.response ? error.response.data : error);
-    }
+	await authStore.tokenRefresh();
 });
 </script>

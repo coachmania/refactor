@@ -6,10 +6,12 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import { useAuthStore } from '@/store/authStore';
 
 const authStore = useAuthStore();
 
-// TODO
-console.log(authStore.profile());
+onMounted(async () => {
+	await authStore.profile();
+});
 </script>
