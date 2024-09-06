@@ -41,6 +41,20 @@ class Login(APIView):
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @method_decorator(csrf_exempt, name='dispatch')
+class Logout(APIView):
+    def post(self, request):
+        logout(request)
+
+        response = Response({
+            'message': 'Logged out successfully',
+        })
+
+        response.delete_cookie('access_token')
+        response.delete_cookie('refresh_token')
+
+        return response
+
+@method_decorator(csrf_exempt, name='dispatch')
 class Profile(APIView):
     def get(self, request):
         user = request.user
@@ -48,13 +62,3 @@ class Profile(APIView):
             'user': UserSerializer(user).data,
             'message': 'User is authenticated'
         })
-
-@method_decorator(csrf_exempt, name='dispatch')
-class Logout(APIView):
-    def post(self, request):
-        logout(request)
-        
-        response = JsonResponse({'message': 'Logged out successfully'})
-        response.delete_cookie('access_token')
-        response.delete_cookie('refresh_token')
-        return response
