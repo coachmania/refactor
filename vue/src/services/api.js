@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useAuthStore } from '@/store/authStore';
 
 const apiClient = axios.create({
     baseURL: '/api',
@@ -8,21 +9,26 @@ const apiClient = axios.create({
 apiClient.interceptors.response.use(
     response => response,
     async error => {
-        const { response } = error;
-        if (response && response.status === 401) {
-            if (response.config && !response.config.__isRetryRequest) {
-                response.config.__isRetryRequest = true;
-                try {
-                    await apiClient.post('/accounts/token/refresh/', {
-                        refresh: localStorage.getItem('refresh_token')
-                    });
-                    return apiClient(response.config);
-                } catch (refreshError) {
-                    console.error('Token refresh failed:');
-                    return Promise.reject(refreshError);
-                }
+        const authStore = useAuthStore();
+        const originalRequest = error.config;
+
+        if (error.response.status === 401 && !originalRequest._retry) {
+            // console.error('OKKK 401 recu et pas de retry');
+            originalRequest._retry = true;
+
+            try {
+                // Delete the current token
+                apiClient.defaults.headers.common['Authorization'] = '';
+                await authStore.tokenRefresh();
+                // console.error('OK Token refresh successful');
+                
+                // return apiClient(originalRequest);
+            } catch (refreshError) {
+                // console.error('NK Token refresh failed:');
             }
         }
+
+        // console.error('Erreur de la requête :', error.response || error.message);
         return Promise.reject(error);
     }
 );
