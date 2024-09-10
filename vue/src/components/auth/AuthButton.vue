@@ -10,6 +10,7 @@
 import { defineComponent, computed } from 'vue';
 import { useAuthStore } from '@/store/authStore';
 
+// TODO voir la gestion de l'etat de connexion
 export default defineComponent({
 	name: 'AuthButton',
 	setup() {
