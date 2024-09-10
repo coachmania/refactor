@@ -5,7 +5,6 @@
 			<template v-slot:editor>
 				<SectionLayout>
 					<template v-slot:cards>
-						<p>EDITOR</p>
 						<Type/>
 					</template>
 				</SectionLayout>
