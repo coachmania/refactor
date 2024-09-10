@@ -9,6 +9,7 @@
 				:value="title"
 				@update:value="handleValueChange"
 			/>
+			<QuillEditor/>
 		</div>
 	</div>
 </template>
@@ -16,6 +17,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import TextInput from '../global/TextInput.vue';
+import QuillEditor from '../global/QuillEditor.vue';
 
 const title = ref('');
 
