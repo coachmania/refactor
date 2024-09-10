@@ -4,12 +4,20 @@
 			<h1 class="card-title">Type de poste recherché</h1>
 	
 			<div class="join grid grid-cols-3">
-				<!-- {% for type in title.types %} -->
-					<button typeButton name="type" class="btn join-item no-animation btn-primary">{{ type }}</button>
-					<button typeButton name="type" class="btn join-item no-animation bg-base-100 border-base-content/15">{{ type }}</button>
-					<button typeButton name="type" class="btn join-item no-animation bg-base-100 border-base-content/15">{{ type }}</button>
-				<!-- {% endfor %} -->
+				<button 
+					v-for="(item, index) in typeChoices" 
+					:key="index" 
+                    :class="['btn join-item no-animation', {
+						'btn-primary': item === type,
+						'bg-base-100 border-base-content/15': item !== type
+					}]"
+					@click="updateType(item)"
+				>
+					{{ item }}
+				</button>
 			</div>
+
+			<p class="text-base-content">Elias</p>
 			
 			<!-- <div role="alert" class="alert alert-info rounded-btn">
 				{% if title.item.type == 'Emploi' %}
@@ -24,8 +32,33 @@
 	</div>
 </template>
 
-<script>
-export default {
-	name: 'Type',
+<script setup>
+import { ref, onMounted } from 'vue';
+import apiClient from '@/services/api';
+
+const typeChoices = ref([]);
+const type = ref('');
+
+const fetchTitleTypes = async () => {
+	try {
+		const response = await apiClient.get('/cv_title/type/');
+		typeChoices.value = response.data.type_choices;
+		type.value = response.data.type;
+	} catch (error) {
+		console.error('Error fetching title types:', error);
+	}
 };
+
+const updateType = async (selectedType) => {
+	type.value = selectedType;
+	try {
+		await apiClient.put('/cv_title/type/', {type: type.value});
+	} catch (error) {
+		console.error('Error updating title type:', error);
+	}
+};
+
+onMounted(() => {
+	fetchTitleTypes();
+});
 </script>
