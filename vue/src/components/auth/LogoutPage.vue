@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<p>Déconnexion en cours...</p>
-	</div>
+	<p>Déconnexion en cours...</p>
 </template>
 
 <script>
