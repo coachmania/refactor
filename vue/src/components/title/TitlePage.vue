@@ -6,6 +6,7 @@
 				<SectionLayout>
 					<template v-slot:cards>
 						<p>EDITOR</p>
+						<Type/>
 					</template>
 				</SectionLayout>
 			</template>
@@ -17,6 +18,7 @@
 import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
+import Type from './Type.vue';
 
 export default {
 	name: 'TitlePage',
@@ -24,6 +26,7 @@ export default {
 		Header,
 		EditorLayout,
 		SectionLayout,
+		Type,
 	},
 };
 </script>
