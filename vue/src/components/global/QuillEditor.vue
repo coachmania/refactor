@@ -27,6 +27,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import Quill from 'quill';
+import 'quill/dist/quill.snow.css';
 
 const editorContainer = ref(null);
 const isBoldActive = ref(false);
