@@ -1,5 +1,5 @@
 <template>
-	<div id="app" class="bg-base-100">
+	<div id="app" class="h-screen grid grid-rows-[4rem,1fr] bg-base-100 text-base-content">
 		<router-view></router-view>
 	</div>
 </template>

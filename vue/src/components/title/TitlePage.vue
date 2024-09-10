@@ -1,17 +1,15 @@
 <template>
-	<div class="grid grid-rows-[auto,1fr] h-screen">
-		<Header/>
-		<EditorLayout>
-			<template v-slot:editor>
-				<SectionLayout>
-					<template v-slot:cards>
-						<Type/>
-						<Title/>
-					</template>
-				</SectionLayout>
-			</template>
-		</EditorLayout>
-	</div>
+	<Header/>
+	<EditorLayout>
+		<template v-slot:editor>
+			<SectionLayout>
+				<template v-slot:cards>
+					<Type/>
+					<Title/>
+				</template>
+			</SectionLayout>
+		</template>
+	</EditorLayout>
 </template>
 
 <script setup>

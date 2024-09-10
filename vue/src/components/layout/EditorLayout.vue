@@ -1,14 +1,12 @@
 <template>
-    <div class="grid grid-cols-[5rem,4fr,5fr]">
+    <main class="grid grid-cols-[5rem,4fr,5fr] overflow-hidden">
         <Sidebar/>
-        <div>
-            <slot name="editor"></slot>
-        </div>
+        <slot name="editor"></slot>
         <div>
             <!-- <slot name="content"></slot> -->
             <p>EDITOR</p>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>
