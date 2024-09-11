@@ -3,13 +3,9 @@
 	<EditorLayout>
 		<template v-slot:editor>
 			<SectionLayout>
-				<template v-slot:cards>
-					<Type
-						@update:type="updateType"
-					/>
-					<Title :type="type"/>
-					<Links/>
-				</template>
+				<Type @update:type="updateType"/>
+				<Title :type="type"/>
+				<Links/>
 			</SectionLayout>
 		</template>
 	</EditorLayout>

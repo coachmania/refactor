@@ -3,11 +3,7 @@
 	<EditorLayout>
 		<template v-slot:editor>
 			<SectionLayout>
-				<template v-slot:cards>
-					<Picture/>
-
-
-				</template>
+				<Picture/>
 			</SectionLayout>
 		</template>
 	</EditorLayout>
