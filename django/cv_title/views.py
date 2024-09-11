@@ -22,11 +22,32 @@ class Type(APIView):
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
 
+from rest_framework.permissions import AllowAny
+class Details(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        try:
+            title = Title.objects.get_or_create(id=1)[0]
+            data = {
+                'title': title.title,
+                'details': title.details,
+            }
+            return Response(data, status=status.HTTP_200_OK)
+        except Title.DoesNotExist:
+            return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
+
+from rest_framework.permissions import AllowAny
+class Field(APIView):
+    permission_classes = [AllowAny]
+
     def put(self, request, *args, **kwargs):
         try:
             title = Title.objects.get_or_create(id=1)[0]
-            title.type = request.data['type']
-            title.save()
-            return Response({'success': 'Title updated'}, status=status.HTTP_200_OK)
+            serializer = TitleSerializer(title, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'success': 'Title updated'}, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)

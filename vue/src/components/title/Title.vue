@@ -32,6 +32,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
@@ -46,16 +47,20 @@ const props = defineProps({
 
 const fetchInitialData = async () => {
 	try {
-		const response = { data: { title: 'Développeur Full Stack' } };
+		const response = await apiClient.get('/cv_title/details/');
 		title.value = response.data.title;
 	} catch (error) {
 		console.error('Erreur lors du chargement initial :', error);
 	}
 };
 
-const updateValue = ({ name, value }) => {
-	console.log(`${name}, ${value}`);
-	// title.value = value;
+const updateValue = async ({name, value}) => {
+	try {
+		let data = {[name]: value,}
+		await apiClient.put('/cv_title/field/', data);
+	} catch (error) {
+		console.error('Erreur lors de la mise à jour du titre :', error);
+	}
 };
 
 onMounted(() => {

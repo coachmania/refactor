@@ -42,7 +42,8 @@ const fetchTitleTypes = async () => {
 const updateType = async (selectedType) => {
 	type.value = selectedType;
 	try {
-		await apiClient.put('/cv_title/type/', {type: type.value});
+		let data = {type: selectedType}
+		await apiClient.put('/cv_title/field/', data);
 		emit('update:type', selectedType);
 	} catch (error) {
 		console.error('Error updating title type:', error);
