@@ -3,6 +3,7 @@
 		<CardTitle title="Photo"/>
 		<div class="grid gap-md grid-cols-[auto,1fr]">
 			<div class="h-full flex flex-col items-center gap-md">
+				<PictureDisplay :isHidden="isHidden"/>
 				<HideButton
 					:isHidden="isHidden"
 					@click="updateValue"
@@ -19,6 +20,7 @@
 import { ref } from 'vue';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
+import PictureDisplay from './PictureDisplay.vue';
 import HideButton from './HideButton.vue';
 
 const isHidden = ref(true);
