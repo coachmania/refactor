@@ -12,6 +12,6 @@ class Title(models.Model):
 	title = models.CharField(max_length=100, blank=True)
 	details = models.CharField(max_length=1000, blank=True)
 	# TODO enlever max_lenght et mettre des URLField au lieu de CharField
-	linkedin_url = models.CharField(max_lenght=100, blank=True)
-	other_url = models.CharField(max_lenght=100, blank=True)
-	trimoji_url = models.CharField(max_lenght=100, blank=True)
+	linkedin_url = models.CharField(max_length=100, blank=True)
+	other_url = models.CharField(max_length=100, blank=True)
+	trimoji_url = models.CharField(max_length=100, blank=True)
