@@ -17,20 +17,21 @@
 				</button>
 			</div>
 
-			<div role="alert" class="alert alert-info rounded-btn">
-				<AlertBox
-					v-if="type === 'Emploi'"
-					text="Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez."
-				/>
-				<AlertBox 
-					v-else-if="type === 'Alternance'"
-					text="Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'."
-				/>
-				<AlertBox
-					v-else-if="type === 'Stage'"
-					text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stagiaire en Marketing Digital - 6 mois'."
-				/>
-			</div>
+			<AlertBox
+				v-if="type === 'Emploi'"
+				text="Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez."
+				classColor="alert-info"
+			/>
+			<AlertBox 
+				v-else-if="type === 'Alternance'"
+				text="Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'."
+				classColor="alert-info"
+			/>
+			<AlertBox
+				v-else-if="type === 'Stage'"
+				text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stagiaire en Marketing Digital - 6 mois'."
+				classColor="alert-info"
+			/>
 		</div>
 	</div>
 </template>
