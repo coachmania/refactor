@@ -22,7 +22,7 @@
 			/>
 			<AlertBox
 				v-else-if="type === 'Stage'"
-				text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stagiaire en Marketing Digital - 6 mois'."
+				text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stage en Marketing Digital - 6 mois'."
 				classColor="alert-info"
 			/>
 		</template>
