@@ -8,6 +8,7 @@
 						@update:type="updateType"
 					/>
 					<Title :type="type"/>
+					<Links/>
 				</template>
 			</SectionLayout>
 		</template>
@@ -21,6 +22,7 @@ import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
 import Type from './Type.vue';
 import Title from './Title.vue';
+import Links from './Links.vue';
 
 const type = ref('');
 
