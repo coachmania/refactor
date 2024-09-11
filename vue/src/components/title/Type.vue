@@ -1,6 +1,6 @@
 <template>
 	<CardLayout>
-		<CardTitle title="Type de poste recherché"/>
+		<CardTitle>Type de poste recherché</CardTitle>
 		<div class="join grid grid-cols-3">
 			<button 
 				v-for="(item, index) in typeChoices" 

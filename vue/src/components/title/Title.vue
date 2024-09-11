@@ -1,6 +1,6 @@
 <template>
 	<CardLayout>
-		<CardTitle title="Titre du CV"/>
+		<CardTitle>Titre du CV</CardTitle>
 		<TextInput
 			label="Titre du poste recherché"
 			placeholder="Ex: Développeur Web"

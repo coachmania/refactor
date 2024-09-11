@@ -1,6 +1,6 @@
 <template>
 	<CardLayout>
-		<CardTitle title="Liens"/>
+		<CardTitle>Liens</CardTitle>
 		<UrlInput
 			label="LinkedIn"
 			placeholder="https://linkedin.com/in/coachmania"

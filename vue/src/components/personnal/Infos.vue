@@ -1,6 +1,6 @@
 <template>
 	<CardLayout>
-		<CardTitle title="Informations personnelles"/>
+		<CardTitle>Informations personnelles</CardTitle>
 		<div class="grid grid-cols-2 gap-md">
 			<!-- TODO ADD text input -->
 			<TextInput

@@ -1,6 +1,6 @@
 <template>
 	<CardLayout>
-		<CardTitle title="Photo"/>
+		<CardTitle>Photo</CardTitle>
 		<div class="grid gap-md grid-cols-[auto,1fr]">
 			<div class="h-full flex flex-col items-center gap-md">
 				<PictureDisplay :isHidden="isHidden"/>
