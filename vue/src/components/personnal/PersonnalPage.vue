@@ -4,6 +4,7 @@
 		<SectionLayout>
 			<Picture/>
 			<Infos/>
+			<Address/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
@@ -14,4 +15,5 @@ import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
 import Picture from './Picture.vue';
 import Infos from './Infos.vue';
+import Address from './Address.vue';
 </script>
