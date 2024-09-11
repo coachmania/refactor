@@ -7,13 +7,13 @@
 			:placeholder="placeholder" 
 			:name="name" 
 			:value="value"
-			@input="updateValue($event.target)"
+			@input="updateValue($event)"
 		>
 	</div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { handleInput } from './handleInput';
 
 const props = defineProps({
     label: String,
@@ -23,13 +23,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:value']);
-const timeout = ref(null);
-const updateValue = (target) => {
-	if (timeout.value) {
-		clearTimeout(timeout.value);
-	}
-	timeout.value = setTimeout(() => {
-		emit('update:value', {name: target.name, value: target.value});
-	}, 500);
+const updateValue = (event) => {
+    handleInput(event, emit, props.name);
 };
 </script>

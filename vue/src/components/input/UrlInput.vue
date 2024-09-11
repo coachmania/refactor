@@ -7,12 +7,14 @@
 			:placeholder="placeholder" 
 			:name="name" 
 			:value="value"
-			@input="updateValue($event.target)"
+			@input="updateValue($event)"
 		>
 	</div>
 </template>
 
 <script setup>
+import { handleInput } from './handleInput';
+
 // TODO ajouter la logique de verification de l'url
 const props = defineProps({
 	label: String,
@@ -22,7 +24,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:value']);
-const updateValue = (target) => {
-	emit('update:value', {name: target.name, value: target.value});
+const updateValue = (event) => {
+    handleInput(event, emit, props.name);
 };
 </script>

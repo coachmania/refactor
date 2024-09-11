@@ -5,7 +5,7 @@
 			label="LinkedIn"
 			placeholder="https://linkedin.com/in/coachmania"
 			name="linkedin_url"
-			:value="linkedin"
+			:value="data.linkedin_url"
 			@update:value="updateValue"
 		/>
 		<div class="grid grid-cols-2 gap-md">
@@ -13,14 +13,14 @@
 				label="Autre site"
 				placeholder="https://github.com/"
 				name="other_url"
-				:value="other"
+				:value="data.other_url"
 				@update:value="updateValue"
 			/>
 			<UrlInput
 				label="Trimoji"
 				placeholder="https://trimoji.fr/"
 				name="trimoji_url"
-				:value="trimoji"
+				:value="data.trimoji_url"
 				@update:value="updateValue"
 			/>
 		</div>
@@ -28,31 +28,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import UrlInput from '../input/UrlInput.vue';
 
-const linkedin = ref('');
-const other = ref('');
-const trimoji = ref('');
+const props = defineProps({
+	data: Object,
+});
 
-const fetchInitialData = async () => {
+const updateValue = async ({name, value}) => {
 	try {
-		const response = { data: { linkedin: 'linke' } };
-		linkedin.value = response.data.linkedin;
-		other.value = response.data.other;
-		trimoji.value = response.data.trimoji;
+		let sendData = {[name]: value,}
+		await apiClient.put('/cv_title/fields/', sendData);
 	} catch (error) {
-		console.error('Erreur lors du chargement initial :', error);
+		console.error('Erreur lors de la mise à jour des liens :', error);
 	}
 };
-
-const updateValue = ({ name, value }) => {
-	console.log(`${name}, ${value}`);
-};
-
-onMounted(() => {
-	fetchInitialData();
-});
 </script>
