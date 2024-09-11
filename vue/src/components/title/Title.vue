@@ -5,24 +5,26 @@
 			label="Titre du poste recherché"
 			placeholder="Ex: Développeur Web"
 			name="title"
-			:value="title"
+			:value="data.title"
 			@update:value="updateValue"
 		/>
-		<QuillEditor/>
+		<QuillEditor
+			:value="data.details"
+		/>
 		<AlertBox
-			v-if="type === 'Emploi'"
+			v-if="data.type === 'Emploi'"
 			classColor="alert-info"
 		>
 			Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez.
 		</AlertBox>
 		<AlertBox 
-			v-else-if="type === 'Alternance'"
+			v-else-if="data.type === 'Alternance'"
 			classColor="alert-info"
 		>
 			Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'.
 		</AlertBox>
 		<AlertBox
-			v-else-if="type === 'Stage'"
+			v-else-if="data.type === 'Stage'"
 			classColor="alert-info"
 		>
 			Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stage en Marketing Digital - 6 mois'.
@@ -31,7 +33,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
@@ -39,31 +40,16 @@ import TextInput from '../input/TextInput.vue';
 import QuillEditor from '../global/QuillEditor.vue';
 import AlertBox from '../global/AlertBox.vue';
 
-const title = ref('');
-
 const props = defineProps({
-    type: String,
+    data: Object,
 });
-
-const fetchInitialData = async () => {
-	try {
-		const response = await apiClient.get('/cv_title/details/');
-		title.value = response.data.title;
-	} catch (error) {
-		console.error('Erreur lors du chargement initial :', error);
-	}
-};
 
 const updateValue = async ({name, value}) => {
 	try {
-		let data = {[name]: value,}
-		await apiClient.put('/cv_title/field/', data);
+		let sendData = {[name]: value,}
+		await apiClient.put('/cv_title/fields/', sendData);
 	} catch (error) {
 		console.error('Erreur lors de la mise à jour du titre :', error);
 	}
 };
-
-onMounted(() => {
-	fetchInitialData();
-});
 </script>

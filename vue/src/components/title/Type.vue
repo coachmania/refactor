@@ -3,11 +3,11 @@
 		<CardTitle>Type de poste recherché</CardTitle>
 		<div class="join grid grid-cols-3">
 			<button 
-				v-for="(item, index) in typeChoices" 
+				v-for="(item, index) in data.type_choices" 
 				:key="index" 
 				:class="['btn join-item no-animation', {
-					'btn-primary': item === type,
-					'bg-base-100 border-base-content/15': item !== type
+					'btn-primary': item === data.type,
+					'bg-base-100 border-base-content/15': item !== data.type
 				}]"
 				@click="updateType(item)"
 			>
@@ -18,39 +18,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import apiClient from '@/services/api.js';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
-import apiClient from '@/services/api';
 
-const emit = defineEmits(['update:type']);
-
-const typeChoices = ref([]);
-const type = ref('');
-
-const fetchTitleTypes = async () => {
-	try {
-		const response = await apiClient.get('/cv_title/type/');
-		typeChoices.value = response.data.type_choices;
-		type.value = response.data.type;
-		emit('update:type', type.value);
-	} catch (error) {
-		console.error('Error fetching title types:', error);
-	}
-};
+const props = defineProps({
+	data: Object,
+});
 
 const updateType = async (selectedType) => {
-	type.value = selectedType;
 	try {
-		let data = {type: selectedType}
-		await apiClient.put('/cv_title/field/', data);
-		emit('update:type', selectedType);
+		let sendData = {type: selectedType}
+		await apiClient.put('/cv_title/fields/', sendData);
+		props.data.type = selectedType;
 	} catch (error) {
 		console.error('Error updating title type:', error);
 	}
 };
-
-onMounted(() => {
-	fetchTitleTypes();
-});
 </script>
