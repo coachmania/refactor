@@ -1,6 +1,6 @@
 <template>
-	<div class="card bg-base-200 border border-base-300">
-		<div class="grid p-card gap-md">
+	<CardLayout>
+		<template v-slot:content>
 			<h1 class="card-title">Titre du CV</h1>
 			<TextInput
 				text="Titre du poste recherché"
@@ -25,12 +25,13 @@
 				text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stagiaire en Marketing Digital - 6 mois'."
 				classColor="alert-info"
 			/>
-		</div>
-	</div>
+		</template>
+	</CardLayout>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import CardLayout from '../layout/CardLayout.vue';
 import TextInput from '../global/TextInput.vue';
 import QuillEditor from '../global/QuillEditor.vue';
 import AlertBox from '../global/AlertBox.vue';

@@ -1,6 +1,6 @@
 <template>
-	<div class="card bg-base-200 border border-base-300">
-		<div class="grid p-card gap-md">
+	<CardLayout>
+		<template v-slot:content>
 			<h1 class="card-title">Type de poste recherché</h1>
 	
 			<div class="join grid grid-cols-3">
@@ -16,12 +16,13 @@
 					{{ item }}
 				</button>
 			</div>
-		</div>
-	</div>
+		</template>
+	</CardLayout>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import CardLayout from '../layout/CardLayout.vue';
 import apiClient from '@/services/api';
 
 const emit = defineEmits(['update:type']);
