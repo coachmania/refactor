@@ -19,15 +19,7 @@
 	</nav>
 </template>
 
-<script>
+<script setup>
 import AuthButton from '@/components/auth/AuthButton.vue';
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue';
-
-export default {
-	name: 'Header',
-	components: {
-		AuthButton,
-		ToggleDarkModeButton,
-	},
-};
 </script>

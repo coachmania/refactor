@@ -6,27 +6,18 @@
 	</div>
 </template>
 
-<script>
-import { defineComponent, computed } from 'vue';
+<script setup>
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/authStore';
 
-// TODO voir la gestion de l'etat de connexion
-export default defineComponent({
-	name: 'AuthButton',
-	setup() {
-		const authStore = useAuthStore();
-		const isLogged = computed(() => authStore.isLogged);
+const authStore = useAuthStore();
+const isLogged = computed(() => authStore.isLogged);
+const router = useRouter();
 
-		function handleAuthAction() {
-			if (!isLogged.value) {
-				this.$router.push('/login');
-			}
-		};
-
-		return {
-			isLogged,
-			handleAuthAction
-		};
+function handleAuthAction() {
+	if (!isLogged.value) {
+		router.push('/login');
 	}
-});
+}
 </script>

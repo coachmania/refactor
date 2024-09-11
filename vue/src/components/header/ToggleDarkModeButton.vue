@@ -8,24 +8,16 @@
 	</button>
 </template>
 
-<script>
-import { defineComponent, computed, onMounted } from 'vue';
+<script setup>
+import { computed, onMounted } from 'vue';
 import { useThemeStore } from '@/store/themeStore';
 
-export default defineComponent({
-    name: 'ToggleDarkModeButton',
-    setup() {
-        const themeStore = useThemeStore();
-        const isDarkMode = computed(() => themeStore.isDarkMode);
+const themeStore = useThemeStore();
+const isDarkMode = computed(() => themeStore.isDarkMode);
 
-        onMounted(() => {
-            themeStore.applyTheme();
-        });
+const toggleDarkMode = themeStore.toggleDarkMode;
 
-        return {
-            isDarkMode,
-            toggleDarkMode: themeStore.toggleDarkMode,
-        };
-    },
+onMounted(() => {
+    themeStore.applyTheme();
 });
 </script>
