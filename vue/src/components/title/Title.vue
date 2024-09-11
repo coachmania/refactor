@@ -3,11 +3,11 @@
 		<template v-slot:content>
 			<CardTitle title="Titre du CV"/>
 			<TextInput
-				text="Titre du poste recherché"
+				label="Titre du poste recherché"
 				placeholder="Ex: Développeur Web"
 				name="title"
 				:value="title"
-				@update:value="handleValueChange"
+				@update:value="updateValue"
 			/>
 			<QuillEditor/>
 			<AlertBox
@@ -52,7 +52,7 @@ const fetchInitialData = async () => {
 	}
 };
 
-const handleValueChange = ({ name, value }) => {
+const updateValue = ({ name, value }) => {
 	console.log(`${name}, ${value}`);
 	// title.value = value;
 };
