@@ -1,8 +1,6 @@
 from django.urls import path
-from .views import Type, Details, Field
+from .views import Fields
 
 urlpatterns = [
-    path('type/', Type.as_view(), name='type'),
-    path('details/', Details.as_view(), name='details'),
-    path('field/', Field.as_view(), name='field'),
+    path('fields/', Fields.as_view(), name='fields'),
 ]
