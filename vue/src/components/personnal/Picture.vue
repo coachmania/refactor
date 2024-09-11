@@ -1,19 +1,17 @@
 <template>
 	<CardLayout>
-		<template v-slot:content>
-			<CardTitle title="Photo"/>
-			<div class="grid gap-md grid-cols-[auto,1fr]">
-				<div class="h-full flex flex-col items-center gap-md">
-					<HideButton
-						:isHidden="isHidden"
-						@click="updateValue"
-					/>
-				</div>
-				<div class="h-full flex flex-col items-center gap-md">
-					<h1>ok</h1>
-				</div>
+		<CardTitle title="Photo"/>
+		<div class="grid gap-md grid-cols-[auto,1fr]">
+			<div class="h-full flex flex-col items-center gap-md">
+				<HideButton
+					:isHidden="isHidden"
+					@click="updateValue"
+				/>
 			</div>
-		</template>
+			<div class="h-full flex flex-col items-center gap-md">
+				<h1>ok</h1>
+			</div>
+		</div>
 	</CardLayout>
 </template>
 

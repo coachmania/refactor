@@ -1,21 +1,19 @@
 <template>
 	<CardLayout>
-		<template v-slot:content>
-			<CardTitle title="Type de poste recherché"/>
-			<div class="join grid grid-cols-3">
-				<button 
-					v-for="(item, index) in typeChoices" 
-					:key="index" 
-                    :class="['btn join-item no-animation', {
-						'btn-primary': item === type,
-						'bg-base-100 border-base-content/15': item !== type
-					}]"
-					@click="updateType(item)"
-				>
-					{{ item }}
-				</button>
-			</div>
-		</template>
+		<CardTitle title="Type de poste recherché"/>
+		<div class="join grid grid-cols-3">
+			<button 
+				v-for="(item, index) in typeChoices" 
+				:key="index" 
+				:class="['btn join-item no-animation', {
+					'btn-primary': item === type,
+					'bg-base-100 border-base-content/15': item !== type
+				}]"
+				@click="updateType(item)"
+			>
+				{{ item }}
+			</button>
+		</div>
 	</CardLayout>
 </template>
 

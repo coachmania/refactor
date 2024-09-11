@@ -1,31 +1,29 @@
 <template>
 	<CardLayout>
-		<template v-slot:content>
-			<CardTitle title="Liens"/>
+		<CardTitle title="Liens"/>
+		<UrlInput
+			label="LinkedIn"
+			placeholder="https://linkedin.com/in/coachmania"
+			name="linkedin_url"
+			:value="linkedin"
+			@update:value="updateValue"
+		/>
+		<div class="grid grid-cols-2 gap-md">
 			<UrlInput
-				label="LinkedIn"
-				placeholder="https://linkedin.com/in/coachmania"
-				name="linkedin_url"
-				:value="linkedin"
+				label="Autre site"
+				placeholder="https://github.com/"
+				name="other_url"
+				:value="other"
 				@update:value="updateValue"
 			/>
-			<div class="grid grid-cols-2 gap-md">
-				<UrlInput
-					label="Autre site"
-					placeholder="https://github.com/"
-					name="other_url"
-					:value="other"
-					@update:value="updateValue"
-				/>
-				<UrlInput
-					label="Trimoji"
-					placeholder="https://trimoji.fr/"
-					name="trimoji_url"
-					:value="trimoji"
-					@update:value="updateValue"
-				/>
-			</div>
-		</template>
+			<UrlInput
+				label="Trimoji"
+				placeholder="https://trimoji.fr/"
+				name="trimoji_url"
+				:value="trimoji"
+				@update:value="updateValue"
+			/>
+		</div>
 	</CardLayout>
 </template>
 
