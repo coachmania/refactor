@@ -3,6 +3,7 @@
 	<EditorLayout>
 		<SectionLayout>
 			<Picture/>
+			<Infos/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
@@ -12,4 +13,5 @@ import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
 import Picture from './Picture.vue';
+import Infos from './Infos.vue';
 </script>
