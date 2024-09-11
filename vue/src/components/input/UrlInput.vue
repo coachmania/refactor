@@ -13,8 +13,9 @@
 </template>
 
 <script setup>
+// TODO ajouter la logique de verification de l'url
 const props = defineProps({
-    label: String,
+	label: String,
     placeholder: String,
     value: String,
 	name: String,
