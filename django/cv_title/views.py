@@ -22,10 +22,7 @@ class Type(APIView):
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
 
-from rest_framework.permissions import AllowAny
 class Details(APIView):
-    permission_classes = [AllowAny]
-
     def get(self, request, *args, **kwargs):
         try:
             title = Title.objects.get_or_create(id=1)[0]
@@ -37,10 +34,7 @@ class Details(APIView):
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
 
-from rest_framework.permissions import AllowAny
 class Field(APIView):
-    permission_classes = [AllowAny]
-
     def put(self, request, *args, **kwargs):
         try:
             title = Title.objects.get_or_create(id=1)[0]
