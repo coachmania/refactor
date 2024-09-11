@@ -58,6 +58,10 @@ onMounted(() => {
 </script>
 
 <style>
+.ql-container {
+	@apply static h-auto;
+}
+
 .ql-editor {
 	@apply w-full p-4 input h-full;
 }
