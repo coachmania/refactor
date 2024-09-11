@@ -11,19 +11,22 @@
 		<QuillEditor/>
 		<AlertBox
 			v-if="type === 'Emploi'"
-			text="Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez."
 			classColor="alert-info"
-		/>
+		>
+			Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez.
+		</AlertBox>
 		<AlertBox 
 			v-else-if="type === 'Alternance'"
-			text="Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'."
 			classColor="alert-info"
-		/>
+		>
+			Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'.
+		</AlertBox>
 		<AlertBox
 			v-else-if="type === 'Stage'"
-			text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stage en Marketing Digital - 6 mois'."
 			classColor="alert-info"
-		/>
+		>
+			Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stage en Marketing Digital - 6 mois'.
+		</AlertBox>
 	</CardLayout>
 </template>
 
