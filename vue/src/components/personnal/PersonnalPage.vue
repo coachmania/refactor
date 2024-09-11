@@ -1,11 +1,9 @@
 <template>
 	<Header/>
 	<EditorLayout>
-		<template v-slot:editor>
-			<SectionLayout>
-				<Picture/>
-			</SectionLayout>
-		</template>
+		<SectionLayout>
+			<Picture/>
+		</SectionLayout>
 	</EditorLayout>
 </template>
 

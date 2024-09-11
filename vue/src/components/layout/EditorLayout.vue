@@ -1,7 +1,7 @@
 <template>
     <main class="grid grid-cols-[5rem,4fr,5fr] overflow-hidden">
         <Sidebar/>
-        <slot name="editor"></slot>
+        <slot></slot>
         <div>
             <!-- <slot name="content"></slot> -->
             <p>EDITOR</p>

@@ -1,13 +1,11 @@
 <template>
 	<Header/>
 	<EditorLayout>
-		<template v-slot:editor>
-			<SectionLayout>
-				<Type @update:type="updateType"/>
-				<Title :type="type"/>
-				<Links/>
-			</SectionLayout>
-		</template>
+		<SectionLayout>
+			<Type @update:type="updateType"/>
+			<Title :type="type"/>
+			<Links/>
+		</SectionLayout>
 	</EditorLayout>
 </template>
 
