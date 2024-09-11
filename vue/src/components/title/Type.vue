@@ -1,8 +1,7 @@
 <template>
 	<CardLayout>
 		<template v-slot:content>
-			<h1 class="card-title">Type de poste recherché</h1>
-	
+			<CardTitle title="Type de poste recherché"/>
 			<div class="join grid grid-cols-3">
 				<button 
 					v-for="(item, index) in typeChoices" 
@@ -23,6 +22,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import CardLayout from '../layout/CardLayout.vue';
+import CardTitle from '../global/CardTitle.vue';
 import apiClient from '@/services/api';
 
 const emit = defineEmits(['update:type']);

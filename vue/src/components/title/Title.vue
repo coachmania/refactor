@@ -1,7 +1,7 @@
 <template>
 	<CardLayout>
 		<template v-slot:content>
-			<h1 class="card-title">Titre du CV</h1>
+			<CardTitle title="Titre du CV"/>
 			<TextInput
 				text="Titre du poste recherché"
 				placeholder="Ex: Développeur Web"
@@ -32,6 +32,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import CardLayout from '../layout/CardLayout.vue';
+import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../global/TextInput.vue';
 import QuillEditor from '../global/QuillEditor.vue';
 import AlertBox from '../global/AlertBox.vue';
