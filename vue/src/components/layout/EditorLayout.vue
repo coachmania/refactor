@@ -9,13 +9,6 @@
     </main>
 </template>
 
-<script>
+<script setup>
 import Sidebar from '@/components/sidebar/Sidebar.vue';
-
-export default {
-    name: 'EditorLayout',
-    components: {
-        Sidebar,
-    }
-};
 </script>

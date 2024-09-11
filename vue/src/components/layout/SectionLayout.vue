@@ -4,8 +4,5 @@
 	</section>
 </template>
 
-<script>
-export default {
-    name: 'SectionLayout',
-};
+<script setup>
 </script>
