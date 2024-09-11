@@ -33,7 +33,7 @@
 import { ref, onMounted } from 'vue';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
-import TextInput from '../global/TextInput.vue';
+import TextInput from '../input/TextInput.vue';
 import QuillEditor from '../global/QuillEditor.vue';
 import AlertBox from '../global/AlertBox.vue';
 
