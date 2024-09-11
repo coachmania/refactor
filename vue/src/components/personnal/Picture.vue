@@ -2,13 +2,34 @@
 	<CardLayout>
 		<template v-slot:content>
 			<CardTitle title="Photo"/>
-
-
+			<div class="grid gap-md grid-cols-[auto,1fr]">
+				<div class="h-full flex flex-col items-center gap-md">
+					<HideButton
+						:isHidden="isHidden"
+						@click="updateValue"
+					/>
+				</div>
+				<div class="h-full flex flex-col items-center gap-md">
+					<h1>ok</h1>
+				</div>
+			</div>
 		</template>
 	</CardLayout>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
+import HideButton from './HideButton.vue';
+
+const isHidden = ref(true);
+
+// TODO voir ici quand on fetch je pense que le mieux cest de fetch une seule fois dans le parent et de passer la valeur en props
+
+function updateValue(value) {
+	// TODO : call API
+	isHidden.value = !isHidden.value;
+	console.log('updateValue', isHidden.value);
+}
 </script>
