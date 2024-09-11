@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '@/store/authStore';
+
 import HomePage from './components/home/HomePage.vue';
+import PersonnalPage from './components/personnal/PersonnalPage.vue';
 import TitlePage from './components/title/TitlePage.vue';
 import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
@@ -11,6 +13,10 @@ const routes = [
 	{
 		path: '/',
 		component: HomePage,
+	},
+	{
+		path: '/personnal',
+		component: PersonnalPage,
 	},
 	{
 		path: '/title',
