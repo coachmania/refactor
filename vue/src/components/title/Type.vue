@@ -16,22 +16,6 @@
 					{{ item }}
 				</button>
 			</div>
-
-			<AlertBox
-				v-if="type === 'Emploi'"
-				text="Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez."
-				classColor="alert-info"
-			/>
-			<AlertBox 
-				v-else-if="type === 'Alternance'"
-				text="Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'."
-				classColor="alert-info"
-			/>
-			<AlertBox
-				v-else-if="type === 'Stage'"
-				text="Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stagiaire en Marketing Digital - 6 mois'."
-				classColor="alert-info"
-			/>
 		</div>
 	</div>
 </template>
@@ -39,7 +23,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
-import AlertBox from '../global/AlertBox.vue';
+
+const emit = defineEmits(['update:type']);
 
 const typeChoices = ref([]);
 const type = ref('');
@@ -49,6 +34,7 @@ const fetchTitleTypes = async () => {
 		const response = await apiClient.get('/cv_title/type/');
 		typeChoices.value = response.data.type_choices;
 		type.value = response.data.type;
+		emit('update:type', type.value);
 	} catch (error) {
 		console.error('Error fetching title types:', error);
 	}
@@ -58,6 +44,7 @@ const updateType = async (selectedType) => {
 	type.value = selectedType;
 	try {
 		await apiClient.put('/cv_title/type/', {type: type.value});
+		emit('update:type', selectedType);
 	} catch (error) {
 		console.error('Error updating title type:', error);
 	}
