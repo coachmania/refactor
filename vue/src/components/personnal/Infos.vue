@@ -7,28 +7,28 @@
 				label="Prénom"
 				placeholder="Jean"
 				name="first_name"
-				:value="firstName"
+				:value="data.first_name"
 				@update:value="updateValue"
 			/>
 			<TextInput
 				label="Nom"
 				placeholder="Dupont"
 				name="name"
-				:value="name"
+				:value="data.name"
 				@update:value="updateValue"
 			/>
 			<TextInput
 				label="Téléphone"
 				placeholder="06 12 34 56 78"
 				name="phone"
-				:value="phone"
+				:value="data.phone"
 				@update:value="updateValue"
 			/>
 			<TextInput
 				label="Email"
 				placeholder="jean@jobmania.fr"
 				name="email"
-				:value="email"
+				:value="data.email"
 				@update:value="updateValue"
 			/>
 			<!-- TODO replace by numberInput -->
@@ -36,7 +36,7 @@
 				label="Âge"
 				placeholder="20"
 				name="age"
-				:value="age"
+				:value="data.age"
 				@update:value="updateValue"
 			/>
 			<!-- TODO replace by dateInput -->
@@ -52,7 +52,22 @@
 </template>
 
 <script setup>
+import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
+
+const props = defineProps({
+    data: Object,
+});
+
+const updateValue = async ({name, value}) => {
+	try {
+		let sendData = {[name]: value,}
+		console.log(sendData);
+		await apiClient.put('/cv_personnal/fields/', sendData);
+	} catch (error) {
+		console.error('Erreur lors de la mise à jour du titre :', error);
+	}
+};
 </script>

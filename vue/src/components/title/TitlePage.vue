@@ -19,12 +19,7 @@ import Type from './Type.vue';
 import Title from './Title.vue';
 import Links from './Links.vue';
 
-const data = ref({
-	type: '',
-	typeChoices: [],
-	title: '',
-	details: '',
-});
+const data = ref({});
 
 const fetchData = async () => {
 	try {
