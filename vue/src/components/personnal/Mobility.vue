@@ -17,6 +17,14 @@
 				@update:value="updateValue"
 			/>
 		</div>
+		<TextInput
+			v-if="data.license === 'Autre'"
+			label="Autre permis"
+			placeholder="Permis"
+			name="other_license"
+			:value="data.other_license"
+			@update:value="updateValue"
+		/>
 		<AlertBox classColor="alert-info">
 			La mobilité indique votre rayon de déplacement (ex : département, région, etc.).
 		</AlertBox>
