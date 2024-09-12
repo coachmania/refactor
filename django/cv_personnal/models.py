@@ -45,7 +45,7 @@ class Personnal(models.Model):
 	# postal_code = PostalCodeField(null=True)
 	city = models.CharField(max_length=50, blank=True)
 	country = models.CharField(max_length=50, blank=True)
-	license = models.CharField(max_length=50, blank=True, default="Aucun")
+	license = models.CharField(max_length=50, choices=LICENSE_CHOICES, default=LICENSE_CHOICES.Aucun)
 	other_license = models.CharField(max_length=50, blank=True)
 	has_vehicle = models.BooleanField(default=False)
 	range = models.CharField(max_length=100, blank=True)
