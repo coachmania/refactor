@@ -25,6 +25,13 @@
 			:value="data.other_license"
 			@update:value="updateValue"
 		/>
+		<TextInput
+			label="Champ de mobilité"
+			placeholder="Départemental, régional, national, etc."
+			name="range"
+			:value="data.range"
+			@update:value="updateValue"
+		/>
 		<AlertBox classColor="alert-info">
 			La mobilité indique votre rayon de déplacement (ex : département, région, etc.).
 		</AlertBox>
