@@ -64,7 +64,6 @@ const props = defineProps({
 const updateValue = async ({name, value}) => {
 	try {
 		let sendData = {[name]: value,}
-		console.log(sendData);
 		await apiClient.put('/cv_personnal/fields/', sendData);
 	} catch (error) {
 		console.error('Erreur lors de la mise à jour du titre :');

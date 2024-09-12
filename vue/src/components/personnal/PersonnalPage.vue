@@ -3,15 +3,15 @@
 	<EditorLayout>
 		<SectionLayout>
 			<Picture/>
-			<Infos :data="data"/>
-			<Address :data="data"/>
-			<Mobility :data="data"/>
+			<Infos v-model:data="pageData.data" @update-data="updateData"/>
+			<Address v-model:data="pageData.data" @update-data="updateData"/>
+			<Mobility v-model:data="pageData.data" @update-data="updateData"/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
@@ -21,15 +21,21 @@ import Infos from './Infos.vue';
 import Address from './Address.vue';
 import Mobility from './Mobility.vue';
 
-const data = ref({});
+const pageData = reactive({
+	data: {},
+});
 
 const fetchData = async () => {
 	try {
 		const response = await apiClient.get('/cv_personnal/fields/');
-		data.value = response.data;
+		Object.assign(pageData.data, response.data);
 	} catch (error) {
 		console.error('Error fetching title types:');
 	}
+};
+
+const updateData = (newData) => {
+	Object.assign(pageData.data, newData);
 };
 
 onMounted(() => {
