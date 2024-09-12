@@ -5,12 +5,11 @@ from model_utils import Choices
 import re
 
 class EmailField(models.CharField):
-	default_validators = [EmailValidator(message="Veuillez entrer une adresse email valide.")]
-
-	def validate(self, value, model_instance):
-		if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
-			raise ValidationError("Veuillez entrer une adresse email valide.")
-		super().validate(value, model_instance)
+	def clean(self, value, model_instance):
+		if value:
+			if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
+				raise ValueError("L'email n'est pas valide")
+		return value
 
 class AgeField(models.PositiveIntegerField):
 	def clean(self, value, model_instance):
