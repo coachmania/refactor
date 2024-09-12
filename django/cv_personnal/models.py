@@ -22,6 +22,12 @@ class AgeField(models.PositiveIntegerField):
 			raise ValidationError("L'âge doit être compris entre 0 et 150.")
 		return value
 
+class DateField(models.CharField):
+	def clean(self, value, model_instance):
+		if len(value) != 10:
+			raise ValidationError("La date doit être au format JJ-MM-AAAA")
+		return value
+
 class Personnal(models.Model):
 	LICENSE_CHOICES = Choices(
 		('Aucun', 'Aucun'),
@@ -40,7 +46,7 @@ class Personnal(models.Model):
 	phone = models.CharField(max_length=20, blank=True)
 	email = EmailField(max_length=254, blank=True)
 	age = AgeField(null=True)
-	# birthdate = DateField(max_length=10, blank=True)
+	birthdate = DateField(max_length=10, blank=True)
 	additional = models.CharField(max_length=50, blank=True)
 	# postal_code = PostalCodeField(null=True)
 	city = models.CharField(max_length=50, blank=True)
