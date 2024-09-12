@@ -44,7 +44,7 @@
 				label="Date de naissance"
 				placeholder="01/01/2000"
 				name="birthdate"
-				:value="birthdate"
+				:value="data.birthdate"
 				@update:value="updateValue"
 			/>
 		</div>
@@ -67,7 +67,7 @@ const updateValue = async ({name, value}) => {
 		console.log(sendData);
 		await apiClient.put('/cv_personnal/fields/', sendData);
 	} catch (error) {
-		console.error('Erreur lors de la mise à jour du titre :', error);
+		console.error('Erreur lors de la mise à jour du titre :');
 	}
 };
 </script>

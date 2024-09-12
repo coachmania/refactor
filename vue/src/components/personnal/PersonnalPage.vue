@@ -4,7 +4,7 @@
 		<SectionLayout>
 			<Picture/>
 			<Infos :data="data"/>
-			<Address/>
+			<Address :data="data"/>
 			<Mobility/>
 		</SectionLayout>
 	</EditorLayout>
@@ -28,7 +28,7 @@ const fetchData = async () => {
 		const response = await apiClient.get('/cv_personnal/fields/');
 		data.value = response.data;
 	} catch (error) {
-		console.error('Error fetching title types:', error);
+		console.error('Error fetching title types:');
 	}
 };
 

@@ -10,7 +10,7 @@
 				label="Complément d'adresse"
 				placeholder="Arrêt de bus, étage, etc."
 				name="additional"
-				:value="additional"
+				:value="data.additional"
 				@update:value="updateValue"
 			/>
 			<!-- TODO change to number or postalCode input -->
@@ -19,7 +19,7 @@
 				label="Code postal"
 				placeholder="69006"
 				name="postal_code"
-				:value="postalCode"
+				:value="data.postal_code"
 				@update:value="updateValue"
 			/>
 		</div>
@@ -28,7 +28,7 @@
 				label="Ville"
 				placeholder="Lyon"
 				name="city"
-				:value="city"
+				:value="data.city"
 				@update:value="updateValue"
 			/>
 			<!-- TODO change to select country input champs hybrid libre ou parmis un liste (autocompletion) -->
@@ -36,7 +36,7 @@
 				label="Pays"
 				placeholder="France"
 				name="country"
-				:value="country"
+				:value="data.country"
 				@update:value="updateValue"
 			/>
 		</div>
@@ -44,8 +44,22 @@
 </template>
 
 <script setup>
+import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import AlertBox from '../global/AlertBox.vue';
 import TextInput from '../input/TextInput.vue';
+
+const props = defineProps({
+	data: Object,
+});
+
+const updateValue = async ({name, value}) => {
+	try {
+		let sendData = {[name]: value,}
+		await apiClient.put('/cv_personnal/fields/', sendData);
+	} catch (error) {
+		console.error('Erreur lors de la mise à jour de l\'adresse :');
+	}
+};
 </script>
