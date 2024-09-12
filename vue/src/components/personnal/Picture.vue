@@ -30,6 +30,5 @@ const isHidden = ref(true);
 function updateValue(value) {
 	// TODO : call API
 	isHidden.value = !isHidden.value;
-	console.log('updateValue', isHidden.value);
 }
 </script>

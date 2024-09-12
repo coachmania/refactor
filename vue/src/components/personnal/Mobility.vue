@@ -3,7 +3,7 @@
 		<CardTitle>Mobilité</CardTitle>
 		<div class="col-span-full grid grid-cols-2 gap-md">
 			<SelectInput
-				label="Permis"
+				label="Permis de conduire"
 				name="license"
 				:value="data.license"
 				:items="data.license_choices"
