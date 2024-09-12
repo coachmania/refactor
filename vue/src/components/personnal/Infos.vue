@@ -31,13 +31,14 @@
 				:value="data.email"
 				@update:value="updateValue"
 			/>
-			<!-- TODO replace by numberInput -->
-			<TextInput
+			<NumberInput
 				label="Âge"
 				placeholder="20"
 				name="age"
 				:value="data.age"
 				@update:value="updateValue"
+				min="0"
+				max="150"
 			/>
 			<!-- TODO replace by dateInput -->
 			<TextInput
@@ -56,6 +57,7 @@ import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
+import NumberInput from '../input/NumberInput.vue';
 
 const props = defineProps({
     data: Object,
