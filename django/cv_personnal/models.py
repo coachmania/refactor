@@ -7,7 +7,7 @@ class EmailField(models.CharField):
 	def clean(self, value, model_instance):
 		if value:
 			if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
-				raise ValueError("L'email n'est pas valide")
+				raise ValidationError("L'email n'est pas valide")
 		return value
 
 class AgeField(models.PositiveIntegerField):
