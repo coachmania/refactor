@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     'cv_title',
+    'cv_personnal',
 ]
 
 REST_FRAMEWORK = {
