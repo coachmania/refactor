@@ -13,14 +13,15 @@
 				:value="data.additional"
 				@update:value="updateValue"
 			/>
-			<!-- TODO change to number or postalCode input -->
-			<TextInput
-				class="col-span-1"
+			<!-- TODO change to char because of 01260 for ex -->
+			<NumberInput
 				label="Code postal"
 				placeholder="69006"
 				name="postal_code"
 				:value="data.postal_code"
 				@update:value="updateValue"
+				:min=0
+				:max=99999
 			/>
 		</div>
 		<div class="grid grid-cols-2 gap-md">
@@ -49,6 +50,7 @@ import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import AlertBox from '../global/AlertBox.vue';
 import TextInput from '../input/TextInput.vue';
+import NumberInput from '../input/NumberInput.vue';
 
 const props = defineProps({
 	data: Object,
