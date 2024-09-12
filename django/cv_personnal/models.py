@@ -8,24 +8,21 @@ class EmailField(models.CharField):
 	default_validators = [EmailValidator(message="Veuillez entrer une adresse email valide.")]
 
 	def validate(self, value, model_instance):
-		super().validate(value, model_instance)
 		if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
 			raise ValidationError("Veuillez entrer une adresse email valide.")
-		
-class AgeField(models.CharField):
-	def to_python(self, value):
+		super().validate(value, model_instance)
+
+class AgeField(models.PositiveIntegerField):
+	def clean(self, value, model_instance):
 		if value in [None, '']:
 			return None
 		try:
-			return int(value)
-		except ValueError:
+			value = int(value)
+		except (ValueError, TypeError):
 			raise ValidationError("Veuillez entrer un âge valide sous forme de nombre.")
-
-	def validate(self, value, model_instance):
-		value = self.to_python(value)
-		super().validate(value, model_instance)
-		if value is not None and (value < 0 or value > 150):
+		if value < 0 or value > 150:
 			raise ValidationError("L'âge doit être compris entre 0 et 150.")
+		return value
 
 class Personnal(models.Model):
 	LICENSE_CHOICES = Choices(
@@ -44,7 +41,7 @@ class Personnal(models.Model):
 	first_name = models.CharField(max_length=50, blank=True)
 	phone = models.CharField(max_length=20, blank=True)
 	email = EmailField(max_length=254, blank=True)
-	age = AgeField(max_length=3)
+	age = AgeField(null=True)
 	# birthdate = DateField(max_length=10, blank=True)
 	additional = models.CharField(max_length=50, blank=True)
 	# postal_code = PostalCodeField(null=True)
@@ -54,3 +51,7 @@ class Personnal(models.Model):
 	other_license = models.CharField(max_length=50, blank=True)
 	has_vehicle = models.BooleanField(default=False)
 	range = models.CharField(max_length=100, blank=True)
+
+	def save(self, *args, **kwargs):
+		self.full_clean()
+		super().save(*args, **kwargs)
