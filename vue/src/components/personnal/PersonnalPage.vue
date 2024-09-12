@@ -5,7 +5,7 @@
 			<Picture/>
 			<Infos :data="data"/>
 			<Address :data="data"/>
-			<Mobility/>
+			<Mobility :data="data"/>
 		</SectionLayout>
 	</EditorLayout>
 </template>

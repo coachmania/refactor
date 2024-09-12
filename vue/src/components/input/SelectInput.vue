@@ -1,31 +1,35 @@
 <template>
 	<div class="form-control">
-		<!-- TODO voir pour mettre slot -->
 		<span class="label label-text">{{ label }}</span>
-		<input 
-			type="text"
-			class="input input-bordered" 
-			:placeholder="placeholder" 
-			:name="name" 
+		<select 
+			class="select select-bordered w-full"
+			autocomplete="off"
 			:value="value"
+			:name="name" 
 			@input="updateValue($event)"
 		>
+			<option 
+				v-for="item in items" 
+				:key="item.id" 
+				:value="item.id"
+			>
+				{{ item }}
+			</option>
+		</select>
 	</div>
 </template>
 
 <script setup>
-import { handleInput } from './handleInput';
-
-// TODO ajouter la logique de verification de l'url
 const props = defineProps({
-	label: String,
-    placeholder: String,
+    label: String,
     value: String,
 	name: String,
+	items: Array,
 });
 
 const emit = defineEmits(['update:value']);
 const updateValue = (event) => {
-    handleInput(event, emit, props.name);
+	let name = props.name;
+	emit('update:value', {name, value: event.target.value});
 };
 </script>
