@@ -4,8 +4,8 @@
 		<input 
 			type="number"
 			class="input input-bordered" 
-			:min="min"
-			:max="max"
+			:min=min
+			:max=max
 			:placeholder="placeholder" 
 			:name="name" 
 			:value="value"

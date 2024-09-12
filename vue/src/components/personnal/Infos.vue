@@ -35,10 +35,10 @@
 				label="Âge"
 				placeholder="20"
 				name="age"
-				:value="data.age"
+				:value=data.age
 				@update:value="updateValue"
-				min="0"
-				max="150"
+				:min=0
+				:max=150
 			/>
 			<!-- TODO replace by dateInput -->
 			<TextInput
