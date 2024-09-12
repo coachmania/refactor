@@ -21,7 +21,7 @@ const currentPage = ref(false);
 const route = useRoute();
 
 const checkCurrentPage = () => {
-	currentPage.value = route.path === props.url;
+	currentPage.value = route.path.startsWith(props.url);
 };
 
 onMounted(checkCurrentPage);
