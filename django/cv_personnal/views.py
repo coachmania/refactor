@@ -19,6 +19,15 @@ class Fields(APIView):
                 "phone": personnal.phone,
                 "email": personnal.email,
                 "age": personnal.age,
+                "birthdate": personnal.birthdate,
+                "additional": personnal.additional,
+                "postal_code": personnal.postal_code,
+                "city": personnal.city,
+                "country": personnal.country,
+                "license": personnal.license,
+                "other_license": personnal.other_license,
+                "has_vehicle": personnal.has_vehicle,
+                "range": personnal.range,
             }
             return Response(data, status=status.HTTP_200_OK)
         except Personnal.DoesNotExist:

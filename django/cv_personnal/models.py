@@ -28,6 +28,18 @@ class DateField(models.CharField):
 			raise ValidationError("La date doit être au format JJ-MM-AAAA")
 		return value
 
+class PostalCodeField(models.PositiveIntegerField):
+	def clean(self, value, model_instance):
+		if value in [None, '']:
+			return None
+		try:
+			value = int(value)
+		except (ValueError, TypeError):
+			raise ValidationError("Le code postal doit être un nombre")
+		if len(str(value)) != 5:
+			raise ValidationError("Le code postal doit être composé de 5 chiffres")
+		return value
+
 class Personnal(models.Model):
 	LICENSE_CHOICES = Choices(
 		('Aucun', 'Aucun'),
@@ -48,7 +60,7 @@ class Personnal(models.Model):
 	age = AgeField(null=True)
 	birthdate = DateField(max_length=10, blank=True)
 	additional = models.CharField(max_length=50, blank=True)
-	# postal_code = PostalCodeField(null=True)
+	postal_code = PostalCodeField(null=True)
 	city = models.CharField(max_length=50, blank=True)
 	country = models.CharField(max_length=50, blank=True)
 	license = models.CharField(max_length=50, choices=LICENSE_CHOICES, default=LICENSE_CHOICES.Aucun)
