@@ -8,6 +8,7 @@ import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
 import ProfilePage from './components/auth/ProfilePage.vue';
 import TokenRefreshPage from './components/auth/TokenRefreshPage.vue';
+import CustomizePage from './components/customize/CustomizePage.vue';
 
 const routes = [
 	{
@@ -17,6 +18,10 @@ const routes = [
 	{
 		path: '/personnal',
 		component: PersonnalPage,
+	},
+	{
+		path: '/customize',
+		component: CustomizePage,
 	},
 	{
 		path: '/title',
