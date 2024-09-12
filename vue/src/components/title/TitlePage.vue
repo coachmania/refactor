@@ -2,15 +2,15 @@
 	<Header/>
 	<EditorLayout>
 		<SectionLayout>
-			<Type :data="data"/>
-			<Title :data="data"/>
-			<Links :data="data"/>
+			<Type v-model:data="pageData.data"/>
+			<Title v-model:data="pageData.data"/>
+			<Links v-model:data="pageData.data"/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
@@ -19,12 +19,14 @@ import Type from './Type.vue';
 import Title from './Title.vue';
 import Links from './Links.vue';
 
-const data = ref({});
+const pageData = reactive({
+	data: {},
+});
 
 const fetchData = async () => {
 	try {
 		const response = await apiClient.get('/cv_title/fields/');
-		data.value = response.data;
+		Object.assign(pageData.data, response.data);
 	} catch (error) {
 		console.error('Error fetching title types:', error);
 	}

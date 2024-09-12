@@ -3,9 +3,9 @@
 	<EditorLayout>
 		<SectionLayout>
 			<Picture/>
-			<Infos v-model:data="pageData.data" @update-data="updateData"/>
-			<Address v-model:data="pageData.data" @update-data="updateData"/>
-			<Mobility v-model:data="pageData.data" @update-data="updateData"/>
+			<Infos v-model:data="pageData.data"/>
+			<Address v-model:data="pageData.data"/>
+			<Mobility v-model:data="pageData.data"/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
@@ -32,10 +32,6 @@ const fetchData = async () => {
 	} catch (error) {
 		console.error('Error fetching title types:');
 	}
-};
-
-const updateData = (newData) => {
-	Object.assign(pageData.data, newData);
 };
 
 onMounted(() => {

@@ -51,13 +51,11 @@ const props = defineProps({
 	data: Object,
 });
 
-const emit = defineEmits(['update-data']);
 const updateValue = async ({name, value}) => {
 	try {
 		let sendData = {[name]: value}
 		await apiClient.put('/cv_personnal/fields/', sendData);
 		props.data[name] = value;
-		emit('update-data', props.data);
 	} catch (error) {
 		console.error(error);
 	}

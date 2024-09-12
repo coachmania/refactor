@@ -9,7 +9,7 @@
 					'btn-primary': item === data.type,
 					'bg-base-100 border-base-content/15': item !== data.type
 				}]"
-				@click="updateType(item)"
+				@click="updateValue(item)"
 			>
 				{{ item }}
 			</button>
@@ -26,7 +26,7 @@ const props = defineProps({
 	data: Object,
 });
 
-const updateType = async (selectedType) => {
+const updateValue = async (selectedType) => {
 	try {
 		let sendData = {type: selectedType}
 		await apiClient.put('/cv_title/fields/', sendData);
