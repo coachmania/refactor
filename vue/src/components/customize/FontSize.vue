@@ -1,24 +1,19 @@
 <template>
 	<CardLayout>
 		<CardTitle>Taille de police</CardTitle>
-		<div class="join grid grid-cols-4">
-			<button 
-				v-for="(item, index) in data.type_choices" 
-				:key="index" 
-				class="btn join-item no-animation"
-				:class="item === data.type ? 'btn-primary' : 'bg-base-100 border-base-content/15'"
-				@click="updateValue(item)"
-			>
-				{{ item }}
-			</button>
-		</div>
-
+		<MultiButton
+			class="grid-cols-4"
+			:items="data.type_choices"
+			:selectedItem="data.type"
+			@click="updateValue"
+		/>
 	</CardLayout>
 </template>
 
 <script setup>
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
+import MultiButton from '../button/MultiButton.vue';
 
 // TODO temp
 const data = {
