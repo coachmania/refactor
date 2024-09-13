@@ -25,22 +25,17 @@ class TitleDetails(APIView):
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
 
-class Fields(APIView):
+class Links(APIView):
     def get(self, request, *args, **kwargs):
         try:
             title = Title.objects.get_or_create(id=1)[0]
-            data = {
-                'type': title.type,
-                'title': title.title,
-                'details': title.details,
-                'linkedin_url': title.linkedin_url,
-                'other_url': title.other_url,
-                'trimoji_url': title.trimoji_url,
-            }
+            fields = ["linkedin_url", "other_url", "trimoji_url"]
+            data = {field: getattr(title, field) for field in fields}
             return Response(data, status=status.HTTP_200_OK)
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
 
+class Fields(APIView):
     def put(self, request, *args, **kwargs):
         try:
             title = Title.objects.get_or_create(id=1)[0]
