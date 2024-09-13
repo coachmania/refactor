@@ -5,6 +5,16 @@ from rest_framework import status
 from .models import Personnal
 
 from rest_framework.permissions import AllowAny
+class Infos(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            personnal = Personnal.objects.get_or_create(id=1)[0]
+            fields = ["first_name", "name", "phone", "email", "age", "birthdate"]
+            data = {field: getattr(personnal, field) for field in fields}
+            return Response(data, status=status.HTTP_200_OK)
+        except Personnal.DoesNotExist:
+            return Response({'error': 'Personnal not found'}, status=status.HTTP_404_NOT_FOUND)
+
 class Fields(APIView):
     permission_classes = [AllowAny]
 
