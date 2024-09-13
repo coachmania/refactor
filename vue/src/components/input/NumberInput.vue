@@ -28,6 +28,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 const updateValue = (event) => {
-    handleInput(event, emit, props.name);
+    handleInput(event.target.value, emit, props.name);
 };
 </script>
