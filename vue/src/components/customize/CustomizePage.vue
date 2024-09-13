@@ -5,6 +5,7 @@
 			<CardTitle>Apparence</CardTitle>
 			<Templates/>
 			<ExperienceFirst/>
+			<FontSize/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
@@ -18,6 +19,7 @@ import SectionLayout from '../layout/SectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import Templates from './Templates.vue';
 import ExperienceFirst from './ExperienceFirst.vue';
+import FontSize from './FontSize.vue';
 
 // const pageData = reactive({
 // 	data: {},
