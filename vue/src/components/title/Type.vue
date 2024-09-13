@@ -1,17 +1,12 @@
 <template>
 	<CardLayout>
 		<CardTitle>Type de poste recherché</CardTitle>
-		<div class="join grid grid-cols-3">
-			<button 
-				v-for="(item, index) in data.type_choices" 
-				:key="index" 
-				class="btn join-item no-animation"
-				:class="item === data.type ? 'btn-primary' : 'bg-base-100 border-base-content/15'"
-				@click="updateValue(item)"
-			>
-				{{ item }}
-			</button>
-		</div>
+		<MultiButton 
+			class="grid-cols-3"
+			:items="data.type_choices"
+			:selectedItem="data.type"
+			@click="updateValue"
+		/>
 	</CardLayout>
 </template>
 
@@ -19,6 +14,7 @@
 import apiClient from '@/services/api.js';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
+import MultiButton from '../button/MultiButton.vue';
 
 const props = defineProps({
 	data: Object,
