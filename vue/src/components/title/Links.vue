@@ -28,14 +28,13 @@
 </template>
 
 <script setup>
+import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import UrlInput from '../input/UrlInput.vue';
 
-const props = defineProps({
-	data: Object,
-});
+const data = reactive({});
 
 const updateValue = async ({name, value}) => {
 	try {
@@ -45,4 +44,17 @@ const updateValue = async ({name, value}) => {
 		console.error('Erreur lors de la mise à jour des liens :', error);
 	}
 };
+
+const fetchData = async () => {
+	try {
+		const response = await apiClient.get('/cv_title/links/');
+		Object.assign(data, response.data);
+	} catch (error) {
+		console.error('Erreur lors de la récupération des liens :', error);
+	}
+};
+
+onMounted(() => {
+	fetchData();
+});
 </script>
