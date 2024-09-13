@@ -5,7 +5,7 @@
 			class="grid-cols-3"
 			:items="data.type_choices"
 			:selectedItem="data.type"
-			@click="updateValue"
+			@clicked="updateValue"
 		/>
 	</CardLayout>
 </template>
