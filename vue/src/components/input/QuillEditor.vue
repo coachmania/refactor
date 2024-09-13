@@ -27,10 +27,12 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue';
+import { handleInput } from './handleInput';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 
 const props = defineProps({
+	name: String,
 	value: String,
 });
 
@@ -47,6 +49,7 @@ const updateCurrentFormat = (quill) => {
 	isUnderlineActive.value = !!format.underline;
 };
 
+const emit = defineEmits(['update:value']);
 onMounted(() => {
 	quill = new Quill(editorContainer.value, {
 		modules: {
@@ -59,6 +62,7 @@ onMounted(() => {
 	});
 	quill.on('text-change', () => {
 		updateCurrentFormat(quill);
+		handleInput(quill.root.innerHTML, emit, props.name);
 	});
 
 	quill.root.innerHTML = props.value || '';
