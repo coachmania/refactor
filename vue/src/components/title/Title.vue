@@ -8,7 +8,11 @@
 			:value="data.title"
 			@update:value="updateValue"
 		/>
-		<QuillEditor :value="data.details"/>
+		<QuillEditor
+			name="details"
+			:value="data.details"
+			@update:value="updateValue"
+		/>
 		<AlertBox
 			v-if="data.type === 'Emploi'"
 			classColor="alert-info"
@@ -36,7 +40,7 @@ import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
-import QuillEditor from '../global/QuillEditor.vue';
+import QuillEditor from '../input/QuillEditor.vue';
 import AlertBox from '../global/AlertBox.vue';
 
 const data = reactive({});
