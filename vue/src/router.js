@@ -4,11 +4,12 @@ import { useAuthStore } from '@/store/authStore';
 import HomePage from './components/home/HomePage.vue';
 import PersonnalPage from './components/personnal/PersonnalPage.vue';
 import CustomizePage from './components/customize/CustomizePage.vue';
+import TitlePage from './components/title/TitlePage.vue';
 import LangPage from './components/lang/LangPage.vue';
 import ExperiencePage from './components/experience/ExperiencePage.vue';
 import FormationPage from './components/formation/FormationPage.vue';
 import HobbiePage from './components/hobbie/HobbiePage.vue';
-import TitlePage from './components/title/TitlePage.vue';
+import DownloadPage from './components/download/DownloadPage.vue';
 import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
 import ProfilePage from './components/auth/ProfilePage.vue';
@@ -28,6 +29,10 @@ const routes = [
 		component: CustomizePage,
 	},
 	{
+		path: '/title',
+		component: TitlePage,
+	},
+	{
 		path: '/lang',
 		component: LangPage,
 	},
@@ -44,8 +49,8 @@ const routes = [
 		component: HobbiePage,
 	},
 	{
-		path: '/title',
-		component: TitlePage,
+		path: '/download',
+		component: DownloadPage,
 	},
 	{
 		path: '/login',
