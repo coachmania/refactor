@@ -1,6 +1,6 @@
 <template>
 	<CardLayout>
-		<CardTitle>Type de poste recherché</CardTitle>
+		<CardTitle>Afficher en premier</CardTitle>
 		<div class="join grid grid-cols-3">
 			<button 
 				v-for="(item, index) in data.type_choices" 
@@ -12,25 +12,20 @@
 				{{ item }}
 			</button>
 		</div>
+		<AlertBox class-color="alert-info">
+			<p>Ici, vous pouvez changer l'ordre selon l'importance : placez en premier les expériences ou les formations, selon ce qui valorise le mieux votre profil.</p>
+		</AlertBox>
 	</CardLayout>
 </template>
 
 <script setup>
-import apiClient from '@/services/api.js';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
+import AlertBox from '../global/AlertBox.vue';
 
-const props = defineProps({
-	data: Object,
-});
-
-const updateValue = async (selectedType) => {
-	try {
-		let sendData = {type: selectedType}
-		await apiClient.put('/cv_title/fields/', sendData);
-		props.data.type = selectedType;
-	} catch (error) {
-		console.error('Error updating title type:', error);
-	}
+// TODO temp 
+const data = {
+	type_choices: ['Expérience', 'Formation'],
+	type: 'Expérience',
 };
 </script>
