@@ -5,6 +5,8 @@ import HomePage from './components/home/HomePage.vue';
 import PersonnalPage from './components/personnal/PersonnalPage.vue';
 import CustomizePage from './components/customize/CustomizePage.vue';
 import LangPage from './components/lang/LangPage.vue';
+import ExperiencePage from './components/experience/ExperiencePage.vue';
+import FormationPage from './components/formation/FormationPage.vue';
 import TitlePage from './components/title/TitlePage.vue';
 import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
@@ -27,6 +29,14 @@ const routes = [
 	{
 		path: '/lang',
 		component: LangPage,
+	},
+	{
+		path: '/experience',
+		component: ExperiencePage,
+	},
+	{
+		path: '/formation',
+		component: FormationPage,
 	},
 	{
 		path: '/title',
