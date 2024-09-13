@@ -6,6 +6,7 @@
 			<Templates/>
 			<ExperienceFirst/>
 			<FontSize/>
+			<Colors/>
 		</SectionLayout>
 	</EditorLayout>
 </template>
@@ -20,6 +21,7 @@ import CardTitle from '../global/CardTitle.vue';
 import Templates from './Templates.vue';
 import ExperienceFirst from './ExperienceFirst.vue';
 import FontSize from './FontSize.vue';
+import Colors from './Colors.vue';
 
 // const pageData = reactive({
 // 	data: {},
