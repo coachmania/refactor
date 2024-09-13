@@ -44,10 +44,17 @@ const isItalicActive = ref(false);
 const isUnderlineActive = ref(false);
 
 const updateCurrentFormat = (quill) => {
-	const format = quill.getFormat();
-	isBoldActive.value = !!format.bold;
-	isItalicActive.value = !!format.italic;
-	isUnderlineActive.value = !!format.underline;
+	const range = quill.getSelection();
+	if (range && range.length > 0) {
+		const format = quill.getFormat();
+		isBoldActive.value = !!format.bold;
+		isItalicActive.value = !!format.italic;
+		isUnderlineActive.value = !!format.underline;
+	} else {
+		isBoldActive.value = false;
+		isItalicActive.value = false;
+		isUnderlineActive.value = false;
+	}
 };
 
 onMounted(() => {
@@ -57,9 +64,9 @@ onMounted(() => {
 		}
 	});
 
-	// quill.on('selection-change', () => {
-	// 	updateCurrentFormat(quill);
-	// });
+	quill.on('selection-change', () => {
+		updateCurrentFormat(quill);
+	});
 	quill.on('text-change', () => {
 		updateCurrentFormat(quill);
 		handleInput(quill.root.innerHTML, emit, props.name);
