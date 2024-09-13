@@ -36,8 +36,9 @@ const props = defineProps({
 	value: String,
 });
 
-let quill;
+const emit = defineEmits(['update:value']);
 const editorContainer = ref(null);
+let quill;
 const isBoldActive = ref(false);
 const isItalicActive = ref(false);
 const isUnderlineActive = ref(false);
@@ -49,7 +50,6 @@ const updateCurrentFormat = (quill) => {
 	isUnderlineActive.value = !!format.underline;
 };
 
-const emit = defineEmits(['update:value']);
 onMounted(() => {
 	quill = new Quill(editorContainer.value, {
 		modules: {
@@ -57,9 +57,9 @@ onMounted(() => {
 		}
 	});
 
-	quill.on('selection-change', () => {
-		updateCurrentFormat(quill);
-	});
+	// quill.on('selection-change', () => {
+	// 	updateCurrentFormat(quill);
+	// });
 	quill.on('text-change', () => {
 		updateCurrentFormat(quill);
 		handleInput(quill.root.innerHTML, emit, props.name);
