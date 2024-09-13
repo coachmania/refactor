@@ -1,16 +1,18 @@
 <template>
     <a
-		class="btn btn-square grid place-items-center tooltip tooltip-right"
-		:class="currentPage ? 'btn-primary' : 'btn-ghost'"
+		class="tooltip tooltip-right"
 		:data-tip="name" 
 		:href="currentPage ? null : url">
-		<slot></slot>
-    </a>
+		<SquareButton :ghost="!currentPage">
+			<slot></slot>
+		</SquareButton>	
+	</a>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import SquareButton from '../button/SquareButton.vue';
 
 const props = defineProps({
 	url: String,
