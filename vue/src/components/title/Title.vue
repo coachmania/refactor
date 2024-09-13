@@ -8,9 +8,7 @@
 			:value="data.title"
 			@update:value="updateValue"
 		/>
-		<QuillEditor
-			:value="data.details"
-		/>
+		<QuillEditor :value="data.details"/>
 		<AlertBox
 			v-if="data.type === 'Emploi'"
 			classColor="alert-info"
