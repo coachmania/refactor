@@ -32,7 +32,6 @@ const updateValue = async (selectedType) => {
 const fetchData = async () => {
 	try {
 		const response = await apiClient.get('/cv_title/type/');
-		console.log(response.data);
 		Object.assign(data, response.data);
 	} catch (error) {
 		console.error('Error fetching title type:', error);
