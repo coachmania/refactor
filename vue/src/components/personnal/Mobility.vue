@@ -39,6 +39,7 @@
 </template>
 
 <script setup>
+import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
@@ -47,17 +48,28 @@ import TextInput from '../input/TextInput.vue';
 import SelectInput from '../input/SelectInput.vue';
 import CheckBoxInput from '../input/CheckBoxInput.vue';
 
-const props = defineProps({
-	data: Object,
-});
+const data = reactive({});
 
 const updateValue = async ({name, value}) => {
 	try {
 		let sendData = {[name]: value}
 		await apiClient.put('/cv_personnal/fields/', sendData);
-		props.data[name] = value;
+		data[name] = value;
 	} catch (error) {
 		console.error(error);
 	}
 };
+
+const fetchData = async () => {
+	try {
+		const response = await apiClient.get('/cv_personnal/mobility/');
+		Object.assign(data, response.data);
+	} catch (error) {
+		console.error('Erreur lors de la récupération des informations de mobilité :');
+	}
+};
+
+onMounted(() => {
+	fetchData();
+});
 </script>

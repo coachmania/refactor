@@ -45,6 +45,7 @@
 </template>
 
 <script setup>
+import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
@@ -52,9 +53,7 @@ import AlertBox from '../global/AlertBox.vue';
 import TextInput from '../input/TextInput.vue';
 import NumberInput from '../input/NumberInput.vue';
 
-const props = defineProps({
-	data: Object,
-});
+const data = reactive({});
 
 const updateValue = async ({name, value}) => {
 	try {
@@ -64,4 +63,17 @@ const updateValue = async ({name, value}) => {
 		console.error('Erreur lors de la mise à jour de l\'adresse :');
 	}
 };
+
+const fetchData = async () => {
+	try {
+		const response = await apiClient.get('/cv_personnal/address/');
+		Object.assign(data, response.data);
+	} catch (error) {
+		console.error('Erreur lors de la récupération de l\'adresse :');
+	}
+};
+
+onMounted(() => {
+	fetchData();
+});
 </script>
