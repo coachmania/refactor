@@ -7,6 +7,7 @@ import CustomizePage from './components/customize/CustomizePage.vue';
 import LangPage from './components/lang/LangPage.vue';
 import ExperiencePage from './components/experience/ExperiencePage.vue';
 import FormationPage from './components/formation/FormationPage.vue';
+import HobbiePage from './components/hobbie/HobbiePage.vue';
 import TitlePage from './components/title/TitlePage.vue';
 import LoginPage from './components/auth/LoginPage.vue';
 import LogoutPage from './components/auth/LogoutPage.vue';
@@ -37,6 +38,10 @@ const routes = [
 	{
 		path: '/formation',
 		component: FormationPage,
+	},
+	{
+		path: '/hobbie',
+		component: HobbiePage,
 	},
 	{
 		path: '/title',
