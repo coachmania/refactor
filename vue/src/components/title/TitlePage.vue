@@ -3,7 +3,7 @@
 	<EditorLayout>
 		<SectionLayout>
 			<Type/>
-			<Title v-model:data="pageData.data"/>
+			<Title/>
 			<Links v-model:data="pageData.data"/>
 		</SectionLayout>
 	</EditorLayout>

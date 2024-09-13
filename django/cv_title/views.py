@@ -15,6 +15,16 @@ class Type(APIView):
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
 
+class TitleDetails(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            title = Title.objects.get_or_create(id=1)[0]
+            fields = ["title", "details"]
+            data = {field: getattr(title, field) for field in fields}
+            return Response(data, status=status.HTTP_200_OK)
+        except Title.DoesNotExist:
+            return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
+
 class Fields(APIView):
     def get(self, request, *args, **kwargs):
         try:
