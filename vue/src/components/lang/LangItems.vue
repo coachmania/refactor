@@ -6,7 +6,6 @@
 	<div class="grid gap-md">
 		<LangItem 
 			v-for="lang in items"
-			:key="lang.id"
 			:lang="lang"
 			@changeContent="handleChangeContent"
 		/>

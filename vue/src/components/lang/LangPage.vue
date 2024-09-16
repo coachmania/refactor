@@ -3,7 +3,7 @@
 	<EditorLayout>
 		<SectionLayout>
 			<template v-if="showItemDetail">
-				<LangItemDetail :lang="selectedItem" @close="showItemDetail = false"/>
+				<LangItemDetail :langId=selectedLangId @close="showItemDetail = false"/>
 			</template>
 			<template v-else>
 				<LangItems @changeContent="handleChangeContent"/>
@@ -20,11 +20,10 @@ import SectionLayout from '../layout/SectionLayout.vue';
 import LangItems from './LangItems.vue';
 import LangItemDetail from './LangItemDetail.vue';
 
-const selectedLangId = ref(null);
+const selectedLangId = ref();
 const showItemDetail = ref(false);
 
 const handleChangeContent = (id) => {
-	console.log('handleChangeContent', id);
 	selectedLangId.value = id;
     showItemDetail.value = true;
 };
