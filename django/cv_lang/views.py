@@ -32,9 +32,9 @@ class Items(APIView):
             return Response({'error': 'Lang not found'}, status=status.HTTP_404_NOT_FOUND)
 
 class Fields(APIView):
-    def put(self, request, *args, **kwargs):
+    def put(self, request, lang_id, *args, **kwargs):
         try:
-            lang = Lang.objects.get_or_create(id=1)[0]
+            lang = Lang.objects.get_or_create(id=lang_id)[0]
             for key, value in request.data.items():
                 setattr(lang, key, value)
             try:
