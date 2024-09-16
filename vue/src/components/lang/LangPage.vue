@@ -2,41 +2,30 @@
 	<Header/>
 	<EditorLayout>
 		<SectionLayout>
-			<CardTitle>Langues</CardTitle>
-			<AlertBox classColor="alert-info">
-				<p>La justification peut être une expérience à l'étranger ou une certification (ex : TOEIC).</p>
-			</AlertBox>
-            <div class="grid gap-md" v-if="items.length">
-                <LangItem v-for="lang in items" :key="lang.id" :lang="lang"/>
-            </div>
-			<AddSectionButton/>
+			<template v-if="showItemDetail">
+				<LangItemDetail :lang="selectedItem" @close="showItemDetail = false"/>
+			</template>
+			<template v-else>
+				<LangItems @changeContent="handleChangeContent"/>
+			</template>
 		</SectionLayout>
 	</EditorLayout>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import apiClient from '@/services/api';
+import { ref } from 'vue';
 import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
-import AddSectionButton from '../global/AddSectionButton.vue';
-import CardTitle from '../global/CardTitle.vue';
-import AlertBox from '../global/AlertBox.vue';
-import LangItem from './LangItem.vue';
+import LangItems from './LangItems.vue';
+import LangItemDetail from './LangItemDetail.vue';
 
-const items = ref([]);
+const selectedLangId = ref(null);
+const showItemDetail = ref(false);
 
-const fetchItems = async () => {
-	try {
-		const response = await apiClient.get('/cv_lang/items/');
-        items.value = response.data;
-	} catch (error) {
-		console.error('Error fetching languages:', error);
-	}
+const handleChangeContent = (id) => {
+	console.log('handleChangeContent', id);
+	selectedLangId.value = id;
+    showItemDetail.value = true;
 };
-
-onMounted(() => {
-	fetchItems();
-})
 </script>
