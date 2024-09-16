@@ -4,10 +4,20 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Lang
 
-from rest_framework.permissions import AllowAny
-class Items(APIView):
-    permission_classes = [AllowAny]
+class Item(APIView):
+    def get(self, request, lang_id, *args, **kwargs):
+        try:
+            lang = Lang.objects.get(id=lang_id)
+            return Response({
+                'id': lang.id,
+                'name': lang.name,
+                'level': lang.level,
+                'justification': lang.justification,
+            }, status=status.HTTP_200_OK)
+        except Lang.DoesNotExist:
+            return Response({'error': 'Lang not found'}, status=status.HTTP_404_NOT_FOUND)
 
+class Items(APIView):
     def get(self, request, *args, **kwargs):
         try:
             data = []
