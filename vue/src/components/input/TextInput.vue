@@ -3,7 +3,8 @@
 		<span class="label label-text">{{ label }}</span>
 		<input 
 			type="text"
-			class="input input-bordered" 
+			class="input input-bordered"
+			:class="customClass"
 			:placeholder="placeholder" 
 			:name="name" 
 			:value="value"
@@ -20,6 +21,7 @@ const props = defineProps({
     placeholder: String,
     value: String,
 	name: String,
+	customClass: String,
 });
 
 const emit = defineEmits(['update:value']);
