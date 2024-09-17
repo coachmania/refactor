@@ -4,7 +4,7 @@
 		<input 
 			type="text"
 			class="input shadow-sm bg-base-200"
-			:class="class"
+			:class="customClass"
 			:placeholder="placeholder" 
 			:name="name" 
 			:value="value"
@@ -21,7 +21,7 @@ const props = defineProps({
     placeholder: String,
     value: String,
 	name: String,
-	class: String,
+	customClass: String,
 });
 
 const emit = defineEmits(['update:value']);

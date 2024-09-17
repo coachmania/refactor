@@ -1,9 +1,6 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Adresse</CardTitle>
-		<AlertBox classColor="alert-info">
-			Dans un CV, on ne met pas l'adresse complète. Le complément d'adresse sert ici à indiquer un arrêt de bus, de métro, etc.
-		</AlertBox>
 		<div class="grid grid-cols-3 gap-md">
 			<TextInput
 				class="col-span-2"
@@ -24,6 +21,9 @@
 				:max=99999
 			/>
 		</div>
+		<AlertBox classColor="alert-info">
+			Dans un CV, on ne met pas l'adresse complète. Le complément d'adresse sert ici à indiquer un arrêt de bus, de métro, etc.
+		</AlertBox>
 		<div class="grid grid-cols-2 gap-md">
 			<TextInput
 				label="Ville"
@@ -41,13 +41,13 @@
 				@update:value="updateValue"
 			/>
 		</div>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import AlertBox from '../global/AlertBox.vue';
 import TextInput from '../input/TextInput.vue';
