@@ -16,6 +16,8 @@
 				:value="data.name"
 				@update:value="updateValue"
 			/>
+		</div>
+		<div class="grid grid-cols-3 gap-md">
 			<TextInput
 				label="Téléphone"
 				placeholder="06 12 34 56 78"
@@ -24,6 +26,7 @@
 				@update:value="updateValue"
 			/>
 			<TextInput
+				class="col-span-2"	
 				label="Email"
 				placeholder="jean@jobmania.fr"
 				name="email"
@@ -41,6 +44,7 @@
 			/>
 			<!-- TODO replace by dateInput -->
 			<TextInput
+				class="col-span-2"
 				label="Date de naissance"
 				placeholder="01/01/2000"
 				name="birthdate"
