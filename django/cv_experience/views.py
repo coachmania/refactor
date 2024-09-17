@@ -43,8 +43,8 @@ class Items(APIView):
             for item in items:
                 data.append({
                     'id': item.id,
-                    'name': item.name,
-                    'level': item.level,
+                    'company': item.company,
+                    'title': item.title,
                 })
             return Response(data, status=status.HTTP_200_OK)
         except Experience.DoesNotExist:
