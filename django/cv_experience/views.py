@@ -19,10 +19,11 @@ class Item(APIView):
         try:
             item = Experience.objects.get(id=id)
             return Response({
-                'level_choices': item.LANG_LEVEL_CHOICES,
-                'name': item.name,
-                'level': item.level,
-                'justification': item.justification,
+                'company': item.company,
+                'title': item.title,
+                'city': item.city,
+                'contract': item.contract,
+                'details': item.details,
             }, status=status.HTTP_200_OK)
         except Experience.DoesNotExist:
             return Response({'error': 'Experience not found'}, status=status.HTTP_404_NOT_FOUND)

@@ -8,7 +8,6 @@ class Experience(models.Model):
 	contract = models.CharField(max_length=50, blank=True, default="")
 	details = models.TextField(blank=True)
 	order = models.PositiveIntegerField(null=True, blank=True, editable=False)
-	is_open = models.BooleanField(default=False)
 
 	def save(self, *args, **kwargs):
 		self.full_clean()
