@@ -24,6 +24,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import imageCompression from 'browser-image-compression';
 
 const fileInput = ref(null);
 const isDragging = ref(false);
@@ -50,16 +51,30 @@ const handleDragLeave = () => {
     isDragging.value = false;
 };
 
-const processFiles = (files) => {
+const resizeAndCompressImage = async (file) => {
+    const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 500,
+        useWebWorker: true,
+    };
+    return await imageCompression(file, options);
+};
+
+const processFiles = async (files) => {
 	if (files.length > 1) {
 		console.error('Please select 1 file only');
 		return;
 	}
 	const file = files[0];
-	if (file.type.startsWith('image/')) {
-		console.log('Image selected:', file);
-	} else {
+	if (!file.type.startsWith('image/')) {
 		console.error('Invalid file type:', file.type);
+		return;
+	}
+	try {
+        const compressedFile = await resizeAndCompressImage(file);
+		// Call api
+	} catch (error) {
+		console.error('Erreur lors de la compression de l\'image:', error);
 	}
 };
 </script>
