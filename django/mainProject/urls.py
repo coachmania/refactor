@@ -23,4 +23,5 @@ urlpatterns = [
     path('cv_title/', include('cv_title.urls')),
     path('cv_personnal/', include('cv_personnal.urls')),
     path('cv_lang/', include('cv_lang.urls')),
+    path('cv_experience/', include('cv_experience.urls')),
 ]
