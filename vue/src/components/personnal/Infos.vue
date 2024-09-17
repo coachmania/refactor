@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Informations personnelles</CardTitle>
 		<div class="grid grid-cols-2 gap-md">
 			<TextInput
@@ -48,16 +48,16 @@
 				@update:value="updateValue"
 			/>
 		</div>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
-import CardLayout from '../layout/CardLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
 import NumberInput from '../input/NumberInput.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 
 const data = reactive({});
 
