@@ -20,7 +20,6 @@
 import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
-import AlertBox from '../global/AlertBox.vue';
 import LangSummary from './LangSummary.vue';
 
 const items = ref([]);
