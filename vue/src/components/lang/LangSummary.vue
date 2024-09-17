@@ -5,7 +5,9 @@
 		</button>
 		<div class="btn no-animation grid grid-cols-[1fr,auto] items-center pl-md p-2 bg-base-200 rounded-btn h-full">
 			<div class="h-full grid grid-rows-2" @click="handleClick(lang.id)">
-				<h1 class="h-full flex items-center">{{ lang.name }}</h1>
+				<h1 class="h-full flex items-center">
+					{{ lang.name || 'Nouvelle langue' }}
+				</h1>
 				<p class="font-thin h-full flex items-center">{{ lang.level }}</p>
 			</div>
 			<button class="btn btn-ghost btn-square" @click="showModal = true">

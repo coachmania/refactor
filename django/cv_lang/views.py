@@ -7,9 +7,7 @@ from .models import Lang
 class Add(APIView):
     def post(self, request, *args, **kwargs):
         try:
-            Lang.objects.create(
-                name="Nouvelle Langue"
-            )
+            Lang.objects.create()
             return Response({'success': 'Lang added'}, status=status.HTTP_201_CREATED)
         except ValidationError as error:
             return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
