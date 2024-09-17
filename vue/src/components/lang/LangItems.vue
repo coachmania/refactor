@@ -4,10 +4,11 @@
 		<p>La justification peut être une expérience à l'étranger ou une certification (ex : TOEIC).</p>
 	</AlertBox>
 	<div class="grid gap-md">
-		<LangItem 
+		<LangSummary 
 			v-for="lang in items"
 			:lang="lang"
 			@changeContent="handleChangeContent"
+			@deleteLang="fetchItems"
 		/>
 	</div>
 	<div class="flex justify-center">
@@ -23,7 +24,7 @@ import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
 import AlertBox from '../global/AlertBox.vue';
-import LangItem from './LangSummary.vue';
+import LangSummary from './LangSummary.vue';
 
 const items = ref([]);
 

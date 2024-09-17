@@ -1,10 +1,13 @@
 <template>
-	<div class="join grid" :class="class">
+	<div class="join grid" :class="colsClass">
 		<button 
 			v-for="(item, index) in items" 
 			:key="index" 
 			class="btn join-item no-animation"
-			:class="item === selectedItem ? 'btn-primary' : 'bg-base-100 border-base-content/15'"
+			:class="[
+				item === selectedItem ? 'btn-primary' : 'bg-base-100 border-base-content/15',
+				item !== selectedItem && customClass ? customClass : ''
+			]"
 			@click="$emit('clicked', item)"
 		>
 			{{ item }}
@@ -16,6 +19,7 @@
 const props = defineProps({
 	items: Array,
 	selectedItem: String,
-	class: String,
+	colsClass: String,
+	customClass: String,
 });
 </script>

@@ -16,7 +16,8 @@
 	<div>
 		<span class="label label-text">Niveau</span>
 		<MultiButton
-			class="grid-cols-5"
+			colsClass="grid-cols-5"
+			customClass="bg-base-200"
 			:items="data.level_choices"
 			:selectedItem="data.level"
 			@clicked="updateLevel"
@@ -58,6 +59,9 @@ const updateLevel = async (value) => {
 const updateValue = async ({name, value}) => {
 	try {
 		let sendData = {[name]: value,}
+		if (name === 'name') {
+			data.name = value;
+		}
 		await apiClient.put(`/cv_lang/fields/${props.langId}/`, sendData);
 	} catch (error) {
 		console.error('Error updating language data:', error);
