@@ -4,6 +4,18 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Lang
 
+class Add(APIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            Lang.objects.create(
+                name="Nouvelle Langue"
+            )
+            return Response({'success': 'Lang added'}, status=status.HTTP_201_CREATED)
+        except ValidationError as error:
+            return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 class Item(APIView):
     def get(self, request, lang_id, *args, **kwargs):
         try:

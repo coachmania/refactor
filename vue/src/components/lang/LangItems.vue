@@ -11,7 +11,7 @@
 		/>
 	</div>
 	<div class="flex justify-center">
-		<button class="btn btn-primary no-animation" @click="console.log('click')">
+		<button class="btn btn-primary no-animation" @click="addLang">
 			<svg class="w-icon h-icon fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
 			<p>Ajouter une langue</p>
 		</button>
@@ -33,6 +33,15 @@ const fetchItems = async () => {
         items.value = response.data;
 	} catch (error) {
 		console.error('Error fetching languages:', error);
+	}
+};
+
+const addLang = async () => {
+	try {
+		await apiClient.post('/cv_lang/add/', {});
+		await fetchItems();
+	} catch (error) {
+		console.error('Error adding language:', error);
 	}
 };
 
