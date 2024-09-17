@@ -60,7 +60,7 @@ class Mobility(APIView):
             personnal = Personnal.objects.get_or_create(id=1)[0]
             fields = ["license", "other_license", "has_vehicle", "range"]
             data = {field: getattr(personnal, field) for field in fields}
-            data["license_choices"] = [choice[1] for choice in Personnal.LICENSE_CHOICES]
+            data["license_choices"] = Personnal.LICENSE_CHOICES
             return Response(data, status=status.HTTP_200_OK)
         except Personnal.DoesNotExist:
             return Response({'error': 'Personnal not found'}, status=status.HTTP_404_NOT_FOUND)

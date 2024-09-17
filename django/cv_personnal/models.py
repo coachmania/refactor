@@ -41,13 +41,13 @@ class PostalCodeField(models.PositiveIntegerField):
 		return value
 
 class Personnal(models.Model):
-	LICENSE_CHOICES = Choices(
-		('Aucun', 'Aucun'),
-		('BSR', 'BSR'),
-		('Permis A', 'Permis A'),
-		('Permis B', 'Permis B'),
-		('Autre', 'Autre')
-	)
+	LICENSE_CHOICES = [
+		'Aucun',
+		'BSR',
+		'Permis A',
+		'Permis B',
+		'Autre'
+	]
 
 	# cv = models.OneToOneField(Cv, on_delete=models.CASCADE, related_name='personnal')
 	picture = models.ImageField(upload_to='pictures/', null=True, blank=True, default="")
@@ -62,7 +62,7 @@ class Personnal(models.Model):
 	postal_code = PostalCodeField(null=True)
 	city = models.CharField(max_length=50, blank=True)
 	country = models.CharField(max_length=50, blank=True)
-	license = models.CharField(max_length=50, choices=LICENSE_CHOICES, default=LICENSE_CHOICES.Aucun)
+	license = models.CharField(max_length=50, default=LICENSE_CHOICES[0])
 	other_license = models.CharField(max_length=50, blank=True)
 	has_vehicle = models.BooleanField(default=False)
 	range = models.CharField(max_length=100, blank=True)
