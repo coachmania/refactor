@@ -24,6 +24,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import apiClient from '@/services/api';
 import imageCompression from 'browser-image-compression';
 
 const fileInput = ref(null);
@@ -60,6 +61,16 @@ const resizeAndCompressImage = async (file) => {
     return await imageCompression(file, options);
 };
 
+const updatePicture = async (file) => {
+	try {
+		let formData = new FormData();
+		formData.append('picture', file);
+		await apiClient.put('/cv_personnal/picture/', formData);
+	} catch (error) {
+		console.error('Erreur lors de la récupération de l\'adresse :');
+	}
+};
+
 const processFiles = async (files) => {
 	if (files.length > 1) {
 		console.error('Please select 1 file only');
@@ -72,7 +83,7 @@ const processFiles = async (files) => {
 	}
 	try {
         const compressedFile = await resizeAndCompressImage(file);
-		// Call api
+		updatePicture(compressedFile);
 	} catch (error) {
 		console.error('Erreur lors de la compression de l\'image:', error);
 	}
