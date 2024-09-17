@@ -1,8 +1,5 @@
 <template>
 	<CardTitle>Langues</CardTitle>
-	<AlertBox classColor="alert-info">
-		<p>La justification peut être une expérience à l'étranger ou une certification (ex : TOEIC).</p>
-	</AlertBox>
 	<div class="grid gap-md">
 		<LangSummary 
 			v-for="lang in items"

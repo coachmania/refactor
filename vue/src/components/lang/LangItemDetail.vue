@@ -31,6 +31,9 @@
 		:value="data.justification"
 		@update:value="updateValue"
 	/>
+	<AlertBox classColor="alert-info">
+		<p>La justification peut être une expérience à l'étranger ou une certification (ex : TOEIC).</p>
+	</AlertBox>
 </template>
 
 <script setup>
@@ -39,6 +42,7 @@ import apiClient from '@/services/api.js';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
 import MultiButton from '../button/MultiButton.vue';
+import AlertBox from '../global/AlertBox.vue';
 
 const data = reactive({});
 
