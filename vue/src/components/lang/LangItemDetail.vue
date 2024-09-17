@@ -9,7 +9,6 @@
 	<div class="max-w-[300px]">
 		<TextInput
 			label="Nom de la langue"
-			customClass="bg-base-200"
 			placeholder="Anglais"
 			name="name"
 			:value="data.name"
@@ -20,7 +19,6 @@
 		<span class="label label-text">Niveau</span>
 		<MultiButton
 			colsClass="grid-cols-5"
-			customClass="bg-base-200"
 			:items="data.level_choices"
 			:selectedItem="data.level"
 			@clicked="updateLevel"
@@ -29,7 +27,6 @@
 	<div class="max-w-[500px]">
 		<TextInput
 			label="Justification"
-			customClass="bg-base-200"
 			placeholder="Voyage en Angleterre"
 			name="justification"
 			:value="data.justification"
