@@ -1,9 +1,12 @@
 <template>
-	<div class="h-full grid grid-rows-2">
+	<div
+		class="h-full grid"
+		:class="{ 'grid-rows-2': subtitle }"
+	>
 		<h1 class="h-full flex items-center">
-			{{ title }}
+			<slot></slot>
 		</h1>
-		<p class="font-thin h-full flex items-center">{{ subtitle }}</p>
+		<p v-if="subtitle" class="font-thin h-full flex items-center">{{ subtitle }}</p>
 	</div>
 </template>
 

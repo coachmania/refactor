@@ -7,9 +7,8 @@
 				@click="handleClick(lang.id)"
 			>
 				<ItemSummaryName
-					:title="lang.name || 'Nouvelle langue'"
 					:subtitle="lang.level"
-				/>
+				>{{ lang.name || 'Nouvelle langue' }}</ItemSummaryName>
 				<DeleteButton @click.stop @click="showModal = true"/>
 			</div>
 		</div>
