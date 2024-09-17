@@ -1,5 +1,5 @@
 <template>
-	<aside class="rounded-none bg-base-200 border-r border-base-300 flex flex-col items-center justify-center gap-4">
+	<aside class="rounded-none bg-base-200 flex flex-col items-center justify-center gap-4">
 		<SidebarButton
 			url="/personnal"
 			name="Informations personnelles"
