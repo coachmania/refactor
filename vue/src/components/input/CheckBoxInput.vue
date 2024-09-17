@@ -3,7 +3,7 @@
 		<span class="label label-text">{{ label }}</span>
 		<button 
 			class="btn no-animation"
-			:class="isChecked ? 'btn-square btn-primary' : 'input input-bordered w-12 p-0'"
+			:class="isChecked ? 'btn-square btn-primary' : 'input bg-base-200 shadow-sm w-12 p-0'"
 			@click="toggleCheck"
 		>
 			<template v-if="isChecked">
