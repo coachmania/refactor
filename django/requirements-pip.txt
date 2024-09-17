@@ -7,3 +7,4 @@ django-cors-headers
 # TODO ajouter la version testée
 django-model-utils
 gunicorn>=23.0.0
+pillow==10.4.0 

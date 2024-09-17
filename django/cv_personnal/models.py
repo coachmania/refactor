@@ -50,8 +50,7 @@ class Personnal(models.Model):
 	)
 
 	# cv = models.OneToOneField(Cv, on_delete=models.CASCADE, related_name='personnal')
-	# profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True, default="")
-	# original_picture = models.ImageField(upload_to='original_pictures/', null=True, blank=True, default="")
+	picture = models.ImageField(upload_to='pictures/', null=True, blank=True, default="")
 	is_hidden = models.BooleanField(default=False)
 	name = models.CharField(max_length=50, blank=True)
 	first_name = models.CharField(max_length=50, blank=True)
