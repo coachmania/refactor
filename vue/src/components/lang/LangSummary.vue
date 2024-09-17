@@ -6,12 +6,10 @@
 				class="btn no-animation grid grid-cols-[1fr,auto] items-center pl-md p-2 bg-base-200 rounded-btn h-full"
 				@click="handleClick(lang.id)"
 			>
-				<div class="h-full grid grid-rows-2">
-					<h1 class="h-full flex items-center">
-						{{ lang.name || 'Nouvelle langue' }}
-					</h1>
-					<p class="font-thin h-full flex items-center">{{ lang.level }}</p>
-				</div>
+				<ItemSummaryName
+					:title="lang.name || 'Nouvelle langue'"
+					:subtitle="lang.level"
+				/>
 				<DeleteButton @click.stop @click="showModal = true"/>
 			</div>
 		</div>
@@ -31,6 +29,7 @@ import apiClient from '@/services/api';
 import DeleteConfirmation from '../global/DeleteConfirmation.vue';
 import ReorderButton from '../button/ReorderButton.vue';
 import DeleteButton from '../button/DeleteButton.vue';
+import ItemSummaryName from '../global/ItemSummaryName.vue';
 
 const showModal = ref(false);
 
