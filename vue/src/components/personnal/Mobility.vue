@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Mobilité</CardTitle>
 		<div class="col-span-full grid grid-cols-2 gap-md">
 			<SelectInput
@@ -17,31 +17,33 @@
 				@update:value="updateValue"
 			/>
 		</div>
-		<TextInput
-			v-if="data.license === 'Autre'"
-			label="Autre permis"
-			placeholder="Permis"
-			name="other_license"
-			:value="data.other_license"
-			@update:value="updateValue"
-		/>
-		<TextInput
-			label="Champ de mobilité"
-			placeholder="Départemental, régional, national, etc."
-			name="range"
-			:value="data.range"
-			@update:value="updateValue"
-		/>
+		<div class="max-w-[400px] grid gap-md">
+			<TextInput
+				v-if="data.license === 'Autre'"
+				label="Autre permis"
+				placeholder="Permis"
+				name="other_license"
+				:value="data.other_license"
+				@update:value="updateValue"
+			/>
+			<TextInput
+				label="Champ de mobilité"
+				placeholder="Départemental, régional, national, etc."
+				name="range"
+				:value="data.range"
+				@update:value="updateValue"
+			/>
+		</div>
 		<AlertBox classColor="alert-info">
-			La mobilité indique votre rayon de déplacement (ex : département, région, etc.).
+			Le champ de mobilité indique votre rayon de déplacement (ex : département, région, etc.).
 		</AlertBox>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import AlertBox from '../global/AlertBox.vue';
 import TextInput from '../input/TextInput.vue';

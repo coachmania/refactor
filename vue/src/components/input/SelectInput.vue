@@ -2,7 +2,7 @@
 	<div class="form-control">
 		<span class="label label-text">{{ label }}</span>
 		<select 
-			class="select select-bordered w-full"
+			class="select bg-base-200 shadow-sm"
 			autocomplete="off"
 			:value="value"
 			:name="name" 
