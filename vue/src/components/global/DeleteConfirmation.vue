@@ -1,12 +1,12 @@
 <template>
 	<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" @click.self="$emit('cancel')">
-		<div class="modal-box">
+		<div class="modal-box bg-base-100">
 			<h3 class="text-lg font-bold">
 				<slot>Êtes-vous sûr de vouloir supprimer cet élément ?</slot>
 			</h3>
 			<div class="modal-action grid grid-cols-2 gap-md">
 				<button
-					class="btn btn-block bg-base-100 border-base-content/15"
+					class="btn btn-block bg-base-200 shadow-sm"
 					@click="$emit('cancel')"
 				>Annuler</button>
 				<button 
