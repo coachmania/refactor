@@ -2,7 +2,7 @@
 	<CardLayout>
 		<CardTitle>Afficher en premier</CardTitle>
 		<MultiButton
-			class="grid-cols-3"
+			colsClass="grid-cols-3"
 			:items="data.type_choices"
 			:selectedItem="data.type"
 			@click="updateValue"

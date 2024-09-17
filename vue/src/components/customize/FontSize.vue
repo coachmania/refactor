@@ -2,7 +2,7 @@
 	<CardLayout>
 		<CardTitle>Taille de police</CardTitle>
 		<MultiButton
-			class="grid-cols-4"
+			colsClass="grid-cols-4"
 			:items="data.type_choices"
 			:selectedItem="data.type"
 			@click="updateValue"
