@@ -1,16 +1,13 @@
 <template>
 	<CardTitle>Expériences</CardTitle>
-	<LangSummary 
-		v-for="lang in items"
-		:lang="lang"
+	<!-- <LangSummary 
+		v-for="item in items"
+		:item="item"
 		@changeContent="handleChangeContent"
 		@deleteLang="fetchItems"
-	/>
+	/> -->
 	<div class="flex justify-center">
-		<button class="btn btn-primary no-animation" @click="addLang">
-			<svg class="w-icon h-icon fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
-			<p>Ajouter une langue</p>
-		</button>
+		<AddItemButton @click="addLang">Ajouter une expérience</AddItemButton>
 	</div>
 </template>
 
@@ -18,6 +15,7 @@
 import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
+import AddItemButton from '../button/AddItemButton.vue';
 // import LangSummary from './LangSummary.vue';
 
 const items = ref([]);
