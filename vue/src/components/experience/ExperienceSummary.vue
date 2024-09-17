@@ -14,10 +14,10 @@
 		</div>
 		<DeleteConfirmation 
 			v-if="showModal"
-			@confirm="deleteLang(item.id)"
+			@confirm="deleteItem(item.id)"
 			@cancel="showModal = false"
 		>
-			Êtes-vous sûr de vouloir supprimer cette langue ?
+			Êtes-vous sûr de vouloir supprimer cette expérience ?
 		</DeleteConfirmation>
 	</div>
 </template>
@@ -32,16 +32,16 @@ import ItemSummaryName from '../global/ItemSummaryName.vue';
 
 const showModal = ref(false);
 
-const emit = defineEmits(['changeContent', 'deleteLang']);
+const emit = defineEmits(['changeContent', 'deleteItem']);
 const handleClick = (id) => {
     emit('changeContent', id);
 };
 
-const deleteLang = async (id) => {
+const deleteItem = async (id) => {
 	try {
-		await apiClient.delete(`/cv_lang/delete/${id}/`);
+		await apiClient.delete(`/cv_experience/delete/${id}/`);
 		showModal.value = false;
-		emit('deleteLang');
+		emit('deleteItem');
 	} catch (error) {
 		console.error('Error deleting language:', error);
 	}
