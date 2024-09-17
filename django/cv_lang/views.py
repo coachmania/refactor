@@ -9,7 +9,7 @@ class Item(APIView):
         try:
             lang = Lang.objects.get(id=lang_id)
             return Response({
-                'id': lang.id,
+                'level_choices': lang.LANG_LEVEL_CHOICES,
                 'name': lang.name,
                 'level': lang.level,
                 'justification': lang.justification,
