@@ -19,7 +19,7 @@
 			class="grid-cols-5"
 			:items="data.level_choices"
 			:selectedItem="data.level"
-			@clicked="updateValue"
+			@clicked="updateLevel"
 		/>
 	</div>
 	<TextInput
@@ -48,6 +48,11 @@ const props = defineProps({
 const emit = defineEmits(['close']);
 const handleClick = () => {
 	emit('close');
+};
+
+const updateLevel = async (value) => {
+	data.level = value;
+	await updateValue({name: 'level', value});
 };
 
 const updateValue = async ({name, value}) => {

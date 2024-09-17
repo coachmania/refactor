@@ -26,6 +26,7 @@ class Items(APIView):
                 data.append({
                     'id': lang.id,
                     'name': lang.name,
+                    'level': lang.level,
                 })
             return Response(data, status=status.HTTP_200_OK)
         except Lang.DoesNotExist:
