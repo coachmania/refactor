@@ -1,21 +1,19 @@
 <template>
-	<SubSectionLayout>
-		<CardTitle>Langues</CardTitle>
-		<div class="grid gap-md">
-			<LangSummary 
-				v-for="lang in items"
-				:lang="lang"
-				@changeContent="handleChangeContent"
-				@deleteLang="fetchItems"
-			/>
-		</div>
-		<div class="flex justify-center">
-			<button class="btn btn-primary no-animation" @click="addLang">
-				<svg class="w-icon h-icon fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
-				<p>Ajouter une langue</p>
-			</button>
-		</div>
-	</SubSectionLayout>
+	<CardTitle>Langues</CardTitle>
+	<div class="grid gap-md">
+		<LangSummary 
+			v-for="lang in items"
+			:lang="lang"
+			@changeContent="handleChangeContent"
+			@deleteLang="fetchItems"
+		/>
+	</div>
+	<div class="flex justify-center">
+		<button class="btn btn-primary no-animation" @click="addLang">
+			<svg class="w-icon h-icon fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
+			<p>Ajouter une langue</p>
+		</button>
+	</div>
 </template>
 
 <script setup>
@@ -23,7 +21,6 @@ import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
 import LangSummary from './LangSummary.vue';
-import SubSectionLayout from '../layout/SubSectionLayout.vue';
 
 const items = ref([]);
 

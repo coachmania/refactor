@@ -2,12 +2,14 @@
 	<Header/>
 	<EditorLayout>
 		<SectionLayout>
-			<template v-if="showItemDetail">
-				<LangItemDetail :langId=selectedLangId @close="showItemDetail = false"/>
-			</template>
-			<template v-else>
-				<LangItems @changeContent="handleChangeContent"/>
-			</template>
+			<SubSectionLayout>
+				<template v-if="showItemDetail">
+					<LangItemDetail :langId=selectedLangId @close="showItemDetail = false"/>
+				</template>
+				<template v-else>
+					<LangItems @changeContent="handleChangeContent"/>
+				</template>
+			</SubSectionLayout>
 		</SectionLayout>
 	</EditorLayout>
 </template>
@@ -17,6 +19,7 @@ import { ref } from 'vue';
 import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import LangItems from './LangItems.vue';
 import LangItemDetail from './LangItemDetail.vue';
 
