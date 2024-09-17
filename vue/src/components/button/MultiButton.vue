@@ -4,10 +4,7 @@
 			v-for="(item, index) in items" 
 			:key="index" 
 			class="btn join-item no-animation"
-			:class="[
-				item === selectedItem ? 'btn-primary' : 'bg-base-100',
-				item !== selectedItem && customClass ? customClass : ''
-			]"
+			:class="item === selectedItem ? 'btn-primary' : 'bg-base-200'"
 			@click="$emit('clicked', item)"
 		>
 			{{ item }}
@@ -20,6 +17,5 @@ const props = defineProps({
 	items: Array,
 	selectedItem: String,
 	colsClass: String,
-	customClass: String,
 });
 </script>

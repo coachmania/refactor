@@ -3,7 +3,7 @@
 		<span class="label label-text">{{ label }}</span>
 		<input 
 			type="number"
-			class="input input-bordered" 
+			class="input bg-base-200" 
 			:min=min
 			:max=max
 			:placeholder="placeholder" 
