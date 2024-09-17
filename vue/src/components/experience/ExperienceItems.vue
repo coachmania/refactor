@@ -1,11 +1,11 @@
 <template>
 	<CardTitle>Expériences</CardTitle>
-	<!-- <LangSummary 
+	<ExperienceSummary
 		v-for="item in items"
 		:item="item"
 		@changeContent="handleChangeContent"
-		@deleteLang="fetchItems"
-	/> -->
+		@deleteItem="fetchItems"
+	/>
 	<div class="flex justify-center">
 		<AddItemButton @click="addLang">Ajouter une expérience</AddItemButton>
 	</div>
@@ -16,7 +16,7 @@ import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
 import AddItemButton from '../button/AddItemButton.vue';
-// import LangSummary from './LangSummary.vue';
+import ExperienceSummary from './ExperienceSummary.vue';
 
 const items = ref([]);
 

@@ -4,18 +4,17 @@
 			<ReorderButton/>
 			<div 
 				class="btn no-animation grid grid-cols-[1fr,auto] items-center pl-md p-2 bg-base-200 rounded-btn h-full"
-				@click="handleClick(lang.id)"
+				@click="handleClick(item.id)"
 			>
 				<ItemSummaryName
-					:title="lang.name || 'Nouvelle langue'"
-					:subtitle="lang.level"
-				/>
+					:subtitle="item.title"
+				>{{ item.company || 'Nouvelle experience' }}</ItemSummaryName>
 				<DeleteButton @click.stop @click="showModal = true"/>
 			</div>
 		</div>
 		<DeleteConfirmation 
 			v-if="showModal"
-			@confirm="deleteLang(lang.id)"
+			@confirm="deleteLang(item.id)"
 			@cancel="showModal = false"
 		>
 			Êtes-vous sûr de vouloir supprimer cette langue ?
@@ -49,6 +48,6 @@ const deleteLang = async (id) => {
 };
 
 const props = defineProps({
-	lang: Object
+	item: Object
 });
 </script>
