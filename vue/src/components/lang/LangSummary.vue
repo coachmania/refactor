@@ -8,15 +8,27 @@
 				<h1 class="h-full flex items-center">{{ lang.name }}</h1>
 				<p class="font-thin h-full flex items-center">{{ lang.level }}</p>
 			</div>
-			<button class="btn btn-ghost btn-square" @click="deleteLang(lang.id)">
+			<button class="btn btn-ghost btn-square" @click="showModal = true">
 				<svg class="w-icon h-icon fill-error pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
 			</button>
 		</div>
 	</div>
+	<template v-if="showModal">
+		<DeleteConfirmation 
+			@confirm="deleteLang(lang.id)"
+			@cancel="showModal = false"
+		>
+			Êtes-vous sûr de vouloir supprimer cette langue ?
+		</DeleteConfirmation>
+	</template>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import apiClient from '@/services/api';
+import DeleteConfirmation from '../global/DeleteConfirmation.vue';
+
+const showModal = ref(false);
 
 const emit = defineEmits(['changeContent', 'deleteLang']);
 const handleClick = (id) => {
@@ -26,6 +38,7 @@ const handleClick = (id) => {
 const deleteLang = async (id) => {
 	try {
 		await apiClient.delete(`/cv_lang/delete/${id}/`);
+		showModal.value = false;
 		emit('deleteLang');
 	} catch (error) {
 		console.error('Error deleting language:', error);
