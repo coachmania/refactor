@@ -3,31 +3,49 @@
 		<CardTitle>Photo</CardTitle>
 		<div class="grid gap-md grid-cols-[auto,1fr]">
 			<div class="h-full flex flex-col items-center gap-md">
-				<PictureDisplay :isHidden="isHidden"/>
+				<PictureDisplay :data="data"/>
 				<HideButton
-					:isHidden="isHidden"
+					:data="data"
 					@click="updateValue"
 				/>
 			</div>
-			<DropZone/>
+			<DropZone @dropped="fetchData"/>
 		</div>
 	</SubSectionLayout>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { reactive, onMounted } from 'vue';
+import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
 import PictureDisplay from './PictureDisplay.vue';
 import HideButton from './HideButton.vue';
 import DropZone from './DropZone.vue';
 import SubSectionLayout from '../layout/SubSectionLayout.vue';
 
-const isHidden = ref(true);
+const data = reactive({});
 
-// TODO voir ici quand on fetch je pense que le mieux cest de fetch une seule fois dans le parent et de passer la valeur en props
+const updateValue = async () => {
+	try {
+		await apiClient.put('/cv_personnal/fields/', {
+			is_hidden: !data.is_hidden,
+		});
+		data.is_hidden = !data.is_hidden;
+	} catch (error) {
+		console.error('Erreur lors de la mise à jour de la visibilité de la photo');
+	}
+};
 
-function updateValue(value) {
-	// TODO : call API
-	isHidden.value = !isHidden.value;
-}
+const fetchData = async () => {
+	try {
+		const response = await apiClient.get('/cv_personnal/picture/');
+		Object.assign(data, response.data);
+	} catch (error) {
+		console.error('Erreur lors de la récupération de l\'image');
+	}
+};
+
+onMounted(() => {
+	fetchData();
+});
 </script>

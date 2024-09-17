@@ -61,11 +61,14 @@ const resizeAndCompressImage = async (file) => {
     return await imageCompression(file, options);
 };
 
+const emit = defineEmits(['dropped']);
 const updatePicture = async (file) => {
 	try {
 		let formData = new FormData();
 		formData.append('picture', file);
-		await apiClient.put('/cv_personnal/picture/', formData);
+		await apiClient.put('/cv_personnal/picture/', formData).then(() => {
+			emit('dropped');
+		});
 	} catch (error) {
 		console.error('Erreur lors de la récupération de l\'adresse :');
 	}
