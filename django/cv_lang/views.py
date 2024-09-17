@@ -29,6 +29,14 @@ class Item(APIView):
         except Lang.DoesNotExist:
             return Response({'error': 'Lang not found'}, status=status.HTTP_404_NOT_FOUND)
 
+    def delete(self, request, lang_id, *args, **kwargs):
+        try:
+            lang = Lang.objects.get(id=lang_id)
+            lang.delete()
+            return Response({'success': 'Lang deleted'}, status=status.HTTP_204_NO_CONTENT)
+        except Lang.DoesNotExist:
+            return Response({'error': 'Lang not found'}, status=status.HTTP_404_NOT_FOUND)
+
 class Items(APIView):
     def get(self, request, *args, **kwargs):
         try:
