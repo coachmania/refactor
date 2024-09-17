@@ -23,7 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-$uux2a^7vmtv%758by%y(mk5f*ps!)5wvuccc&+a2e*dj2^sdo'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+STATIC_URL = '/static/'
+STATIC_ROOT = '/static'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media'
+
 if os.getenv('APP_MODE') == 'prod':
     DEBUG = False
     # SITE_URL = 'http://caddy'
