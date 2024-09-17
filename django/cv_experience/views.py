@@ -19,6 +19,7 @@ class Item(APIView):
         try:
             item = Experience.objects.get(id=id)
             return Response({
+                'contract_choices': item.CONTRACT_CHOICES,
                 'company': item.company,
                 'title': item.title,
                 'city': item.city,

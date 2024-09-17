@@ -3,21 +3,33 @@
 		<CardTitle>{{ data.company || 'Nouvelle expérience' }}</CardTitle>
 		<ExitDetailButton @click="handleClick"/>
 	</div>
-	<div class="max-w-[300px]">
+	<div class="grid grid-cols-2 gap-md">
 		<TextInput
-			label="Nom de la langue"
-			placeholder="Anglais"
-			name="name"
-			:value="data.name"
+			label="Entreprise"
+			placeholder="CVmania"
+			name="company"
+			:value="data.company"
 			@update:value="updateValue"
 		/>
-	</div>
-	<div class="max-w-[500px]">
 		<TextInput
-			label="Justification"
-			placeholder="Voyage en Angleterre"
-			name="justification"
-			:value="data.justification"
+			label="Titre du poste"
+			placeholder="Business Developper"
+			name="title"
+			:value="data.title"
+			@update:value="updateValue"
+		/>
+		<TextInput
+			label="Ville"
+			placeholder="Lyon"
+			name="city"
+			:value="data.city"
+			@update:value="updateValue"
+		/>
+		<SelectInput
+			label="Type de contrat"
+			name="contract"
+			:value="data.contract"
+			:items="data.contract_choices"
 			@update:value="updateValue"
 		/>
 	</div>
@@ -33,6 +45,7 @@ import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
 import AlertBox from '../global/AlertBox.vue';
 import ExitDetailButton from '../button/ExitDetailButton.vue';
+import SelectInput from '../input/SelectInput.vue';
 
 const data = reactive({});
 
