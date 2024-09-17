@@ -10,7 +10,7 @@ class Type(APIView):
             title = Title.objects.get_or_create(id=1)[0]
             fields = ["type"]
             data = {field: getattr(title, field) for field in fields}
-            data["type_choices"] = [choice[1] for choice in Title.TYPE_CHOICES]
+            data["type_choices"] = Title.TYPE_CHOICES
             return Response(data, status=status.HTTP_200_OK)
         except Title.DoesNotExist:
             return Response({'error': 'Title not found'}, status=status.HTTP_404_NOT_FOUND)
