@@ -32,7 +32,7 @@ module.exports = {
           ...require("daisyui/src/theming/themes")["light"],
           'primary': '#f39200',
           'primary-content': '#f4f4f4',
-          'base-100': '#f4f4f4',
+          'base-100': '#f1f1f1',
           'base-200': '#fafafa',
           'base-300': '#c7c7c7',
           'base-content': '#1d232a',
