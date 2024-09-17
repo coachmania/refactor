@@ -1,10 +1,7 @@
 <template>
 	<div class="grid grid-cols-[1fr,auto]">
 		<CardTitle>{{ data.name || 'Nouvelle langue' }}</CardTitle>
-		<button class="btn btn-primary" @click="handleClick">
-			<svg class="w-icon h-icon fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg>
-			<p>Quitter</p>
-		</button>
+		<ExitDetailButton @click="handleClick"/>
 	</div>
 	<div class="max-w-[300px]">
 		<TextInput
@@ -45,6 +42,7 @@ import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
 import MultiButton from '../button/MultiButton.vue';
 import AlertBox from '../global/AlertBox.vue';
+import ExitDetailButton from '../button/ExitDetailButton.vue';
 
 const data = reactive({});
 
