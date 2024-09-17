@@ -4,7 +4,7 @@
 		<SectionLayout>
 			<SubSectionLayout>
 				<template v-if="showItemDetail">
-					<LangItemDetail :langId=selectedLangId @close="showItemDetail = false"/>
+					<LangDetail :langId=selectedLangId @close="showItemDetail = false"/>
 				</template>
 				<template v-else>
 					<LangItems @changeContent="handleChangeContent"/>
@@ -21,7 +21,7 @@ import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
 import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import LangItems from './LangItems.vue';
-import LangItemDetail from './LangItemDetail.vue';
+import LangDetail from './LangDetail.vue';
 
 const selectedLangId = ref();
 const showItemDetail = ref(false);
