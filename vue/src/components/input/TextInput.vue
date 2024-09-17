@@ -3,7 +3,7 @@
 		<span class="label label-text">{{ label }}</span>
 		<input 
 			type="text"
-			class="input input-bordered"
+			class="input shadow-sm"
 			:class="customClass"
 			:placeholder="placeholder" 
 			:name="name" 

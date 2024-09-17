@@ -5,7 +5,7 @@
 			:key="index" 
 			class="btn join-item no-animation"
 			:class="[
-				item === selectedItem ? 'btn-primary' : 'bg-base-100 border-base-content/15',
+				item === selectedItem ? 'btn-primary' : 'bg-base-100',
 				item !== selectedItem && customClass ? customClass : ''
 			]"
 			@click="$emit('clicked', item)"
