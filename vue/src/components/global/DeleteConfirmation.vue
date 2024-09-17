@@ -1,5 +1,5 @@
 <template>
-	<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" @click.self="$emit('cancel')">
+	<div class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center" @click.self="$emit('cancel')">
 		<div class="modal-box bg-base-100">
 			<h3 class="text-lg font-bold">
 				<slot>Êtes-vous sûr de vouloir supprimer cet élément ?</slot>
