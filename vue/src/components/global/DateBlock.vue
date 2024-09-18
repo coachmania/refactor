@@ -24,6 +24,7 @@
 			:value="data.end_month"
 			:items="data.month_choices"
 			@update:value="updateValue"
+			:disabled="isCurrent"
 		/>
 		<NumberInput
 			:min="0"
@@ -33,6 +34,7 @@
 			name="end_year"
 			:value="data.end_year"
 			@update:value="updateValue"
+			:disabled="isCurrent"
 		/>
 		<CheckBoxInput
 			label="Actuel"
@@ -44,9 +46,12 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue';
 import SelectInput from '../input/SelectInput.vue';
 import NumberInput from '../input/NumberInput.vue';
 import CheckBoxInput from '../input/CheckBoxInput.vue';
+
+const isCurrent = ref(false);
 
 const props = defineProps({
 	data: Object,
@@ -54,6 +59,13 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 const updateValue = (value) => {
+	if (value.name === 'is_current') {
+		isCurrent.value = value.value;
+	}
 	emit('update:value', value);
 };
+
+watch(() => props.data.is_current, (newValue) => {
+	isCurrent.value = newValue;
+});
 </script>

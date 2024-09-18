@@ -10,6 +10,7 @@
 			:name="name" 
 			:value="value"
 			@input="updateValue($event)"
+			:disabled="disabled"
 		>
 	</div>
 </template>
@@ -24,6 +25,10 @@ const props = defineProps({
 	name: String,
 	min: Number,
 	max: Number,
+    disabled: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const emit = defineEmits(['update:value']);

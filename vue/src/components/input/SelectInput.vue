@@ -7,6 +7,7 @@
 			:value="value"
 			:name="name" 
 			@input="updateValue($event)"
+			:disabled="disabled"
 		>
 			<option 
 				v-for="item in items" 
@@ -25,6 +26,10 @@ const props = defineProps({
     value: String,
 	name: String,
 	items: Array,
+    disabled: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const emit = defineEmits(['update:value']);
