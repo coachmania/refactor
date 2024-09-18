@@ -21,6 +21,7 @@ class Item(APIView):
                 'start_year': item.start_year,
                 'end_month': item.end_month,
                 'end_year': item.end_year,
+                'is_current': item.is_current,
             }, status=status.HTTP_200_OK)
         except Experience.DoesNotExist:
             return Response({'error': 'Experience not found'}, status=status.HTTP_404_NOT_FOUND)
