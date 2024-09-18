@@ -1,4 +1,5 @@
 MONTH_CHOICES = [
+    '',
     'Janvier',
     'Février',
     'Mars',
