@@ -4,7 +4,7 @@
 		<span class="label label-text">{{ label }}</span>
 		<input 
 			type="text"
-			class="input input-bordered" 
+			class="input bg-base-200 shadow-sm" 
 			:placeholder="placeholder" 
 			:name="name" 
 			:value="value"

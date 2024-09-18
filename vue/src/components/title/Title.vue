@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Titre du CV</CardTitle>
 		<TextInput
 			label="Titre du poste recherché"
@@ -9,6 +9,7 @@
 			@update:value="updateValue"
 		/>
 		<QuillEditor
+			label="Accroche"
 			name="details"
 			:value="data.details"
 			@update:value="updateValue"
@@ -31,13 +32,13 @@
 		>
 			Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stage en Marketing Digital - 6 mois'.
 		</AlertBox>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import TextInput from '../input/TextInput.vue';
 import QuillEditor from '../input/QuillEditor.vue';

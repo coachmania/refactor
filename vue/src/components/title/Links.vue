@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Liens</CardTitle>
 		<UrlInput
 			label="LinkedIn"
@@ -24,13 +24,13 @@
 				@update:value="updateValue"
 			/>
 		</div>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api';
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import UrlInput from '../input/UrlInput.vue';
 

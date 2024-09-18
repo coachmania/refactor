@@ -1,19 +1,19 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Type de poste recherché</CardTitle>
 		<MultiButton 
-			colsClass="grid-cols-3"
+			colsClass="grid-cols-4"
 			:items="data.type_choices"
 			:selectedItem="data.type"
 			@clicked="updateValue"
 		/>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import apiClient from '@/services/api.js';
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import MultiButton from '../button/MultiButton.vue';
 
