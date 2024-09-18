@@ -10,9 +10,9 @@ class Experience(models.Model):
 	details = models.TextField(blank=True)
 	order = models.PositiveIntegerField(null=True, blank=True, editable=False)
 	start_month = models.CharField(max_length=50, blank=True, default=MONTH_CHOICES[0])
-	# start_year = models.PositiveIntegerField(null=True, blank=True)
+	start_year = models.PositiveIntegerField(null=True, blank=True)
 	end_month = models.CharField(max_length=50, blank=True, default=MONTH_CHOICES[0])
-	# end_year = models.PositiveIntegerField(null=True, blank=True)
+	end_year = models.PositiveIntegerField(null=True, blank=True)
 
 	def save(self, *args, **kwargs):
 		self.full_clean()
