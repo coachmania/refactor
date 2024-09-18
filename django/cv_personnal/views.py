@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Personnal
+from core.constants import LICENSE_CHOICES
 import os, uuid
 
 class Picture(APIView):
@@ -70,7 +71,7 @@ class Mobility(APIView):
         try:
             personnal = Personnal.objects.get_or_create(id=1)[0]
             data = {
-                "license_choices": Personnal.LICENSE_CHOICES,
+                "license_choices": LICENSE_CHOICES,
                 "license": personnal.license,
                 "other_license": personnal.other_license,
                 "has_vehicle": personnal.has_vehicle,

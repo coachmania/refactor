@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from core.constants import LICENSE_CHOICES
 import re
 
 class EmailField(models.CharField):
@@ -40,14 +41,6 @@ class PostalCodeField(models.PositiveIntegerField):
 		return value
 
 class Personnal(models.Model):
-	LICENSE_CHOICES = [
-		'Aucun',
-		'BSR',
-		'Permis A',
-		'Permis B',
-		'Autre'
-	]
-
 	# cv = models.OneToOneField(Cv, on_delete=models.CASCADE, related_name='personnal')
 	picture = models.ImageField(upload_to='pictures/', null=True, blank=True, default="")
 	is_hidden = models.BooleanField(default=False)
