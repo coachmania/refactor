@@ -69,6 +69,16 @@
 			@update:value="updateValue"
 		/>
 	</div>
+	<br>
+	<CardTitle>Description</CardTitle>
+	<div class="grid grid-cols-2 gap-md">
+		<QuillEditor
+			label="Description"
+			name="details"
+			:value="data.details"
+			@update:value="updateValue"
+		/>
+	</div>
 	<AlertBox classColor="alert-info">
 		<p>La justification peut être une expérience à l'étranger ou une certification (ex : TOEIC).</p>
 	</AlertBox>
@@ -83,6 +93,7 @@ import AlertBox from '../global/AlertBox.vue';
 import ExitDetailButton from '../button/ExitDetailButton.vue';
 import SelectInput from '../input/SelectInput.vue';
 import NumberInput from '../input/NumberInput.vue';
+import QuillEditor from '../input/QuillEditor.vue';
 
 const data = reactive({});
 

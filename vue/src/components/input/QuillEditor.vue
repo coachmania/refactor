@@ -1,6 +1,7 @@
 <template>
-	<div class="w-full">
-		<div id="toolbar" class="border border-base-300 rounded-t-btn flex p-1 gap-1">
+	<div class="col-span-full">
+		<span class="label label-text">{{ label }}</span>
+		<div id="toolbar" class="bg-base-200 border-b border-base-300 rounded-t-btn flex p-1 gap-1">
 			<button 
 				:class="{'btn-ghost': !isBoldActive, 'btn-primary': isBoldActive}" 
 				class="ql-bold btn btn-sm btn-square"
@@ -20,7 +21,7 @@
 				<svg class="w-icon h-icon fill-current pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 18h14v2H5zM6 4v6c0 3.309 2.691 6 6 6s6-2.691 6-6V4h-2v6c0 2.206-1.794 4-4 4s-4-1.794-4-4V4H6z"></path></svg>
 			</button>
 		</div>
-		<div ref="editorContainer" class="rounded-b-btn border border-t-0 border-base-300 bg-base-100">
+		<div ref="editorContainer" class="rounded-b-btn shadow-sm">
 		</div>
 	</div>
 </template>
@@ -32,6 +33,7 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 
 const props = defineProps({
+	label: String,
 	name: String,
 	value: String,
 });
@@ -88,7 +90,7 @@ watch(() => props.value, (newValue) => {
 }
 
 .ql-editor {
-	@apply w-full p-4 input h-full;
+	@apply w-full p-4 input h-full bg-base-200 rounded-t-none;
 }
 
 .ql-tooltip {
