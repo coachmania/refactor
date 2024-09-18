@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Experience
+from core.constants import CONTRACT_CHOICES
 
 class Add(APIView):
     def post(self, request, *args, **kwargs):
@@ -19,7 +20,7 @@ class Item(APIView):
         try:
             item = Experience.objects.get(id=id)
             return Response({
-                'contract_choices': item.CONTRACT_CHOICES,
+                'contract_choices': CONTRACT_CHOICES,
                 'company': item.company,
                 'title': item.title,
                 'city': item.city,
