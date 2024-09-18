@@ -15,19 +15,19 @@
 			@update:value="updateValue"
 		/>
 		<AlertBox
-			v-if="data.type === 'Emploi'"
+			v-if="type === 'Emploi'"
 			classColor="alert-info"
 		>
 			Pour un emploi, utilisez le titre de l'offre si vous répondez à une annonce. Pour une candidature spontanée, indiquez clairement le poste que vous visez.
 		</AlertBox>
 		<AlertBox 
-			v-else-if="data.type === 'Alternance'"
+			v-else-if="type === 'Alternance'"
 			classColor="alert-info"
 		>
 			Pour une alternance, mentionnez le poste ainsi que le rythme et la durée de l'alternance. Par exemple : 'Alternant Développeur Web - 3 jours école / 2 jours entreprise - 12 mois'.
 		</AlertBox>
 		<AlertBox
-			v-else-if="data.type === 'Stage'"
+			v-else-if="type === 'Stage'"
 			classColor="alert-info"
 		>
 			Pour un stage, précisez le titre du poste et, si possible, la durée du stage. Exemple : 'Stage en Marketing Digital - 6 mois'.
@@ -45,6 +45,10 @@ import QuillEditor from '../input/QuillEditor.vue';
 import AlertBox from '../global/AlertBox.vue';
 
 const data = reactive({});
+
+const props = defineProps({
+	type: String,
+});
 
 const updateValue = async ({name, value}) => {
 	try {
