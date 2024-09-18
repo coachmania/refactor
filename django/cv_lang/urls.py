@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import Add, Item, Items
-from core.views import FieldsMultiple
+from .views import Item, Items
+from core.views import Add, Delete, FieldsMultiple
 from .models import Lang
 
 urlpatterns = [
-    path('add/', Add.as_view(), name='add'),
-    path('item/<int:id>/', Item.as_view(), name='item'),
-    path('delete/<int:id>/', Item.as_view(), name='delete'),
-    path('items/', Items.as_view(), name='items'),
+    path('add/', Add.as_view(model=Lang), name='add'),
+    path('delete/<int:id>/', Delete.as_view(model=Lang), name='delete'),
     path('fields/<int:id>/', FieldsMultiple.as_view(model=Lang), name='fields'),
+    path('item/<int:id>/', Item.as_view(), name='item'),
+    path('items/', Items.as_view(), name='items'),
 ]
