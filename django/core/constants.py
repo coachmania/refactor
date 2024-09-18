@@ -32,6 +32,12 @@ LICENSE_CHOICES = [
     'Autre'
 ]
 
+TITLE_TYPE_CHOICES = [
+    'Emploi',
+    'Alternance',
+    'Stage',
+]
+
 HOBBIE_TYPE_CHOICES = [
     '',
     'Sport',
