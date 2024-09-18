@@ -4,10 +4,10 @@
 		<SectionLayout>
 			<SubSectionLayout>
 				<template v-if="showDetail">
-					<ExperienceDetail :item_id="selectedId" @close="showDetail = false"/>
+					<FormationDetail :item_id="selectedId" @close="showDetail = false"/>
 				</template>
 				<template v-else>
-					<ExperienceItems @changeContent="handleChangeContent"/>
+					<FormationItems @changeContent="handleChangeContent"/>
 				</template>
 			</SubSectionLayout>
 		</SectionLayout>
@@ -20,8 +20,8 @@ import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
 import SubSectionLayout from '../layout/SubSectionLayout.vue';
-import ExperienceDetail from './ExperienceDetail.vue';
-import ExperienceItems from './ExperienceItems.vue';
+import FormationDetail from './FormationDetail.vue';
+import FormationItems from './FormationItems.vue';
 
 const selectedId = ref();
 const showDetail = ref(false);

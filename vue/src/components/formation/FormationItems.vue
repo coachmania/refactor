@@ -1,6 +1,6 @@
 <template>
 	<CardTitle>Formations</CardTitle>
-	<ExperienceSummary
+	<FormationSummary
 		v-for="item in items"
 		:item="item"
 		@changeContent="handleChangeContent"
@@ -16,7 +16,7 @@ import { ref, onMounted } from 'vue';
 import apiClient from '@/services/api';
 import CardTitle from '../global/CardTitle.vue';
 import AddItemButton from '../button/AddItemButton.vue';
-import ExperienceSummary from './ExperienceSummary.vue';
+import FormationSummary from './FormationSummary.vue';
 
 const items = ref([]);
 
