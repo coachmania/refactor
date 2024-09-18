@@ -8,7 +8,7 @@
 			>
 				<ItemSummaryName
 					:subtitle="item.title"
-				>{{ item.company || 'Nouvelle formation' }}</ItemSummaryName>
+				>{{ item.location || 'Nouvelle formation' }}</ItemSummaryName>
 				<DeleteButton @click.stop @click="showModal = true"/>
 			</div>
 		</div>

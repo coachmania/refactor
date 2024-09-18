@@ -1,14 +1,36 @@
 <template>
 	<div class="grid grid-cols-[1fr,auto]">
-		<CardTitle>{{ data.company || 'Nouvelle formation' }}</CardTitle>
+		<CardTitle>{{ data.location || 'Nouvelle formation' }}</CardTitle>
 		<ExitDetailButton @click="handleClick"/>
 	</div>
 	<div class="grid grid-cols-2 gap-md">
 		<TextInput
-			label="Entreprise"
-			placeholder="CVmania"
-			name="company"
-			:value="data.company"
+			label="Établissement"
+			placeholder="Université"
+			name="location"
+			:value="data.location"
+			@update:value="updateValue"
+		/>
+		<TextInput
+			label="Diplôme"
+			placeholder="Baccalauréat"
+			name="title"
+			:value="data.title"
+			@update:value="updateValue"
+		/>
+		<TextInput
+			label="Ville"
+			placeholder="Lyon"
+			name="city"
+			:value="data.city"
+			@update:value="updateValue"
+		/>
+		<!-- TODO replace by a select with bac+1+2 etc -->
+		<TextInput
+			label="Niveau d'études"
+			placeholder="Bac+5"
+			name="level"
+			:value="data.level"
 			@update:value="updateValue"
 		/>
 	</div>
@@ -52,14 +74,14 @@
 	<CardTitle>Détails</CardTitle>
 	<div class="grid grid-cols-2 gap-md">
 		<QuillEditor
-			label="Détails de l'expérience"
+			label="Détails de la formation"
 			name="details"
 			:value="data.details"
 			@update:value="updateValue"
 		/>
 	</div>
 	<AlertBox classColor="alert-info">
-		<p>Les détails de vos expériences doivent être obligatoirement à l'indicatif</p>
+		<p>Les détails de vos formations doivent être obligatoirement à l'indicatif</p>
 	</AlertBox>
 </template>
 
