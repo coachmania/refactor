@@ -49,17 +49,3 @@ class Items(APIView):
             return Response(data, status=status.HTTP_200_OK)
         except Lang.DoesNotExist:
             return Response({'error': 'Lang not found'}, status=status.HTTP_404_NOT_FOUND)
-
-class Fields(APIView):
-    def put(self, request, id, *args, **kwargs):
-        try:
-            item = Lang.objects.get_or_create(id=id)[0]
-            for key, value in request.data.items():
-                setattr(item, key, value)
-            try:
-                item.save()
-            except ValidationError as error:
-                return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
-            return Response({'success': 'Lang updated'}, status=status.HTTP_200_OK)
-        except Lang.DoesNotExist:
-            return Response({'error': 'Lang not found'}, status=status.HTTP_404_NOT_FOUND)
