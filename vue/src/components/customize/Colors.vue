@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Couleurs</CardTitle>
 		<ColorSelector
 			v-for="n in 3"
@@ -7,11 +7,11 @@
 		>
 			{{ n }}
 		</ColorSelector>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import ColorSelector from './ColorSelector.vue';
 </script>

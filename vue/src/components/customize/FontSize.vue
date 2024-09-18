@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Taille de police</CardTitle>
 		<MultiButton
 			colsClass="grid-cols-4"
@@ -7,11 +7,11 @@
 			:selectedItem="data.type"
 			@click="updateValue"
 		/>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import MultiButton from '../button/MultiButton.vue';
 

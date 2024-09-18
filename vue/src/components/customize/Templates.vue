@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Modèles</CardTitle>
 		<div>
 			<!-- <TemplateCard 
@@ -8,11 +8,11 @@
 				:template="n"
 			/> -->
         </div>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 // import TemplateCard from './TemplateCard.vue';
 </script>

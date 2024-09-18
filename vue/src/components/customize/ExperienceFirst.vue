@@ -1,5 +1,5 @@
 <template>
-	<CardLayout>
+	<SubSectionLayout>
 		<CardTitle>Afficher en premier</CardTitle>
 		<MultiButton
 			colsClass="grid-cols-3"
@@ -10,11 +10,11 @@
 		<AlertBox class-color="alert-info">
 			<p>Ici, vous pouvez changer l'ordre selon l'importance : placez en premier les expériences ou les formations, selon ce qui valorise le mieux votre profil.</p>
 		</AlertBox>
-	</CardLayout>
+	</SubSectionLayout>
 </template>
 
 <script setup>
-import CardLayout from '../layout/CardLayout.vue';
+import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import AlertBox from '../global/AlertBox.vue';
 import MultiButton from '../button/MultiButton.vue';
