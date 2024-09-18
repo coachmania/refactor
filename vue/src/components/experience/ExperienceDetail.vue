@@ -70,17 +70,17 @@
 		/>
 	</div>
 	<br>
-	<CardTitle>Description</CardTitle>
+	<CardTitle>Détails</CardTitle>
 	<div class="grid grid-cols-2 gap-md">
 		<QuillEditor
-			label="Description"
+			label="Détails de l'expérience"
 			name="details"
 			:value="data.details"
 			@update:value="updateValue"
 		/>
 	</div>
 	<AlertBox classColor="alert-info">
-		<p>La justification peut être une expérience à l'étranger ou une certification (ex : TOEIC).</p>
+		<p>Les détails de vos expériences doivent être obligatoirement à l'indicatif</p>
 	</AlertBox>
 </template>
 
