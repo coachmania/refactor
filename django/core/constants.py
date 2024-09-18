@@ -31,3 +31,11 @@ LICENSE_CHOICES = [
     'Permis B',
     'Autre'
 ]
+
+HOBBIE_TYPE_CHOICES = [
+    '',
+    'Sport',
+    'Bénévolat',
+    'Musique',
+    'Voyage',
+]
