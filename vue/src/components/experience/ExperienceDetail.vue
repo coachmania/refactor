@@ -33,6 +33,7 @@
 			@update:value="updateValue"
 		/>
 	</div>
+	<br>
 	<CardTitle>Dates</CardTitle>
 	<div class="grid grid-cols-2 gap-md">
 		<SelectInput
@@ -97,8 +98,6 @@ const handleClick = () => {
 const updateValue = async ({name, value}) => {
 	try {
 		let sendData = {[name]: value,}
-		console.log(sendData);
-		
 		if (name === 'company') {
 			data.company = value;
 		}
@@ -111,8 +110,6 @@ const updateValue = async ({name, value}) => {
 const fetchLangData = async () => {
 	try {
 		const response = await apiClient.get(`/cv_experience/item/${props.item_id}/`);
-		console.log(response.data);
-		
 		Object.assign(data, response.data);
 	} catch (error) {
 		console.error('Error fetching language data:', error);
