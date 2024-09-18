@@ -9,10 +9,11 @@ class Picture(APIView):
     def get(self, request, *args, **kwargs):
         try:
             personnal = Personnal.objects.get_or_create(id=1)[0]
-            return Response({
+            data = {
                 'picture': personnal.picture.url if personnal.picture else None,
                 'is_hidden': personnal.is_hidden
-            }, status=status.HTTP_200_OK)
+            }
+            return Response(data, status=status.HTTP_200_OK)
         except Personnal.DoesNotExist:
             return Response({'error': 'Personnal not found'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -38,8 +39,14 @@ class Infos(APIView):
     def get(self, request, *args, **kwargs):
         try:
             personnal = Personnal.objects.get_or_create(id=1)[0]
-            fields = ["first_name", "name", "phone", "email", "age", "birthdate"]
-            data = {field: getattr(personnal, field) for field in fields}
+            data = {
+                "first_name": personnal.first_name,
+                "name": personnal.name,
+                "phone": personnal.phone,
+                "email": personnal.email,
+                "age": personnal.age,
+                "birthdate": personnal.birthdate,
+            }
             return Response(data, status=status.HTTP_200_OK)
         except Personnal.DoesNotExist:
             return Response({'error': 'Personnal not found'}, status=status.HTTP_404_NOT_FOUND)
@@ -48,8 +55,12 @@ class Address(APIView):
     def get(self, request, *args, **kwargs):
         try:
             personnal = Personnal.objects.get_or_create(id=1)[0]
-            fields = ["additional", "postal_code", "city", "country"]
-            data = {field: getattr(personnal, field) for field in fields}
+            data = {
+                "additional": personnal.additional,
+                "postal_code": personnal.postal_code,
+                "city": personnal.city,
+                "country": personnal.country,
+            }
             return Response(data, status=status.HTTP_200_OK)
         except Personnal.DoesNotExist:
             return Response({'error': 'Personnal not found'}, status=status.HTTP_404_NOT_FOUND) 
@@ -58,9 +69,13 @@ class Mobility(APIView):
     def get(self, request, *args, **kwargs):
         try:
             personnal = Personnal.objects.get_or_create(id=1)[0]
-            fields = ["license", "other_license", "has_vehicle", "range"]
-            data = {field: getattr(personnal, field) for field in fields}
-            data["license_choices"] = Personnal.LICENSE_CHOICES
+            data = {
+                "license_choices": Personnal.LICENSE_CHOICES,
+                "license": personnal.license,
+                "other_license": personnal.other_license,
+                "has_vehicle": personnal.has_vehicle,
+                "range": personnal.range,
+            }
             return Response(data, status=status.HTTP_200_OK)
         except Personnal.DoesNotExist:
             return Response({'error': 'Personnal not found'}, status=status.HTTP_404_NOT_FOUND)
