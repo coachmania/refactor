@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       spacing: {
         md: '1.5rem',
-        card: '2.5rem',
+        card: '3rem',
         icon: '1.25rem',
       },
       gridTemplateColumns: {
