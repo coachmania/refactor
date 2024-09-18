@@ -112,7 +112,7 @@ const updateValue = async ({name, value}) => {
 		if (name === 'company') {
 			data.company = value;
 		}
-		await apiClient.put(`/cv_experience/fields/${props.item_id}/`, sendData);
+		await apiClient.put(`/cv_experience/update/${props.item_id}/`, sendData);
 	} catch (error) {
 		console.error('Error updating language data:', error);
 	}

@@ -68,7 +68,7 @@ const data = reactive({});
 const updateValue = async ({name, value}) => {
 	try {
 		let sendData = {[name]: value,}
-		await apiClient.put('/cv_personnal/fields/', sendData);
+		await apiClient.put('/cv_personnal/update/', sendData);
 	} catch (error) {
 		console.error('Erreur lors de la mise à jour des informations personnelles :');
 	}

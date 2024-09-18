@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import Picture, Infos, Address, Mobility
-from core.views import FieldsSingle
+from core.views import Update
 from .models import Personnal
 
 urlpatterns = [
@@ -8,5 +8,5 @@ urlpatterns = [
     path('infos/', Infos.as_view(), name='infos'),
     path('address/', Address.as_view(), name='address'),
     path('mobility/', Mobility.as_view(), name='mobility'),
-    path('fields/', FieldsSingle.as_view(model=Personnal), name='fields'),
+    path('update/', Update.as_view(model=Personnal), name='update'),
 ]

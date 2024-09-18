@@ -16,7 +16,7 @@ def _saveItems(item, request):
 		return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
 	return Response(SUCCESS_RESPONSE, status=status.HTTP_200_OK)
 
-class FieldsSingle(APIView):
+class Update(APIView):
 	model = None
 
 	def put(self, request, *args, **kwargs):
@@ -26,7 +26,7 @@ class FieldsSingle(APIView):
 		except self.model.DoesNotExist:
 			return Response(ERROR_RESPONSE, status=status.HTTP_404_NOT_FOUND)
 
-class FieldsMultiple(APIView):
+class UpdateWithId(APIView):
 	model = None
 
 	def put(self, request, id, *args, **kwargs):

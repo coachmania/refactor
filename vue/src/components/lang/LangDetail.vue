@@ -66,7 +66,7 @@ const updateValue = async ({name, value}) => {
 		if (name === 'name') {
 			data.name = value;
 		}
-		await apiClient.put(`/cv_lang/fields/${props.langId}/`, sendData);
+		await apiClient.put(`/cv_lang/update/${props.langId}/`, sendData);
 	} catch (error) {
 		console.error('Error updating language data:', error);
 	}

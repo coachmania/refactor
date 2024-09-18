@@ -27,7 +27,7 @@ const data = reactive({});
 
 const updateValue = async () => {
 	try {
-		await apiClient.put('/cv_personnal/fields/', {
+		await apiClient.put('/cv_personnal/update/', {
 			is_hidden: !data.is_hidden,
 		});
 		data.is_hidden = !data.is_hidden;
