@@ -33,7 +33,7 @@
 		@update:value="updateValue"
 	/>
 	<AlertBox classColor="alert-info">
-		<p>Les détails de vos expériences doivent être obligatoirement à l'indicatif</p>
+		<p>Les détails de vos centres d'intérêt doivent être obligatoirement à l'indicatif</p>
 	</AlertBox>
 </template>
 
