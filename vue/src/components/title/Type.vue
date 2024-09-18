@@ -22,7 +22,7 @@ const data = reactive({});
 const updateValue = async (selectedType) => {
 	try {
 		let sendData = {type: selectedType}
-		await apiClient.put('/cv_title/fields/', sendData);
+		await apiClient.put('/cv_title/update/', sendData);
 		data.type = selectedType;
 	} catch (error) {
 		console.error('Error updating title type:', error);
