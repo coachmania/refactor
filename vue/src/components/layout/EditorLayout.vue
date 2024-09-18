@@ -9,7 +9,7 @@
             @mousedown="handleMouseDown"
         >
             <div ref="page" class="bg-white w-[210mm] h-[297mm] origin-center pointer-events-none select-none aspect-a4 shadow-sm">
-                ok
+                <CurrentTemplate/>
             </div>
         </div>
     </main>
@@ -18,6 +18,7 @@
 <script setup>
 import { onMounted, ref, onBeforeUnmount } from 'vue';
 import Sidebar from '@/components/sidebar/Sidebar.vue';
+import CurrentTemplate from '@/components/template/CurrentTemplate.vue';
 
 const container = ref(null);
 const page = ref(null);
