@@ -16,6 +16,8 @@
 			:value="data.start_year"
 			@update:value="updateValue"
 		/>
+	</div>
+	<div class="grid grid-cols-endDateLayout gap-md">
 		<SelectInput
 			label="Mois de fin"
 			name="end_month"
@@ -32,12 +34,19 @@
 			:value="data.end_year"
 			@update:value="updateValue"
 		/>
+		<CheckBoxInput
+			label="Actuel"
+			name="is_current"
+			:checked="data.is_current"
+			@update:value="updateValue"
+		/>
 	</div>
 </template>
 
 <script setup>
 import SelectInput from '../input/SelectInput.vue';
 import NumberInput from '../input/NumberInput.vue';
+import CheckBoxInput from '../input/CheckBoxInput.vue';
 
 const props = defineProps({
 	data: Object,
