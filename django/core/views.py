@@ -3,18 +3,34 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-class Fields(APIView):
-    model = None
+SUCCESS_RESPONSE = {'success': 'Item updated'}
+ERROR_RESPONSE = {'error': 'Item not found'}
 
-    def put(self, request, id, *args, **kwargs):
-        try:
-            item = self.model.objects.get_or_create(id=id)[0]
-            for key, value in request.data.items():
-                setattr(item, key, value)
-            try:
-                item.save()
-            except ValidationError as error:
-                return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
-            return Response({'success': 'Item updated'}, status=status.HTTP_200_OK)
-        except self.model.DoesNotExist:
-            return Response({'error': 'Item not found'}, status=status.HTTP_404_NOT_FOUND)
+def _saveItems(item, request):
+	for key, value in request.data.items():
+		setattr(item, key, value)
+	try:
+		item.save()
+	except ValidationError as error:
+		return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
+	return Response(SUCCESS_RESPONSE, status=status.HTTP_200_OK)
+
+class FieldsSingle(APIView):
+	model = None
+
+	def put(self, request, *args, **kwargs):
+		try:
+			item = self.model.objects.get_or_create(id=1)[0]
+			return _saveItems(item, request)
+		except self.model.DoesNotExist:
+			return Response(ERROR_RESPONSE, status=status.HTTP_404_NOT_FOUND)
+
+class FieldsMultiple(APIView):
+	model = None
+
+	def put(self, request, id, *args, **kwargs):
+		try:
+			item = self.model.objects.get_or_create(id=id)[0]
+			return _saveItems(item, request)
+		except self.model.DoesNotExist:
+			return Response(ERROR_RESPONSE, status=status.HTTP_404_NOT_FOUND)
