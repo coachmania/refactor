@@ -6,6 +6,7 @@
             ref="container" 
             class="flex items-center justify-center bg-base-100 relative overflow-hidden select-none"
             @wheel="handleMouseWheel"
+            @mousedown="handleMouseDown"
         >
             <div ref="page" class="bg-white w-[210mm] h-[297mm] origin-center pointer-events-none select-none aspect-a4 shadow-sm">
                 ok
@@ -22,9 +23,12 @@ const container = ref(null);
 const page = ref(null);
 const scaleStep = 0.1;
 
-var currentScale;
-var translateX = 0;
-var translateY = 0;
+let currentScale;
+let translateX = 0;
+let translateY = 0;
+let isDragging = false;
+let lastPosX = 0;
+let lastPosY = 0;
 
 const updateTransform = () => {
     page.value.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
@@ -43,19 +47,45 @@ const handleMouseWheel = (event) => {
     const delta = event.deltaY < 0 ? 1 : -1;
 
     if (event.ctrlKey) {
-        currentScale = Math.min(3.0, Math.max(0.5, currentScale + delta * scaleStep));
+        currentScale = Math.min(3.0, Math.max(0.3, currentScale + delta * scaleStep));
     } else {
         translateY += delta * 50;
     }
     updateTransform();
 };
 
+const handleMouseDown = (event) => {
+    isDragging = true;
+    lastPosX = event.clientX;
+    lastPosY = event.clientY;
+};
+
+const handleMouseUp = () => {
+    isDragging = false;
+};
+
+const handleMouseMove = (event) => {
+    if (isDragging) {
+        const dx = event.clientX - lastPosX;
+        const dy = event.clientY - lastPosY;
+        translateX += dx;
+        translateY += dy;
+        updateTransform();
+        lastPosX = event.clientX;
+        lastPosY = event.clientY;
+    }
+};
+
 onMounted(() => {
     adjustZoom();
     window.addEventListener('resize', adjustZoom);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('mousemove', handleMouseMove);
 });
 
 onBeforeUnmount(() => {
     window.removeEventListener('resize', adjustZoom);
+    window.removeEventListener('mouseup', handleMouseUp);
+    window.removeEventListener('mousemove', handleMouseMove);
 });
 </script>
