@@ -10,7 +10,7 @@
 
 <style scoped>
 .rayClass {
-	background: linear-gradient(-45deg, transparent 22.5%, #ffffff88 22.5%, #ffffff88 27.5%, transparent 27.5%, transparent 72.5%, #ffffff88 72.5%, #ffffff88 77.5%, transparent 77.5%);
+	background: linear-gradient(-45deg, transparent 22.5%, #ffffff55 22.5%, #ffffff55 27.5%, transparent 27.5%, transparent 72.5%, #ffffff55 72.5%, #ffffff55 77.5%, transparent 77.5%);
 	background-size: 20px 20px;
 }
 </style>
