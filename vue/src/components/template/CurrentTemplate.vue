@@ -1,5 +1,5 @@
 <template>
-    <div class="currentTemplate">
+    <div class="currentTemplate w-[210mm] aspect-a4 bg-white">
 		<TemplateAlice/>
 	</div>
 </template>

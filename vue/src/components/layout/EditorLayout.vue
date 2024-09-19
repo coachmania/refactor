@@ -8,7 +8,7 @@
             @wheel="handleMouseWheel"
             @mousedown="handleMouseDown"
         >
-            <div ref="page" class="bg-white w-[210mm] h-[297mm] origin-center pointer-events-none select-none aspect-a4 shadow-sm">
+            <div ref="page" class="shadow-sm">
                 <CurrentTemplate/>
             </div>
         </div>
