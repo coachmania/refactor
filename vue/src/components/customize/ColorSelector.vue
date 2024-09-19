@@ -1,17 +1,31 @@
 <template>
-	<h2><slot></slot></h2>
-	<div class="grid grid-cols-8 gap-md">
-		<button
-			v-for="n in 8"
-			class="aspect-square rounded-btn border-4 border-base-300 hover:opacity-70"
-			:class="data.primary === 'TODO' ? 'border-primary' : 'border-base-300'"
-		></button>
+	<h2>{{ displayName }}</h2>
+	<div class="grid grid-cols-8 gap-2">
+		<button v-for="color in colors">
+			<div
+				class="btn btn-ghost btn-block h-12 rounded-btn"
+				:style="{ backgroundColor: color }"
+			></div>
+			<p class="text-center">•</p>
+		</button>
 	</div>
 </template>
 
 <script setup>
-// TODO temp
-const data = {
-	primary: '1',
-};
+import { computed } from 'vue';
+
+const props = defineProps({
+	colors: Object,
+	name: String,
+});
+
+let names = {
+	primary: 'Principale',
+	secondary: 'Secondaire',
+	third: 'Tertiaire',
+	dark: 'Contenu sombre',
+	light: 'Contenu clair',
+}
+
+const displayName = computed(() => names[props.name] || props.name);
 </script>
