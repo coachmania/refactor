@@ -36,6 +36,7 @@ const handleClick = (color) => {
 	try {
 		console.log(color);
 		store.setColor(props.name, color);
+		// TODO add update color call API
 	} catch (error) {
 		console.error(error);
 	}
