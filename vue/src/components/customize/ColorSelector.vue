@@ -1,13 +1,13 @@
 <template>
 	<h2>{{ displayName }}</h2>
 	<div class="grid grid-cols-8 gap-2">
-		<button v-for="color in colors">
-			<div
+		<div v-for="color in colors">
+			<button
 				class="btn btn-ghost btn-block h-12 border border-base-content/15"
 				:style="{ backgroundColor: color }"
-			></div>
+			></button>
 			<p class="text-center">•</p>
-		</button>
+		</div>
 	</div>
 </template>
 
