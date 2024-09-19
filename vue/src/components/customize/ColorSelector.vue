@@ -7,7 +7,7 @@
 				:style="{ backgroundColor: color }"
 				@click="handleClick(color)"
 			></button>
-			<p class="text-center">•</p>
+			<p class="text-center" v-if="color === selectedColor">•</p>
 		</div>
 	</div>
 </template>
@@ -29,8 +29,9 @@ let names = {
 	light: 'Contenu clair',
 }
 
-const displayName = computed(() => names[props.name] || props.name);
 const store = useTemplateStore();
+const selectedColor = computed(() => store[props.name]);
+const displayName = computed(() => names[props.name] || props.name);
 
 const handleClick = (color) => {
 	try {
