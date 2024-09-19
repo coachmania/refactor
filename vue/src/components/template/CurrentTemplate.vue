@@ -17,10 +17,10 @@ const thirdColor = computed(() => store.third);
 const darkColor = computed(() => store.dark);
 const lightColor = computed(() => store.light);
 
-const headSize = computed(() => store.headSize);
-const titleSize = computed(() => store.titleSize);
-const subtitleSize = computed(() => store.subtitleSize);
-const bodySize = computed(() => store.bodySize);
+const headSize = computed(() => store.head);
+const titleSize = computed(() => store.title);
+const subtitleSize = computed(() => store.subtitle);
+const bodySize = computed(() => store.body);
 </script>
 
 <style scoped>
