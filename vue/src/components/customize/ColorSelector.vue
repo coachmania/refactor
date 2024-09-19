@@ -5,6 +5,7 @@
 			<button
 				class="btn btn-ghost btn-block h-12 border border-base-content/15"
 				:style="{ backgroundColor: color }"
+				@click="handleClick(color)"
 			></button>
 			<p class="text-center">•</p>
 		</div>
@@ -13,6 +14,7 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useTemplateStore } from '@/store/templateStore';
 
 const props = defineProps({
 	colors: Object,
@@ -28,4 +30,14 @@ let names = {
 }
 
 const displayName = computed(() => names[props.name] || props.name);
+const store = useTemplateStore();
+
+const handleClick = (color) => {
+	try {
+		console.log(color);
+		store.setColor(props.name, color);
+	} catch (error) {
+		console.error(error);
+	}
+}
 </script>
