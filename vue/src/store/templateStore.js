@@ -7,13 +7,17 @@ export const useTemplateStore = defineStore('template', {
 		third: '',
 		dark: '',
 		light: '',
+        head: '',
+        title: '',
+        subtitle: '',
+        body: ''
 	}),
 	actions: {
-        setColor(name, color) {
+        setProperty(name, value) {
             if (this[name] !== undefined) {
-                this[name] = color;
+                this[name] = value;
             } else {
-                console.error(`Unknown color type: ${name}`);
+                console.error(`Unknown property: ${name}`);
             }
         },
 	},

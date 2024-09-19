@@ -35,7 +35,7 @@ const displayName = computed(() => names[props.name] || props.name);
 
 const handleClick = (color) => {
 	try {
-		store.setColor(props.name, color);
+		store.setProperty(props.name, color);
 		// TODO add update color call API
 	} catch (error) {
 		console.error(error);
