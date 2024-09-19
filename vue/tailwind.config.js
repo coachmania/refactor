@@ -20,6 +20,19 @@ module.exports = {
       fontFamily: {
         custom: ['Roboto', 'sans-serif'],
       },
+      fontSize: {
+        tpHead: 'var(--tp-head)',
+        tpTitle: 'var(--tp-title)',
+        tpSubtitle: 'var(--tp-subtitle)',
+        tpBody: 'var(--tp-body)',
+      },
+      colors: {
+        tpPrimary: "var(--tp-primary)",
+        tpSecondary: "var(--tp-secondary)",
+        tpThird: "var(--tp-third)",
+        tpDark: "var(--tp-dark)",
+        tpLight: "var(--tp-light)",
+      }
     },
   },
   plugins: [
