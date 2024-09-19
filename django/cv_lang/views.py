@@ -2,7 +2,13 @@ from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import serializers
 from .models import Lang
+
+class LangSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lang
+        fields = '__all__'
 
 class Item(APIView):
     def get(self, request, id, *args, **kwargs):

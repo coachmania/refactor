@@ -24,3 +24,14 @@ def getSingleObject(request, model):
 	except model.DoesNotExist:
 		object = None
 	return object
+
+def getMultipleObjects(request, model):
+	"""
+	Get all objects from the database directly with the right CV associated.
+	"""
+	cv = getCvObject(request)
+	try :
+		objects = model.objects.filter(cv=cv)
+	except model.DoesNotExist:
+		objects = None
+	return objects

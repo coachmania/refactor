@@ -1,4 +1,5 @@
 from django.db import models
+from cv.models import Cv
 
 class Lang(models.Model):
 	LANG_LEVEL_CHOICES = [
@@ -8,7 +9,7 @@ class Lang(models.Model):
 		'C1',
 		'C2',
 	]
-	# cv = models.ForeignKey(Cv, on_delete=models.CASCADE, related_name='langs')
+	cv = models.ForeignKey(Cv, on_delete=models.CASCADE, related_name='langs')
 	name = models.CharField(max_length=50, blank=True)
 	level = models.CharField(max_length=50, blank=True, default=LANG_LEVEL_CHOICES[0])
 	justification = models.CharField(max_length=100, blank=True)

@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from cv.getObjects import getCvObject
 
 SUCCESS_RESPONSE = {'success': 'Item updated'}
 DELETE_RESPONSE = {'success': 'Item deleted'}
@@ -41,7 +42,8 @@ class Add(APIView):
 
 	def post(self, request, *args, **kwargs):
 		try:
-			self.model.objects.create()
+			cv = getCvObject(request)
+			self.model.objects.create(cv=cv)
 			return Response(SUCCESS_RESPONSE, status=status.HTTP_201_CREATED)
 		except ValidationError as error:
 			return Response(error.message_dict, status=status.HTTP_400_BAD_REQUEST)
