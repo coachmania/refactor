@@ -2,9 +2,15 @@ from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import serializers
 from .models import Personnal
 from core.constants import LICENSE_CHOICES
 import os, uuid
+
+class PersonnalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Personnal
+        fields = '__all__'
 
 class Picture(APIView):
     def get(self, request, *args, **kwargs):

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'core',
     'accounts',
+    'cv',
     'cv_title',
     'cv_personnal',
     'cv_lang',
