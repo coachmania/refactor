@@ -1,9 +1,10 @@
 from django.db import models
 from core.constants import CONTRACT_CHOICES
 from core.models import ADateFields
+from cv.models import Cv
 
 class Experience(ADateFields):
-	# cv = models.ForeignKey(Cv, on_delete=models.CASCADE, related_name='experiences')
+	cv = models.ForeignKey(Cv, on_delete=models.CASCADE, related_name='experiences')
 	company = models.CharField(max_length=100, blank=True)
 	title = models.CharField(max_length=100, blank=True)
 	city = models.CharField(max_length=100, blank=True)
