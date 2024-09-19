@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'cv_experience',
     'cv_formation',
     'cv_hobbie',
+    'templates',
 ]
 
 REST_FRAMEWORK = {
