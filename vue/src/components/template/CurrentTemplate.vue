@@ -5,22 +5,29 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useTemplateStore } from '@/store/templateStore';
+import { useCvDataStore } from '@/store/cvDataStore';
 import TemplateAlice from './TemplateAlice.vue';
 
-const store = useTemplateStore();
+const templateStore = useTemplateStore();
 
-const primaryColor = computed(() => store.primary);
-const secondaryColor = computed(() => store.secondary);
-const thirdColor = computed(() => store.third);
-const darkColor = computed(() => store.dark);
-const lightColor = computed(() => store.light);
+const primaryColor = computed(() => templateStore.primary);
+const secondaryColor = computed(() => templateStore.secondary);
+const thirdColor = computed(() => templateStore.third);
+const darkColor = computed(() => templateStore.dark);
+const lightColor = computed(() => templateStore.light);
 
-const headSize = computed(() => store.head);
-const titleSize = computed(() => store.title);
-const subtitleSize = computed(() => store.subtitle);
-const bodySize = computed(() => store.body);
+const headSize = computed(() => templateStore.head);
+const titleSize = computed(() => templateStore.title);
+const subtitleSize = computed(() => templateStore.subtitle);
+const bodySize = computed(() => templateStore.body);
+
+const cvDataStore = useCvDataStore();
+
+onMounted(() => {
+    cvDataStore.fetchCvData();
+});
 </script>
 
 <style scoped>
