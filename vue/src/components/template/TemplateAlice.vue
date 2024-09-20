@@ -1,7 +1,10 @@
 <template>
-	<h1 class="text-current">Mon CV</h1>
 	<div v-if="!isLoading && cvData" class="box-border overflow-hidden w-full h-full grid grid-cols-[80mm,1fr] bg-tpPrimary text-tpBody">
-		<pre>{{ cvData }}</pre>
+		<aside class="p-10 rayClass">
+			<div class="bg-tpLight h-full">
+				<pre>{{ cvData }}</pre>
+			</div>
+		</aside>
 	</div>
 	<div v-else-if="isLoading">
 		<p>Chargement des données du CV...</p>
