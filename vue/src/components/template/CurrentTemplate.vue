@@ -1,6 +1,15 @@
 <template>
     <div class="currentTemplate w-[210mm] aspect-a4 bg-white">
-		<TemplateAlice/>
+
+        <div v-if="!isLoading && cvData" class="box-border overflow-hidden w-full h-full grid grid-cols-[80mm,1fr] bg-tpPrimary text-tpBody">
+            <TemplateAlice :cvData="cvData"/>
+        </div>
+        <div v-else-if="isLoading">
+            <p>Chargement des données du CV...</p>
+        </div>
+        <div v-else>
+            <p>Erreur lors du chargement des données du CV</p>
+        </div>
 	</div>
 </template>
 
@@ -24,10 +33,13 @@ const subtitleSize = computed(() => templateStore.subtitle);
 const bodySize = computed(() => templateStore.body);
 
 const cvDataStore = useCvDataStore();
+const cvData = computed(() => cvDataStore.cvData);
+const isLoading = computed(() => cvDataStore.isLoading);
 
 onMounted(() => {
     cvDataStore.fetchCvData();
 });
+
 </script>
 
 <style scoped>
