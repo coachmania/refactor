@@ -2,6 +2,7 @@
 	<div class="box-border overflow-hidden w-full h-full grid grid-cols-[80mm,1fr] bg-tpPrimary text-tpBody">
 		<aside class="p-10 rayClass">
 			<div class="bg-tpLight h-full">
+				<Name splited/>
 				<pre>{{ cvData }}</pre>
 			</div>
 		</aside>
@@ -9,6 +10,8 @@
 </template>
 
 <script setup>
+import Name from './elements/Name.vue';
+
 const props = defineProps({
     cvData: {
         type: Object,
