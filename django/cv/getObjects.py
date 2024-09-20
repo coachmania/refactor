@@ -8,7 +8,7 @@ def getCvObject(request):
 	# TODO
 	# if user.current_cv:
 		# return user.current_cv
-	cv, created = Cv.objects.get_or_create(user=request.user)
+	cv, created = Cv.objects.get_or_create(user=request.user, id=1)
 	if created:
 		user.current_cv = cv
 		user.save()

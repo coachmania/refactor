@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny
 class Content(APIView):
 	permission_classes = [AllowAny]
 
-	def get(self, request, id, *args, **kwargs):
+	def get(self, request, *args, **kwargs):
 		try:
 			data = {
 				'personnal': getPersonnalData(request, Personnal),
