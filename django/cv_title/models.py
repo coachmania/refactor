@@ -1,8 +1,9 @@
 from django.db import models
+from cv.models import Cv
 from core.constants import TITLE_TYPE_CHOICES
 
 class Title(models.Model):
-	# cv = models.OneToOneField(Cv, on_delete=models.CASCADE, related_name='title')
+	cv = models.OneToOneField(Cv, on_delete=models.CASCADE, related_name='title')
 	type = models.CharField(max_length=50, blank=True, default=TITLE_TYPE_CHOICES[0])
 	title = models.CharField(max_length=100, blank=True)
 	details = models.CharField(max_length=1000, blank=True)

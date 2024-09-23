@@ -2,8 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Cv
-from .getDatas import getPersonnalData, getLangData, getExperienceData
+from .getDatas import getPersonnalData, getTitleData, getLangData, getExperienceData
 from cv_personnal.models import Personnal
+from cv_title.models import Title
 from cv_lang.models import Lang
 from cv_experience.models import Experience
 
@@ -15,6 +16,7 @@ class Content(APIView):
 		try:
 			data = {
 				'personnal': getPersonnalData(request, Personnal),
+				'title': getTitleData(request, Title),
 				'langs': getLangData(request, Lang),
 				'experiences': getExperienceData(request, Experience),
 			}
