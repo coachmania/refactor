@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1><slot></slot></h1>
+		<h1><slot>Langues</slot></h1>
         <ul>
             <li v-for="(lang, index) in cvData.langs" :key="index">
 				<template v-if="lang.name">{{ lang.name }}</template>

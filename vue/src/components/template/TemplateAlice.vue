@@ -4,9 +4,9 @@
 			<div class="bg-tpLight h-full px-4 py-6">
 				<Name splited class="text-tpTitle"/>
 				<Age/>
-				<Contact>Contact</Contact>
+				<Contact/>
 				<Mobility/>
-				<Lang>Langues</Lang>
+				<Lang/>
 			</div>
 		</aside>
 	</div>

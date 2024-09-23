@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1><slot></slot></h1>
+		<h1><slot>Contact</slot></h1>
 		<p>{{ cvData.personnal.phone }}</p>
 		<p>{{ cvData.personnal.email }}</p>
 		<a class="block" :href="cvData.title.linkedin_url">Linkedin</a>
