@@ -15,8 +15,6 @@ class Settings(models.Model):
 	dark_color = models.CharField(max_length=7, blank=True)
 	light_color = models.CharField(max_length=7, blank=True)
 	# size = models.CharField(max_length=50, blank=True, default=SIZE_OPTIONS[1])
-
-
 	
 	# TODO faire une view qui envoie tout le contenu pour le cv
 	# uen fois que le cv le recois (CurrentTemplate) on stocke ce contenu dans pinia 
