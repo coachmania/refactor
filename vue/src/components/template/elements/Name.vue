@@ -1,11 +1,11 @@
 <template>
-	<template v-if="props.splited">
+	<div v-if="props.splited">
 		<h1 class="text-tpTitle">{{ cvData.personnal.first_name }}</h1>
 		<h1 class="text-tpTitle">{{ cvData.personnal.name }}</h1>
-	</template>
-	<template v-else>
+	</div>
+	<div v-else>
 		<h1 class="text-tpTitle">{{ cvData.personnal.first_name }} {{ cvData.personnal.name }}</h1>
-	</template>
+	</div>
 </template>
 
 <script setup>
