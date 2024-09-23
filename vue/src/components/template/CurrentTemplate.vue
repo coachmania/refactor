@@ -25,13 +25,13 @@ const secondaryColor = computed(() => cvCustomizeStore.cvCustomize?.secondary ||
 const thirdColor = computed(() => cvCustomizeStore.cvCustomize?.third || '');
 const darkColor = computed(() => cvCustomizeStore.cvCustomize?.dark || '');
 const lightColor = computed(() => cvCustomizeStore.cvCustomize?.light || '');
-
 const headSize = computed(() => cvCustomizeStore.cvCustomize?.head || '');
 const titleSize = computed(() => cvCustomizeStore.cvCustomize?.title || '');
 const subtitleSize = computed(() => cvCustomizeStore.cvCustomize?.subtitle || '');
 const bodySize = computed(() => cvCustomizeStore.cvCustomize?.body || '');
 
 const cvDataStore = useCvDataStore();
+
 const cvData = computed(() => cvDataStore.cvData);
 const isLoading = computed(() => cvDataStore.isLoading);
 
