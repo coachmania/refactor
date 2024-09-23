@@ -5,7 +5,9 @@
 				<Name splited/>
 				<Age/>
 				<Contact>Contact</Contact>
-				<pre>{{ cvData }}</pre>
+				<Mobility/>
+				<Lang>Langues</Lang>
+				<pre>{{ cvData.langs }}</pre>
 			</div>
 		</aside>
 	</div>
@@ -15,6 +17,8 @@
 import Age from './elements/Age.vue';
 import Name from './elements/Name.vue';
 import Contact from './elements/Contact.vue';
+import Mobility from './elements/Mobility.vue';
+import Lang from './elements/Lang.vue';
 
 const props = defineProps({
     cvData: {
