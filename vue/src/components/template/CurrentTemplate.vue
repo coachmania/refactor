@@ -1,6 +1,5 @@
 <template>
     <div class="currentTemplate w-[210mm] aspect-a4 bg-white">
-
         <div v-if="!isLoading && cvData" class="box-border overflow-hidden w-full h-full grid grid-cols-[80mm,1fr] bg-tpPrimary text-tpBody">
             <TemplateAlice :cvData="cvData"/>
         </div>
@@ -15,22 +14,22 @@
 
 <script setup>
 import { computed, onMounted } from 'vue';
-import { useTemplateStore } from '@/store/templateStore';
+import { useCvCustomizeStore } from '@/store/cvCustomizeStore';
 import { useCvDataStore } from '@/store/cvDataStore';
 import TemplateAlice from './TemplateAlice.vue';
 
-const templateStore = useTemplateStore();
+const cvCustomizeStore = useCvCustomizeStore();
 
-const primaryColor = computed(() => templateStore.primary);
-const secondaryColor = computed(() => templateStore.secondary);
-const thirdColor = computed(() => templateStore.third);
-const darkColor = computed(() => templateStore.dark);
-const lightColor = computed(() => templateStore.light);
+const primaryColor = computed(() => cvCustomizeStore.cvCustomize?.primary || '');
+const secondaryColor = computed(() => cvCustomizeStore.cvCustomize?.secondary || '');
+const thirdColor = computed(() => cvCustomizeStore.cvCustomize?.third || '');
+const darkColor = computed(() => cvCustomizeStore.cvCustomize?.dark || '');
+const lightColor = computed(() => cvCustomizeStore.cvCustomize?.light || '');
 
-const headSize = computed(() => templateStore.head);
-const titleSize = computed(() => templateStore.title);
-const subtitleSize = computed(() => templateStore.subtitle);
-const bodySize = computed(() => templateStore.body);
+const headSize = computed(() => cvCustomizeStore.cvCustomize?.head || '');
+const titleSize = computed(() => cvCustomizeStore.cvCustomize?.title || '');
+const subtitleSize = computed(() => cvCustomizeStore.cvCustomize?.subtitle || '');
+const bodySize = computed(() => cvCustomizeStore.cvCustomize?.body || '');
 
 const cvDataStore = useCvDataStore();
 const cvData = computed(() => cvDataStore.cvData);

@@ -10,24 +10,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import apiClient from '@/services/api';
+import { computed } from 'vue';
+import { useCvCustomizeStore } from '@/store/cvCustomizeStore';
 import SubSectionLayout from '../layout/SubSectionLayout.vue';
 import CardTitle from '../global/CardTitle.vue';
 import ColorSelector from './ColorSelector.vue';
 
-const schemes = ref([]);
-
-const fetchSchemes = async () => {
-	try {
-		const response = await apiClient.get('/templates/scheme/0/');
-		schemes.value = response.data;
-	} catch (error) {
-		console.error(error);
-	}
-};
-
-onMounted(() => {
-	fetchSchemes();
-})
+const cvCustomizeStore = useCvCustomizeStore();
+const schemes = computed(() => cvCustomizeStore.cvSchemes);
 </script>

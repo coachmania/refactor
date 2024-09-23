@@ -14,7 +14,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useTemplateStore } from '@/store/templateStore';
+import { useCvCustomizeStore } from '@/store/cvCustomizeStore';
 
 const props = defineProps({
 	colors: Object,
@@ -29,14 +29,13 @@ let names = {
 	light: 'Contenu clair',
 }
 
-const store = useTemplateStore();
-const selectedColor = computed(() => store[props.name]);
+const store = useCvCustomizeStore();
+const selectedColor = computed(() => store.cvCustomize[props.name]);
 const displayName = computed(() => names[props.name] || props.name);
 
 const handleClick = (color) => {
 	try {
-		store.setProperty(props.name, color);
-		// TODO add update color call API
+		store.cvCustomize[props.name] = color;
 	} catch (error) {
 		console.error(error);
 	}

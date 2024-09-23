@@ -12,8 +12,7 @@
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue';
-import apiClient from '@/services/api';
+import { onMounted } from 'vue';
 import Header from '@/components/header/Header.vue';
 import EditorLayout from '../layout/EditorLayout.vue';
 import SectionLayout from '../layout/SectionLayout.vue';
@@ -23,20 +22,10 @@ import ExperienceFirst from './ExperienceFirst.vue';
 import FontSize from './FontSize.vue';
 import Colors from './Colors.vue';
 
-// const pageData = reactive({
-// 	data: {},
-// });
+import { useCvCustomizeStore } from '@/store/cvCustomizeStore.js';
 
-// const fetchData = async () => {
-// 	try {
-// 		// const response = await apiClient.get('/cv_customize/fields/');
-// 		Object.assign(pageData.data, response.data);
-// 	} catch (error) {
-// 		console.error('Error fetching title types:');
-// 	}
-// };
-
-// onMounted(() => {
-// 	// fetchData();
-// });
+const store = useCvCustomizeStore();
+onMounted(() => {
+	store.fetchData();
+});
 </script>

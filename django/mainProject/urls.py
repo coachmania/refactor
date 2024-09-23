@@ -28,5 +28,4 @@ urlpatterns = [
     path('cv_experience/', include('cv_experience.urls')),
     path('cv_formation/', include('cv_formation.urls')),
     path('cv_hobbie/', include('cv_hobbie.urls')),
-    path('templates/', include('templates.urls')),
 ]
