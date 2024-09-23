@@ -4,6 +4,7 @@
 			<div class="bg-tpLight h-full px-4 py-6">
 				<Name splited/>
 				<Age/>
+				<Contact>Contact</Contact>
 				<pre>{{ cvData }}</pre>
 			</div>
 		</aside>
@@ -13,6 +14,7 @@
 <script setup>
 import Age from './elements/Age.vue';
 import Name from './elements/Name.vue';
+import Contact from './elements/Contact.vue';
 
 const props = defineProps({
     cvData: {
