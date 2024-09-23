@@ -1,0 +1,1 @@
+Attention securiser les endpoints api en verifiant bien que si on delete un cv par exemple on est bien le proprietaire du cv
