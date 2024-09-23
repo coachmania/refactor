@@ -15,6 +15,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useCvCustomizeStore } from '@/store/cvCustomizeStore';
+import apiClient from '@/services/api';
 
 const props = defineProps({
 	colors: Object,
@@ -33,11 +34,14 @@ const store = useCvCustomizeStore();
 const selectedColor = computed(() => store.cvCustomize[props.name]);
 const displayName = computed(() => names[props.name] || props.name);
 
-const handleClick = (color) => {
+const handleClick = async (color) => {
 	try {
 		store.cvCustomize[props.name] = color;
+		await apiClient.put('/cv_settings/update/', {
+			[props.name + '_color']: color
+		});
 	} catch (error) {
-		console.error(error);
+		console.error('Error updating color:', error);
 	}
 }
 </script>
