@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     'cv',
+    'cv_settings',
     'cv_title',
     'cv_personnal',
     'cv_lang',

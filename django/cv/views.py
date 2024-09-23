@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Cv
-from .getDatas import getPersonnalData, getTitleData, getLangData, getExperienceData, getSettingsData
+from .getDatas import getPersonnalData, getTitleData, getLangData, getExperienceData
 from cv_personnal.models import Personnal
 from cv_title.models import Title
 from cv_lang.models import Lang

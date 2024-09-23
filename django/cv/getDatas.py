@@ -19,9 +19,3 @@ def getLangData(request, model):
 def getExperienceData(request, model):
 	serializer = ExperienceSerializer(getMultipleObjects(request, model), many=True)
 	return serializer.data
-
-# TODO voir si on deplace pas les settings dans une app a part
-def getSettingsData(request, model):
-	# serializer = SettingsSerializer(getSingleObject(request, model))
-	# return serializer.data
-	return {}
