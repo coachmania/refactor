@@ -1,7 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from rest_framework import serializers
+from rest_framework import generics, serializers, status
 from .models import Settings
 from cv.getObjects import getSingleObject
 from .schemes import TEMPLATES
@@ -11,6 +10,14 @@ class SettingsSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Settings
 		fields = '__all__'
+
+class SettingsListCreateView(generics.ListCreateAPIView):
+    queryset = Settings.objects.all()
+    serializer_class = SettingsSerializer
+
+class SettingsDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Settings.objects.all()
+    serializer_class = SettingsSerializer
 
 class Fields(APIView):
 	def get(self, request):

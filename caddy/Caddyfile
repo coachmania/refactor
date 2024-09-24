@@ -5,7 +5,7 @@
 }
 
 :80 {
-    handle_path /static/* {
+    handle_path /api/static/* {
         root * /static
         file_server
     }
@@ -27,7 +27,7 @@
 https://localhost {
     tls internal
 
-    handle_path /static/* {
+    handle_path /api/static/* {
         root * /static
         file_server
     }
