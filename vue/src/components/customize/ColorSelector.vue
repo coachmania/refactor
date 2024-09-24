@@ -1,7 +1,7 @@
 <template>
 	<h2>{{ displayName }}</h2>
 	<div class="grid grid-cols-8 gap-2">
-		<div v-for="color in colors">
+		<div v-for="color in colors" :key="color">
 			<button
 				class="btn btn-ghost btn-block h-12 border border-base-content/15"
 				:style="{ backgroundColor: color }"
@@ -22,26 +22,26 @@ const props = defineProps({
 	name: String,
 });
 
-let names = {
+const names = {
 	primary: 'Principale',
 	secondary: 'Secondaire',
 	third: 'Tertiaire',
 	dark: 'Contenu sombre',
 	light: 'Contenu clair',
-}
+};
 
 const store = useCvCustomizeStore();
-const selectedColor = computed(() => store.cvCustomize[props.name]);
+const selectedColor = computed(() => store.cvCustomize[props.name + '_color']);
 const displayName = computed(() => names[props.name] || props.name);
 
 const handleClick = async (color) => {
 	try {
-		store.cvCustomize[props.name] = color;
+		store.cvCustomize[props.name + '_color'] = color;
 		await apiClient.put('/cv_settings/update/', {
 			[props.name + '_color']: color
 		});
 	} catch (error) {
 		console.error('Error updating color:', error);
 	}
-}
+};
 </script>

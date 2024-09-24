@@ -20,11 +20,11 @@ import TemplateAlice from './TemplateAlice.vue';
 
 const cvCustomizeStore = useCvCustomizeStore();
 
-const primaryColor = computed(() => cvCustomizeStore.cvCustomize?.primary || '');
-const secondaryColor = computed(() => cvCustomizeStore.cvCustomize?.secondary || '');
-const thirdColor = computed(() => cvCustomizeStore.cvCustomize?.third || '');
-const darkColor = computed(() => cvCustomizeStore.cvCustomize?.dark || '');
-const lightColor = computed(() => cvCustomizeStore.cvCustomize?.light || '');
+const primaryColor = computed(() => cvCustomizeStore.cvCustomize?.primary_color || '');
+const secondaryColor = computed(() => cvCustomizeStore.cvCustomize?.secondary_color || '');
+const thirdColor = computed(() => cvCustomizeStore.cvCustomize?.third_color || '');
+const darkColor = computed(() => cvCustomizeStore.cvCustomize?.dark_color || '');
+const lightColor = computed(() => cvCustomizeStore.cvCustomize?.light_color || '');
 const headSize = computed(() => cvCustomizeStore.cvCustomize?.head || '');
 const titleSize = computed(() => cvCustomizeStore.cvCustomize?.title || '');
 const subtitleSize = computed(() => cvCustomizeStore.cvCustomize?.subtitle || '');
