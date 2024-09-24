@@ -5,6 +5,7 @@ from rest_framework import serializers
 from .models import Settings
 from cv.getObjects import getSingleObject
 from .schemes import TEMPLATES
+from .sizes import SIZES
 
 class SettingsSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -14,7 +15,9 @@ class SettingsSerializer(serializers.ModelSerializer):
 class Fields(APIView):
 	def get(self, request):
 		serializer = SettingsSerializer(getSingleObject(request, Settings))
-		return Response(serializer.data, status=status.HTTP_200_OK)
+		data = dict(serializer.data)
+		data['sizes'] = SIZES
+		return Response(data, status=status.HTTP_200_OK)
 
 class Scheme(APIView):
 	def get(self, request, id, *args, **kwargs):
